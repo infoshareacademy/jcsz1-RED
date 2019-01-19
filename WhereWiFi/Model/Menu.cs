@@ -89,7 +89,7 @@ namespace Model
                 {
                     Console.BackgroundColor = ConsoleColor.White;
                     Console.ForegroundColor = ConsoleColor.DarkBlue;
-                    Console.WriteLine("{0,-40}", 2);
+                    Console.WriteLine("{0,-40}", menuItems[i]);
                     Console.BackgroundColor = ConsoleColor.DarkMagenta;
                     Console.ForegroundColor = ConsoleColor.White;
                 }
