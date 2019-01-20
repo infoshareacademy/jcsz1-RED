@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsolApp", "Main\ConsolApp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model", "Model\Model.csproj", "{46055E9F-D1DA-44BF-B4DA-27B0647F2BB5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WiFi.Library", "WiFi.Library\WiFi.Library.csproj", "{DE0C33CA-CECE-42D4-B6D2-33659600C1BC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WiFi.Library", "WiFi.Library\WiFi.Library.csproj", "{DE0C33CA-CECE-42D4-B6D2-33659600C1BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

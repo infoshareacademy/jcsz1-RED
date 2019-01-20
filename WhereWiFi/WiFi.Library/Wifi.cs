@@ -27,10 +27,5 @@ namespace WiFi.Library
         {
             throw new System.NotImplementedException();
         }
-
-}
-
-
-
-
+    }
 }
