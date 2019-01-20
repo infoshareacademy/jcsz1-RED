@@ -7,7 +7,7 @@ namespace WiFi.Library
     //wprowadzenie danych o punktach WiFi, tak aby system był zawsze aktualny
     //miejsca w których jest najmniej użytkowników na przestrzeni czasu, do wybrania z menu konsolowego
     //wprowadzenie danych z menu konsolowego
-    public class Wifi :Position, IWiFi
+    public class Wifi : IWiFi
     {
         public string SSID { get; } //identyfikator ssid
         public List<bool> checkedNetworkProfiles = new List<bool>(); // lista sprawdzonych hot spotow
