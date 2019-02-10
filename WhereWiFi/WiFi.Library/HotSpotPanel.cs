@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -11,8 +12,8 @@ namespace WiFi.Library
         public List<HotSpotPanel> listOfHotSpots = new List<HotSpotPanel>();
         public string Id { get; set; }
         public string LocationName { get; set; }
-        public string LatitudeX { get; set; }
-        public string LongitudeY { get; set; }
+        public double LatitudeX { get; set; }
+        public double LongitudeY { get; set; }
 
         public void OrganizeData(string[] table) // wyslana tablica
         {
@@ -23,8 +24,8 @@ namespace WiFi.Library
                 {
                     Id = something[0],
                     LocationName = something[1],
-                    LatitudeX = something[2],
-                    LongitudeY = something[3],
+                    LatitudeX = double.Parse(something[2], CultureInfo.InvariantCulture),
+                    LongitudeY = double.Parse(something[3], CultureInfo.InvariantCulture),
                 };
                 listOfHotSpots.Add(transferDataToList);
             }
@@ -38,9 +39,9 @@ namespace WiFi.Library
             Console.WriteLine("Podaj nazwę nowego HotSpotu:");
             newHotSpot.LocationName = Console.ReadLine();
             Console.WriteLine("Podaj szerokość geograficzną na jakiej znajduje się HotSpot (w formacie 54.382059)");
-            newHotSpot.LatitudeX = Console.ReadLine(); //należy dopisać jakiś test na to, żeby nie wpadały bzdury
+            newHotSpot.LatitudeX = float.Parse(Console.ReadLine()); //należy dopisać jakiś test na to, żeby nie wpadały bzdury
             Console.WriteLine("Podaj długość geograficzną na jakiej znajduje się HotSpot (w formacie 18.571996)");
-            newHotSpot.LongitudeY = Console.ReadLine(); //należy dopisać jakiś test na to, żeby nie wpadały bzdury
+            newHotSpot.LongitudeY = float.Parse(Console.ReadLine()); //należy dopisać jakiś test na to, żeby nie wpadały bzdury
 
             listOfHotSpots.Add(newHotSpot);
 
