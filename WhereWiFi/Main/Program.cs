@@ -10,9 +10,10 @@ namespace Main
         {
             
             PathToFile filePath = new PathToFile();
-            var files = File.ReadAllLines(filePath.FullFilePath[0]);
+            var fileWifiGdansk = File.ReadAllLines(filePath.FullFilePath[0]);
+            
             HotSpotPanel wifi = new HotSpotPanel();
-            wifi.OrganizeData(files);
+            wifi.OrganizeData(fileWifiGdansk);
             StartMenu(wifi,filePath);
             
 
