@@ -8,9 +8,9 @@ namespace Main
     {
         public List<HotSpotReports> listOfReports = new List<HotSpotReports>();
 
-        public int CurrentHotSpotUsers { get; set; }
-        public long IncomingTransfer { get; set; }
-        public long OutgoingTransfer { get; set; }
+        public double CurrentHotSpotUsers { get; set; }
+        public double IncomingTransfer { get; set; }
+        public double OutgoingTransfer { get; set; }
         private int counter = 0;
 
         public void OrganizeReports(string[] table)
@@ -23,9 +23,9 @@ namespace Main
                 {
                     Id = dividedPartOfString[0],
                     LocationName = dividedPartOfString[1],
-                    CurrentHotSpotUsers =int.Parse(dividedPartOfString[2]),
-                    IncomingTransfer=long.Parse(dividedPartOfString[3]),
-                    OutgoingTransfer=long.Parse(dividedPartOfString[4])
+                    CurrentHotSpotUsers =double.Parse(dividedPartOfString[2]),
+                    IncomingTransfer=double.Parse(dividedPartOfString[3]),
+                    OutgoingTransfer=double.Parse(dividedPartOfString[4])
 
                 };
                 listOfReports.Add(transferDataFromReports);
@@ -50,5 +50,34 @@ namespace Main
             }
             Console.ReadKey();
         }
+
+
+        public List<HotSpotReports> MergingTwoLists(List<HotSpotReports> itemOne, List<HotSpotReports> itemTwo)
+        {
+            List<HotSpotReports> resultList = new List<HotSpotReports>();
+            foreach (var f in itemOne)
+            {
+                foreach (var v in itemTwo)
+                {
+                    if (f.Id==v.Id)
+                    {
+                        var smallInstance = new HotSpotReports()
+                        {
+                            Id = f.Id,
+                            LocationName = f.LocationName,
+                            CurrentHotSpotUsers = (f.CurrentHotSpotUsers + v.CurrentHotSpotUsers) / 2,
+                            IncomingTransfer = (f.IncomingTransfer + v.IncomingTransfer) / 2,
+                            OutgoingTransfer = (f.OutgoingTransfer + v.OutgoingTransfer) / 2
+                        };
+                        resultList.Add(smallInstance);
+                    }
+                }
+            }
+
+
+            return resultList;
+        }
+
+
     }
 }

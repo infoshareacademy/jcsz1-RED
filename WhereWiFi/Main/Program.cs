@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
+using System.Linq;
 using WiFi.Library;
+
 
 namespace Main
 {
@@ -9,7 +12,7 @@ namespace Main
     {
         static void Main(string[] args)
         {
-            
+
             PathToFile filePath = new PathToFile();
             var fileWifiGdansk = File.ReadAllLines(filePath.FullFilePath[0]);
             var fileReportFeb = File.ReadAllLines(filePath.TransferReportFeb[0]);
@@ -21,20 +24,21 @@ namespace Main
             feb.OrganizeReports(fileReportFeb);
             HotSpotReports march = new HotSpotReports();
             march.OrganizeReports(fileReportMarch);
-            List<HotSpotReports> listOfReports = new List<HotSpotReports>();
-            listOfReports.Add(feb);
-            listOfReports.Add(march);
+            
+            var res = feb.MergingTwoLists(feb.listOfReports,march.listOfReports);
+            var lowestHotSpotsUserNumber = res.OrderBy(r => r.CurrentHotSpotUsers).Take(20);
+            
+          
+            
 
 
-
-
-            StartMenu(wifi,filePath,listOfReports);
+            StartMenu(wifi, filePath, lowestHotSpotsUserNumber);
             Console.ReadLine();
         }
         private static string[] menuItems = { "Najbliższy HotSpot", "Dodaj HotSpot",
-            "Lista HotSpotów", "Lista HotSpotów -> Najmniej połączeń", "Zakończ" };
+            "Lista HotSpotów", "Najmniej połączeń", "Zakończ" };
         private static int activeMenuPosition = 0;
-        public static void StartMenu(HotSpotPanel panel, PathToFile filePath, List<HotSpotReports> repList)
+        public static void StartMenu(HotSpotPanel panel, PathToFile filePath, IEnumerable<HotSpotReports> repList)
         {
             Console.Title = "Where WiFi?";
             Console.CursorVisible = false;
@@ -43,10 +47,10 @@ namespace Main
             {
                 ShowMenu();
                 PickOption();
-                RunOption(panel,filePath, repList);
+                RunOption(panel, filePath, repList);
             }
         }
-        private static void RunOption(HotSpotPanel panel, PathToFile filePath, List<HotSpotReports> repList)
+        private static void RunOption(HotSpotPanel panel, PathToFile filePath, IEnumerable<HotSpotReports> repList)
         {
             switch (activeMenuPosition)
             {
@@ -66,9 +70,12 @@ namespace Main
                     break;
                 case 3:
                     Console.Clear();
-                    inProgress("Lista HotSpotów -> Najmniej połączeń");
-                    repList[0].ShowTransferStatus();
-                    repList[1].ShowTransferStatus();
+                    inProgress("Najmniej połączeń");
+                    foreach (var r in repList)
+                    {
+                        Console.WriteLine($"ID: {r.Id}, Miejsce: {r.LocationName}, Średnia dzienna liczba użytkowników to: {r.CurrentHotSpotUsers}", CultureInfo.CurrentUICulture.TextInfo);
+                    }
+                    Console.ReadKey();
                     break;
                 case 4:
                     Console.Clear();
