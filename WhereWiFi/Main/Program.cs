@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using WiFi.Library;
 
@@ -11,18 +12,29 @@ namespace Main
             
             PathToFile filePath = new PathToFile();
             var fileWifiGdansk = File.ReadAllLines(filePath.FullFilePath[0]);
-            
+            var fileReportFeb = File.ReadAllLines(filePath.TransferReportFeb[0]);
+            var fileReportMarch = File.ReadAllLines(filePath.TransferReportMarch[0]);
+
             HotSpotPanel wifi = new HotSpotPanel();
             wifi.OrganizeData(fileWifiGdansk);
-            StartMenu(wifi,filePath);
-            
+            HotSpotReports feb = new HotSpotReports();
+            feb.OrganizeReports(fileReportFeb);
+            HotSpotReports march = new HotSpotReports();
+            march.OrganizeReports(fileReportMarch);
+            List<HotSpotReports> listOfReports = new List<HotSpotReports>();
+            listOfReports.Add(feb);
+            listOfReports.Add(march);
 
 
+
+
+            StartMenu(wifi,filePath,listOfReports);
             Console.ReadLine();
         }
-        private static string[] menuItems = { "Najbliższy HotSpot", "Dodaj HotSpot", "Lista HotSpotów", "Zakończ" };
+        private static string[] menuItems = { "Najbliższy HotSpot", "Dodaj HotSpot",
+            "Lista HotSpotów", "Lista HotSpotów -> Najmniej połączeń", "Zakończ" };
         private static int activeMenuPosition = 0;
-        public static void StartMenu(HotSpotPanel panel, PathToFile filePath)
+        public static void StartMenu(HotSpotPanel panel, PathToFile filePath, List<HotSpotReports> repList)
         {
             Console.Title = "Where WiFi?";
             Console.CursorVisible = false;
@@ -31,10 +43,10 @@ namespace Main
             {
                 ShowMenu();
                 PickOption();
-                RunOption(panel,filePath);
+                RunOption(panel,filePath, repList);
             }
         }
-        private static void RunOption(HotSpotPanel panel, PathToFile filePath)
+        private static void RunOption(HotSpotPanel panel, PathToFile filePath, List<HotSpotReports> repList)
         {
             switch (activeMenuPosition)
             {
@@ -50,9 +62,15 @@ namespace Main
                 case 2:
                     Console.Clear();
                     inProgress("Lista HotSpotów");
-                    panel.ShowListOfAllLocations();
+                    panel.ShowAllLocalizations();
                     break;
                 case 3:
+                    Console.Clear();
+                    inProgress("Lista HotSpotów -> Najmniej połączeń");
+                    repList[0].ShowTransferStatus();
+                    repList[1].ShowTransferStatus();
+                    break;
+                case 4:
                     Console.Clear();
                     Environment.Exit(0);
                     break;

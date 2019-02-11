@@ -7,12 +7,17 @@ namespace Main
     {
         private string currentDirectory = Environment.CurrentDirectory;
         string[] _fullFilePath;
-        public string[] FullFilePath { get => _fullFilePath;}
-        // nowy prop z getem który będzie przetrzymywał sciezke do transferow
+        string[] _transferReportFeb;
+        string[] _transferReportMarch;
+        public string[] FullFilePath { get => _fullFilePath; }
+        public string[] TransferReportFeb { get => _transferReportFeb; }
+        public string[] TransferReportMarch { get => _transferReportMarch; }
+
         public PathToFile()
         {
             _fullFilePath = Directory.GetFiles(currentDirectory.Remove(currentDirectory.Length - 28, 28), "wifigdansk.csv", SearchOption.AllDirectories);
-            //trzeba dodac jeszcze jedna sciezke do transferów
+            _transferReportFeb= Directory.GetFiles(currentDirectory.Remove(currentDirectory.Length - 28, 28), "RT02.2017.csv", SearchOption.AllDirectories);
+            _transferReportMarch= Directory.GetFiles(currentDirectory.Remove(currentDirectory.Length - 28, 28), "RT03.2017.csv", SearchOption.AllDirectories);
         }
     }
 

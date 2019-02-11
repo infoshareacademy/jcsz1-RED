@@ -14,18 +14,19 @@ namespace WiFi.Library
         public string LocationName { get; set; }
         public double LatitudeX { get; set; }
         public double LongitudeY { get; set; }
+        private int counter = 0;
 
-        public void OrganizeData(string[] table) // wyslana tablica
+        public void OrganizeData(string[] table)
         {
-            foreach (var t in table) // petla sprawdzajaca
+            foreach (var t in table) 
             {
-                var something = t.Split(',');
+                var dividedPartOfString = t.Split(',');
                 var transferDataToList = new HotSpotPanel()
                 {
-                    Id = something[0],
-                    LocationName = something[1],
-                    LatitudeX = double.Parse(something[2], CultureInfo.InvariantCulture),
-                    LongitudeY = double.Parse(something[3], CultureInfo.InvariantCulture),
+                    Id = dividedPartOfString[0],
+                    LocationName = dividedPartOfString[1],
+                    LatitudeX = double.Parse(dividedPartOfString[2], CultureInfo.InvariantCulture),
+                    LongitudeY = double.Parse(dividedPartOfString[3], CultureInfo.InvariantCulture),
                 };
                 listOfHotSpots.Add(transferDataToList);
             }
@@ -52,11 +53,12 @@ namespace WiFi.Library
             File.AppendAllLines(totalPath, output);
 
         }
-        public void ShowListOfAllLocations()
+        public void ShowAllLocalizations()
         {
-            //List<HotSpotPanel> hotSpotLocations
+            Console.WriteLine("lokalizacja,x,y");
             foreach (var hotSpot in listOfHotSpots)
             {
+                Console.Write($"{++counter}: ");
                 Console.ForegroundColor = ConsoleColor.Magenta;
                 Console.Write($"{hotSpot.LocationName,-50}");
                 Console.ForegroundColor = ConsoleColor.Green;
