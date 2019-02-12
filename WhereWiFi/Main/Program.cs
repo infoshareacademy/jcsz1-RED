@@ -36,7 +36,7 @@ namespace Main
             Console.ReadLine();
         }
         private static string[] menuItems = { "Najbliższy HotSpot", "Dodaj HotSpot",
-            "Lista HotSpotów", "Najmniej połączeń", "Zakończ" };
+            "Lista HotSpotów", "Najmniej połączeń","Edytuj Dodane Hotspoty", "Zakończ" };
         private static int activeMenuPosition = 0;
         public static void StartMenu(HotSpotPanel panel, PathToFile filePath, IEnumerable<HotSpotReports> repList)
         {
@@ -78,6 +78,12 @@ namespace Main
                     Console.ReadKey();
                     break;
                 case 4:
+                    Console.Clear();
+                    inProgress("Edytuj Dodane Hotspoty");
+                    panel.EditAddedHotspots();
+                    
+                    break;
+                case 5:
                     Console.Clear();
                     Environment.Exit(0);
                     break;
