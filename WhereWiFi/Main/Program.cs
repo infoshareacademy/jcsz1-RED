@@ -26,7 +26,7 @@ namespace Main
             march.OrganizeReports(fileReportMarch);
             
             var res = feb.MergingTwoLists(feb.listOfReports,march.listOfReports);
-            var lowestHotSpotsUserNumber = res.OrderBy(r => r.CurrentHotSpotUsers).Take(20);
+            var lowestHotSpotsUserNumber = res.OrderBy(r => r.CurrentHotSpotUsers);
             
           
             
@@ -71,8 +71,11 @@ namespace Main
                 case 3:
                     Console.Clear();
                     inProgress("Najmniej połączeń");
-                    foreach (var r in repList)
+                    Console.WriteLine("Podaj liczbę interesujących Cię wyników");
+                    var shortedList = repList.Take(int.Parse(Console.ReadLine()));
+                    foreach (var r in shortedList)
                     {
+                        
                         Console.WriteLine($"ID: {r.Id}, Miejsce: {r.LocationName}, Średnia dzienna liczba użytkowników to: {r.CurrentHotSpotUsers}", CultureInfo.CurrentUICulture.TextInfo);
                     }
                     Console.ReadKey();
