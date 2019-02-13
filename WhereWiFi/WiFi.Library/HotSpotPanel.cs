@@ -80,8 +80,8 @@ namespace WiFi.Library
                 }
                 counter = 0;
             }
-
         }
+
         public void EditAddedHotspots()
         {
             ShowOnlyAddedHotSpots();
@@ -116,11 +116,6 @@ namespace WiFi.Library
                     isTrue = true;
                 }
             }
-
-
-
-
-
 
         }
     }

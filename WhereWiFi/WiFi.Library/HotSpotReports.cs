@@ -15,7 +15,6 @@ namespace Main
 
         public void OrganizeReports(string[] table)
         {
-           
             foreach (var t in table)
             {
                 var dividedPartOfString = t.Split(',');
@@ -30,7 +29,6 @@ namespace Main
                 };
                 listOfReports.Add(transferDataFromReports);
             }
-         
         }
         public void ShowTransferStatus()
         {
@@ -46,11 +44,9 @@ namespace Main
                 Console.Write($"{hotSpot.IncomingTransfer,-30}");
                 Console.ForegroundColor = ConsoleColor.DarkBlue;
                 Console.WriteLine($"{hotSpot.OutgoingTransfer}");
-                
             }
             Console.ReadKey();
         }
-
 
         public List<HotSpotReports> MergingTwoLists(List<HotSpotReports> itemOne, List<HotSpotReports> itemTwo)
         {
@@ -74,9 +70,91 @@ namespace Main
                 }
             }
 
+            return resultList;
+        }
+
+
+        // Metoda do podawania podejrzanie dużych transferów ze względu na dane przychodzące
+        public List<HotSpotReports> ShowOverloadHotSpotByIncomingTransfer(List<HotSpotReports> itemOne, List<HotSpotReports> itemTwo)
+        {
+            List<HotSpotReports> resultList = new List<HotSpotReports>();
+            foreach (var f in itemOne)
+            {
+                foreach (var v in itemTwo)
+                {
+                    if (f.Id == v.Id)
+                    {
+                        var smallInstance = new HotSpotReports()
+                        {
+                            Id = f.Id,
+                            LocationName = f.LocationName,
+                            CurrentHotSpotUsers = (f.CurrentHotSpotUsers + v.CurrentHotSpotUsers) / 2,
+                            IncomingTransfer = (f.IncomingTransfer + v.IncomingTransfer) / 2,
+                            OutgoingTransfer = (f.OutgoingTransfer + v.OutgoingTransfer) / 2
+                        };
+                        resultList.Add(smallInstance);
+                    }
+                }
+            }
 
             return resultList;
         }
+
+        // Metoda do podawania podejrzanie dużych transferów ze względu na dane wychodzące
+        public List<HotSpotReports> ShowOverloadHotSpotByOutgoingTransfer(List<HotSpotReports> itemOne, List<HotSpotReports> itemTwo)
+        {
+            List<HotSpotReports> resultList = new List<HotSpotReports>();
+            foreach (var f in itemOne)
+            {
+                foreach (var v in itemTwo)
+                {
+                    if (f.Id == v.Id)
+                    {
+                        var smallInstance = new HotSpotReports()
+                        {
+                            Id = f.Id,
+                            LocationName = f.LocationName,
+                            CurrentHotSpotUsers = (f.CurrentHotSpotUsers + v.CurrentHotSpotUsers) / 2,
+                            IncomingTransfer = (f.IncomingTransfer + v.IncomingTransfer) / 2,
+                            OutgoingTransfer = (f.OutgoingTransfer + v.OutgoingTransfer) / 2
+                        };
+                        resultList.Add(smallInstance);
+                    }
+                }
+            }
+
+            return resultList;
+        }
+
+        // Metoda do podawania podejrzanie dużych transferów wychodzących i przychodzących
+        public List<HotSpotReports> ShowOverloadHotSpotByOutgoingAndInTransfer(List<HotSpotReports> itemOne, List<HotSpotReports> itemTwo)
+        {
+            List<HotSpotReports> resultList = new List<HotSpotReports>();
+            foreach (var f in itemOne)
+            {
+                foreach (var v in itemTwo)
+                {
+                    if (f.Id == v.Id)
+                    {
+                        var smallInstance = new HotSpotReports()
+                        {
+                            Id = f.Id,
+                            LocationName = f.LocationName,
+                            CurrentHotSpotUsers = (f.CurrentHotSpotUsers + v.CurrentHotSpotUsers) / 2,
+                            IncomingTransfer = (f.IncomingTransfer + v.IncomingTransfer) / 2,
+                            OutgoingTransfer = (f.OutgoingTransfer + v.OutgoingTransfer) / 2
+                        };
+                        resultList.Add(smallInstance);
+                    }
+                }
+            }
+
+            return resultList;
+        }
+
+
+
+
 
 
     }
