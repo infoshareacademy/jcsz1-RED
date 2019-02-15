@@ -5,7 +5,6 @@ using System.IO;
 using System.Linq;
 using WiFi.Library;
 
-
 namespace Main
 {
     class Program
@@ -14,11 +13,12 @@ namespace Main
 
         static void Main(string[] args)
         {
+            
 
             PathToFile filePath = new PathToFile();
-            var fileWifiGdansk = File.ReadAllLines(filePath.FullFilePath[0]);
-            var fileReportFeb = File.ReadAllLines(filePath.TransferReportFeb[0]);
-            var fileReportMarch = File.ReadAllLines(filePath.TransferReportMarch[0]);
+            var fileWifiGdansk = File.ReadAllLines(filePath.FullFilePath);
+            var fileReportFeb = File.ReadAllLines(filePath.TransferReportFeb);
+            var fileReportMarch = File.ReadAllLines(filePath.TransferReportMarch);
 
             HotSpotPanel wifi = new HotSpotPanel();
             wifi.OrganizeData(fileWifiGdansk);
@@ -29,10 +29,6 @@ namespace Main
 
             var res = feb.MergingTwoLists(feb.listOfReports, march.listOfReports);
             var lowestHotSpotsUserNumber = res.OrderBy(r => r.CurrentHotSpotUsers);
-
-
-
-
 
             StartMenu(wifi, filePath, lowestHotSpotsUserNumber);
             Console.ReadLine();
@@ -50,12 +46,11 @@ namespace Main
 
         private static readonly string[] _menuOverloadItems =
         {
-            "Dane wychodzące",
             "Dane Przychodzące",
+            "Dane wychodzące",
             "Obydwa Parametry",
             "Wróć"
         };
-
 
         public static void StartMenu(HotSpotPanel panel, PathToFile filePath, IEnumerable<HotSpotReports> repList)
         {
@@ -81,7 +76,7 @@ namespace Main
                 case 1:
                     Console.Clear();
                     InProgress("Dodaj HotSpot");
-                    panel.AddNewHotSpot(filePath.FullFilePath[0]);
+                    panel.AddNewHotSpot(filePath.FullFilePath);
                     break;
                 case 2:
                     Console.Clear();
@@ -187,16 +182,19 @@ namespace Main
             {
                 case 0:
                     Console.Clear();
-                    InProgress("Podejrzanie duże transfery danych wychodzących");
+                    HotSpotReports.ShowOverloadHotSpotByIncomingTransfer();
+                    Console.ReadKey();
+                   break;
 
-                    break;
                 case 1:
                     Console.Clear();
-                    InProgress("Podejrzanie duże transfery danych przychodzących");
+                    HotSpotReports.ShowOverloadHotSpotByOutgoingTransfer();
+                   Console.ReadKey();
                     break;
                 case 2:
                     Console.Clear();
-                    InProgress("Podejrzanie duża łączna wymiana danych");
+                    HotSpotReports.ShowOverloadHotSpotByOutgoingAndInTransfer();
+                   Console.ReadKey();
                     break;
                 case 3:
                     Console.Clear();

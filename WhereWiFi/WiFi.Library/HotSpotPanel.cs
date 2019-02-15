@@ -28,8 +28,8 @@ namespace WiFi.Library
                 };
                 listOfHotSpots.Add(transferDataToList);
             }
-
         }
+
         public void AddNewHotSpot(string totalPath)
         {
             HotSpotPanel newHotSpot = new HotSpotPanel();
@@ -46,10 +46,9 @@ namespace WiFi.Library
             List<string> output = new List<string>();
             output.Add($"{newHotSpot.Id},{newHotSpot.LocationName},{newHotSpot.LongitudeY},{newHotSpot.LongitudeY}");
 
-
             File.AppendAllLines(totalPath, output);
-
         }
+
         public void ShowAllLocalizations()
         {
             Console.WriteLine("lokalizacja,x,y");
@@ -110,13 +109,18 @@ namespace WiFi.Library
                     default:
                         break;
                 }
+
                 Console.WriteLine("Czy chcesz kontynuować i zmienić coś jeszcze? [y/n]");
                 if (Console.ReadLine() == "n")
                 {
                     isTrue = true;
                 }
             }
-
         }
+
+
+
+
+
     }
 }
