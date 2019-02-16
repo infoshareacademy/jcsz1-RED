@@ -13,8 +13,6 @@ namespace Main
 
         static void Main(string[] args)
         {
-            
-
             PathToFile filePath = new PathToFile();
             var fileWifiGdansk = File.ReadAllLines(filePath.FullFilePath);
             var fileReportFeb = File.ReadAllLines(filePath.TransferReportFeb);
@@ -40,7 +38,7 @@ namespace Main
             "Lista HotSpotów",
             "Najmniej połączeń",
             "Podejrzanie duże transfery",
-            "Edytuj Dodane Hotspoty",
+            "Edycja Twoich punktów HOTSPOT",
             "Zakończ"
         };
 
@@ -109,7 +107,7 @@ namespace Main
                     break;
                 case 5:
                     Console.Clear();
-                    InProgress("Edytuj Dodane Hotspoty");
+                    InProgress("Edycja Twoich punktów HOTSPOT");
                     panel.EditAddedHotspots();
 
                     break;
@@ -242,6 +240,7 @@ namespace Main
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Jaki parametr sieci najbardziej Cię niepokoi?");
             Console.WriteLine();
+
             for (int i = 0; i < _menuOverloadItems.Length; i++)
             {
                 if (i == _activeMenuPosition)

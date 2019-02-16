@@ -70,13 +70,23 @@ namespace WiFi.Library
         {
             if (listOfHotSpots.Count > 100)
             {
+                Console.WriteLine();
+
                 for (int i = 100; i < listOfHotSpots.Count; i++)
                 {
-                    Console.WriteLine($"{++counter}: {listOfHotSpots[i].Id}" +
-                        $"  {listOfHotSpots[i].LocationName}" +
-                        $"  {listOfHotSpots[i].LatitudeX}" +
-                        $"  {listOfHotSpots[i].LongitudeY}");
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.Write($"{++counter}{null,-1}:");
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.Write($"{listOfHotSpots[i].LocationName,-10}");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.Write($"  {listOfHotSpots[i].LatitudeX,-20}");
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.Write($"  {listOfHotSpots[i].LongitudeY}");
+                    Console.WriteLine();
                 }
+                Console.ForegroundColor = ConsoleColor.White;
+
+                Console.WriteLine();
                 counter = 0;
             }
         }
@@ -85,7 +95,7 @@ namespace WiFi.Library
         {
             ShowOnlyAddedHotSpots();
             Console.WriteLine("Podaj numer hotspot który chcesz edytować i nacisnij enter");
-            var numberOfObjectOnList = int.Parse(Console.ReadLine())+99;
+            var numberOfObjectOnList = int.Parse(Console.ReadLine()) + 99;
             bool isTrue = false;
             var pickWhatToChange = 0;
             while (isTrue == false)
@@ -117,10 +127,5 @@ namespace WiFi.Library
                 }
             }
         }
-
-
-
-
-
     }
 }
