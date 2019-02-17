@@ -16,17 +16,25 @@ namespace WiFi.Library
 
         public void OrganizeData(string[] table)
         {
-            foreach (var t in table)
+            try
             {
-                var dividedPartOfString = t.Split(',');
-                var transferDataToList = new HotSpotPanel()
+                foreach (var t in table)
                 {
-                    Id = dividedPartOfString[0],
-                    LocationName = dividedPartOfString[1],
-                    LatitudeX = double.Parse(dividedPartOfString[2], CultureInfo.InvariantCulture),
-                    LongitudeY = double.Parse(dividedPartOfString[3], CultureInfo.InvariantCulture),
-                };
-                listOfHotSpots.Add(transferDataToList);
+                    var dividedPartOfString = t.Split(',');
+                    var transferDataToList = new HotSpotPanel()
+                    {
+                        Id = dividedPartOfString[0],
+                        LocationName = dividedPartOfString[1],
+                        LatitudeX = double.Parse(dividedPartOfString[2], CultureInfo.InvariantCulture),
+                        LongitudeY = double.Parse(dividedPartOfString[3], CultureInfo.InvariantCulture),
+                    };
+                    listOfHotSpots.Add(transferDataToList);
+                }
+            }
+            catch (Exception m)
+            {
+
+                Console.WriteLine(m.Message);
             }
         }
 
@@ -42,11 +50,14 @@ namespace WiFi.Library
             Console.WriteLine("Podaj długość geograficzną na jakiej znajduje się HotSpot (w formacie 18.571996)");
             newHotSpot.LongitudeY = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
             listOfHotSpots.Add(newHotSpot);
+            Console.WriteLine();
+            Console.WriteLine("Hotspot dodany pomyślnie!");
 
             List<string> output = new List<string>();
             output.Add($"{newHotSpot.Id},{newHotSpot.LocationName},{newHotSpot.LongitudeY},{newHotSpot.LongitudeY}");
 
             File.AppendAllLines(totalPath, output);
+            Console.ReadKey();
         }
 
         public void ShowAllLocalizations()
@@ -70,13 +81,23 @@ namespace WiFi.Library
         {
             if (listOfHotSpots.Count > 100)
             {
+                Console.WriteLine();
+
                 for (int i = 100; i < listOfHotSpots.Count; i++)
                 {
-                    Console.WriteLine($"{++counter}: {listOfHotSpots[i].Id}" +
-                        $"  {listOfHotSpots[i].LocationName}" +
-                        $"  {listOfHotSpots[i].LatitudeX}" +
-                        $"  {listOfHotSpots[i].LongitudeY}");
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.Write($"{++counter}{null,-1}:");
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.Write($"{listOfHotSpots[i].LocationName,-10}");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.Write($"  {listOfHotSpots[i].LatitudeX,-20}");
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.Write($"  {listOfHotSpots[i].LongitudeY}");
+                    Console.WriteLine();
                 }
+                Console.ForegroundColor = ConsoleColor.White;
+
+                Console.WriteLine();
                 counter = 0;
             }
         }
