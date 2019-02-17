@@ -131,4 +131,4 @@ namespace WiFi.Library
             else Console.WriteLine("Podano zły typ danych!");
         }
     }
-}
+} 
