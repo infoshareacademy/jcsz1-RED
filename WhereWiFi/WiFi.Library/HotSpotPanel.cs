@@ -83,8 +83,9 @@ namespace WiFi.Library
         public void EditAddedHotspots()
         {
             ShowOnlyAddedHotSpots();
-            Console.WriteLine("Podaj numer hotspot który chcesz edytować i nacisnij enter");
-            if (int.TryParse(Console.ReadLine(), out var numberOfObjectOnList))     //jeżeli zrobimy wybór strzałkami, ta linijka będzie zbędna
+            Console.WriteLine("Podaj numer hotspot który chcesz edytować i nacisnij enter\n" +
+                              "'Enter' aby wrócić");
+            if (int.TryParse(Console.ReadLine(), out var numberOfObjectOnList))     //gdyby dodać wybór strzałkami, ten if będzie zbędny
             {
                 numberOfObjectOnList += 99;
                 bool isTrue = false;
@@ -101,7 +102,7 @@ namespace WiFi.Library
                                 break;
                             case 2:
                                 Console.WriteLine("Podaj szerokość geograficzną na jakiej znajduje się HotSpot (w formacie 54.382059)");
-                                if (!double.TryParse(Console.ReadLine(), out var change)) //oh mamy problem, nie chce parsować danych z danymi po przecinku!!!!!!!
+                                if (!double.TryParse(Console.ReadLine(), NumberStyles.Any, CultureInfo.InvariantCulture, out var change))
                                 {
                                     Console.WriteLine("Podano zły typ danych!");
                                 }
@@ -109,7 +110,7 @@ namespace WiFi.Library
                                 break;
                             case 3:
                                 Console.WriteLine("Podaj długość geograficzną na jakiej znajduje się HotSpot (w formacie 18.571996)");
-                                if (!double.TryParse(Console.ReadLine(), out var change1))//oh mamy problem, nie chce parsować danych z danymi po przecinku!!!!!!!
+                                if (!double.TryParse(Console.ReadLine(), NumberStyles.Any, CultureInfo.InvariantCulture, out var change1))
                                 {
                                     Console.WriteLine("Podano zły typ danych!");
                                 }
