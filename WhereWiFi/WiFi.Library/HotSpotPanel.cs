@@ -84,7 +84,7 @@ namespace WiFi.Library
         {
             ShowOnlyAddedHotSpots();
             Console.WriteLine("Podaj numer hotspot który chcesz edytować i nacisnij enter");
-            if (int.TryParse(Console.ReadLine(), out var numberOfObjectOnList))
+            if (int.TryParse(Console.ReadLine(), out var numberOfObjectOnList))     //jeżeli zrobimy wybór strzałkami, ta linijka będzie zbędna
             {
                 numberOfObjectOnList += 99;
                 bool isTrue = false;
