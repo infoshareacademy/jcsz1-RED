@@ -74,7 +74,14 @@ namespace Main
                 case 1:
                     Console.Clear();
                     InProgress("Dodaj HotSpot");
-                    panel.AddNewHotSpot(filePath.FullFilePath);
+                    try
+                    {
+                        panel.AddNewHotSpot(filePath.FullFilePath);
+                    }
+                    catch (Exception m)
+                    {
+                        Console.WriteLine(m.StackTrace);
+                    }
                     break;
                 case 2:
                     Console.Clear();
