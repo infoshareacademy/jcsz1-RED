@@ -101,7 +101,7 @@ namespace WiFi.Library
                                 break;
                             case 2:
                                 Console.WriteLine("Podaj szerokość geograficzną na jakiej znajduje się HotSpot (w formacie 54.382059)");
-                                if (!double.TryParse(Console.ReadLine(), out var change))
+                                if (!double.TryParse(Console.ReadLine(), out var change)) //oh mamy problem, nie chce parsować danych z danymi po przecinku!!!!!!!
                                 {
                                     Console.WriteLine("Podano zły typ danych!");
                                 }
@@ -109,7 +109,7 @@ namespace WiFi.Library
                                 break;
                             case 3:
                                 Console.WriteLine("Podaj długość geograficzną na jakiej znajduje się HotSpot (w formacie 18.571996)");
-                                if (!double.TryParse(Console.ReadLine(), out var change1))
+                                if (!double.TryParse(Console.ReadLine(), out var change1))//oh mamy problem, nie chce parsować danych z danymi po przecinku!!!!!!!
                                 {
                                     Console.WriteLine("Podano zły typ danych!");
                                 }
