@@ -80,47 +80,54 @@ namespace WiFi.Library
                 counter = 0;
             }
         }
-
         public void EditAddedHotspots()
         {
             ShowOnlyAddedHotSpots();
             Console.WriteLine("Podaj numer hotspot który chcesz edytować i nacisnij enter");
-            var numberOfObjectOnList = int.Parse(Console.ReadLine())+99;
-            bool isTrue = false;
-            var pickWhatToChange = 0;
-            while (isTrue == false)
+            if (int.TryParse(Console.ReadLine(), out var numberOfObjectOnList))
             {
-                Console.WriteLine("Zmiana lokalizacji wybierz 1,\n zmiana szerokości geograficznej wybierz 2,\n zmiana wysokości geograficznej wybierz3");
-                pickWhatToChange = int.Parse(Console.ReadLine());
-                switch (pickWhatToChange)
+                numberOfObjectOnList += 99;
+                bool isTrue = false;
+                while (isTrue == false)
                 {
-                    case 1:
-                        Console.WriteLine("Podaj nowy adres HotSpotu:");
-                        listOfHotSpots[numberOfObjectOnList].LocationName = Console.ReadLine();
-                        break;
-                    case 2:
-                        Console.WriteLine("Podaj szerokość geograficzną na jakiej znajduje się HotSpot (w formacie 54.382059)");
-                        listOfHotSpots[numberOfObjectOnList].LatitudeX = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-                        break;
-                    case 3:
-                        Console.WriteLine("Podaj długość geograficzną na jakiej znajduje się HotSpot (w formacie 18.571996)");
-                        listOfHotSpots[numberOfObjectOnList].LongitudeY = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-                        break;
-                    default:
-                        break;
-                }
-
-                Console.WriteLine("Czy chcesz kontynuować i zmienić coś jeszcze? [y/n]");
-                if (Console.ReadLine() == "n")
-                {
-                    isTrue = true;
+                    Console.WriteLine("Zmiana lokalizacji wybierz '1',\n zmiana szerokości geograficznej wybierz '2',\n zmiana wysokości geograficznej wybierz '3'");
+                    if (int.TryParse(Console.ReadLine(), out var pickWhatToChange))
+                    {
+                        switch (pickWhatToChange)
+                        {
+                            case 1:
+                                Console.WriteLine("Podaj nowy adres HotSpotu:");
+                                listOfHotSpots[numberOfObjectOnList].LocationName = Console.ReadLine();
+                                break;
+                            case 2:
+                                Console.WriteLine("Podaj szerokość geograficzną na jakiej znajduje się HotSpot (w formacie 54.382059)");
+                                if (!double.TryParse(Console.ReadLine(), out var change))
+                                {
+                                    Console.WriteLine("Podano zły typ danych!");
+                                }
+                                listOfHotSpots[numberOfObjectOnList].LatitudeX = change;
+                                break;
+                            case 3:
+                                Console.WriteLine("Podaj długość geograficzną na jakiej znajduje się HotSpot (w formacie 18.571996)");
+                                if (!double.TryParse(Console.ReadLine(), out var change1))
+                                {
+                                    Console.WriteLine("Podano zły typ danych!");
+                                }
+                                listOfHotSpots[numberOfObjectOnList].LongitudeY = change1;
+                                break;
+                            default:
+                                break;
+                        }
+                        Console.WriteLine("Czy chcesz kontynuować i zmienić coś jeszcze? ['n' aby opuścić edytowanie]");
+                        if (Console.ReadLine() == "n")
+                        {
+                            isTrue = true;
+                        }
+                    }
+                    else Console.WriteLine("Podano zły typ danych!");
                 }
             }
+            else Console.WriteLine("Podano zły typ danych!");
         }
-
-
-
-
-
     }
 }
