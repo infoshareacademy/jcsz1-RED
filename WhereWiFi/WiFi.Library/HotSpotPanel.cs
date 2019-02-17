@@ -77,7 +77,7 @@ namespace WiFi.Library
                 Console.ForegroundColor = ConsoleColor.Magenta;
                 Console.Write($"{hotSpot.LocationName,-50}");
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.Write($"{hotSpot.LatitudeX:F2,-30}");
+                Console.Write($"{hotSpot.LatitudeX,-30}");
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine($"{hotSpot.LongitudeY}");
             }
