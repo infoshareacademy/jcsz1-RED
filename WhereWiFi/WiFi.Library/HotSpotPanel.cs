@@ -62,17 +62,24 @@ namespace WiFi.Library
 
         public void ShowAllLocalizations()
         {
-            Console.WriteLine("lokalizacja,x,y");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write($"nr ");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.Write($"nazwa lokalizacji HOTSPOT{null,-20}");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write($"szerokość gograficzna {null,-10}");
+            Console.Write($"długość geogaficzna");
+            Console.WriteLine();
             foreach (var hotSpot in listOfHotSpots)
             {
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write($"{++counter}: ");
                 Console.ForegroundColor = ConsoleColor.Magenta;
                 Console.Write($"{hotSpot.LocationName,-50}");
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.Write($"{hotSpot.LatitudeX,-30}");
-                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.Write($"{hotSpot.LatitudeX:F2,-30}");
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine($"{hotSpot.LongitudeY}");
-                Console.ForegroundColor = ConsoleColor.DarkYellow;
             }
             counter = 0;
             Console.ReadKey();

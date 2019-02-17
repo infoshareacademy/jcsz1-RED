@@ -69,11 +69,11 @@ namespace Main
             {
                 case 0:
                     Console.Clear();
-                    InProgress("Najbliższy HotSpot");
+                    InProgress("NNAJBLIŻSZY HOTSPOT");
                     break;
                 case 1:
                     Console.Clear();
-                    InProgress("Dodaj HotSpot");
+                    InProgress("DODAJ HOTSPOT");
                     try
                     {
                         panel.AddNewHotSpot(filePath.FullFilePath);
@@ -85,12 +85,13 @@ namespace Main
                     break;
                 case 2:
                     Console.Clear();
-                    InProgress("Lista HotSpotów");
+                    InProgress("LISTA HOTSPOTÓW");
+                    Console.WriteLine();
                     panel.ShowAllLocalizations();
                     break;
                 case 3:
                     Console.Clear();
-                    InProgress("Najmniej połączeń");
+                    InProgress("NAJMNIEJ POŁĄCZEŃ");
                     Console.WriteLine("Podaj liczbę interesujących Cię wyników");
                     var shortedList = repList.Take(int.Parse(Console.ReadLine()));
                     foreach (var r in shortedList)
@@ -101,7 +102,7 @@ namespace Main
                     break;
                 case 4:
                     Console.Clear();
-                    InProgress("Podejrzanie duże transfery");
+                    InProgress("PODEJRZANIE DUŻE TRANSFERY");
                     var exitSubMenu = false;
                     do
                     {
