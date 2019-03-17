@@ -20,9 +20,9 @@
 <body>
     <header>
         <div class=" mt-5 container text-left" style="max-width: 1200px;">
-            
-                <img src="Images/StartPageLayout2010/logo.png" alt="Logo Projektu" style="max-width:300px">
-            
+
+            <img src="Images/StartPageLayout2010/logo.png" alt="Logo Projektu" style="max-width:300px">
+
         </div>
 
         <div class="container  rounded pb-2 mt-5" style="max-width: 1200px;" id="webDescription">
@@ -40,29 +40,43 @@
 
         <conteiner class="text-center p-5">
             <nav>
+
                 <div>
-                    <a class="nav-item " asp-area="" asp-controller="Home" asp-action="Privacy"><img src="Images/StartPageLayout2010/nearest.png" alt="Najbliższy HotSpot"><p>Najbliższy</p></a>
+                    <a class="nav-item" asp-area="" asp-controller="Home" asp-action="Privacy">
+                        <img src="Images/StartPageLayout2010/allb.png" alt="Lista Wszytskich HotSpotów">
+                        <p>Wszystskie</p>
+                    </a>
+                </div>
+                <div>
+                    <a class="nav-item " asp-area="" asp-controller="Home" asp-action="Privacy">
+                        <img src="Images/StartPageLayout2010/nearestb.png" alt="Najbliższy HotSpot">
+                        <p>Najbliższy</p>
+                    </a>
                 </div>
 
                 <div>
-                    <a class="nav-item" asp-area="" asp-controller="Home" asp-action="Privacy"><img src="Images/StartPageLayout2010/add.png" alt="Dodaj HotSpot"> <p>Dodaj</p></a>
+                    <a class="nav-item" asp-area="" asp-controller="Home" asp-action="Privacy">
+                        <img src="Images/StartPageLayout2010/addb.png" alt="Dodaj HotSpot">
+                        <p>Dodaj</p>
+                    </a>
                 </div>
 
                 <div>
-                    <a class="nav-item" asp-area="" asp-controller="Home" asp-action="Privacy"><img src="Images/StartPageLayout2010/all.png" alt="Lista Wszytskich HotSpotów"><p>Wszytskie</p></a>
+                    <a class="nav-item" asp-area="" asp-controller="Home" asp-action="Privacy">
+                        <img src="Images/StartPageLayout2010/editb.png" alt="Edytuj punkty HotSpot">
+                        <p>Edytuj</p>
+                    </a>
                 </div>
 
                 <div>
-                    <a class="nav-item" asp-area="" asp-controller="Home" asp-action="Privacy"><img src="Images/StartPageLayout2010/edit.png" alt="Edytuj punkty HotSpot"><p>Edytuj</p></a>
-                </div>
-
-                <div>
-                    <a class="nav-item" asp-area="" asp-controller="Home" asp-action="Privacy"><img src="Images/StartPageLayout2010/suspects.png" alt="Podejrzane punkty HotSpot"><p>Podejrzane</p></a>
+                    <a class="nav-item" asp-area="" asp-controller="Home" asp-action="Privacy">
+                        <img src="Images/StartPageLayout2010/suspectsb.png" alt="Podejrzane punkty HotSpot">
+                        <p>Podejrzane</p>
+                    </a>
                 </div>
             </nav>
         </conteiner>
 
-      
     </header>
     <div class="container">
         <partial name="_CookieConsentPartial" />
