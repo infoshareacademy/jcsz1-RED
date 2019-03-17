@@ -7,11 +7,33 @@ a.navbar-brand {
   word-break: break-all;
 }
 
+ a.navbar-brand:hover {
+    transform: scale(1.1, 1.1); }
+
+
+.nav-item:hover {
+  transform: scale(1.1, 1.1);
+  }
+.nav-item {
+  text-align: left
+}
+
+
+
+
+
+
+.navbar {
+  background: rgb(130, 188, 249)
+}
+
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
   font-size: 14px;
 }
+
 @media (min-width: 768px) {
   html {
     font-size: 16px;
@@ -19,14 +41,15 @@ html {
 }
 
 .border-top {
-  border-top: 1px solid #e5e5e5;
+  border-top: 1px solid rgb(130, 188, 249);
 }
+
 .border-bottom {
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid rgb(130, 188, 249);
 }
 
 .box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+  box-shadow: 0 .25rem .75rem rgb(130, 188, 249);
 }
 
 button.accept-policy {
@@ -44,7 +67,9 @@ html {
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
+  background-image: url("../Images/StartPageLayout2010/beach.png");
 }
+
 .footer {
   position: absolute;
   bottom: 0;
@@ -55,3 +80,10 @@ body {
   line-height: 60px; /* Vertically center the text there */
 }
 
+a > img {
+  max-width: 25px;
+}
+
+#logo {
+  max-width: 100px;
+}
