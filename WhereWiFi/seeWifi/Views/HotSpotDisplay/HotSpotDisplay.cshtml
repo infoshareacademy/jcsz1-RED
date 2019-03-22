@@ -1,0 +1,14 @@
+﻿@model System.Collections.Generic.List<seeWifi.Models.HotSpotModel>
+
+@{
+    ViewBag.Title = "List of Hotspots";
+    Layout = "_Layout";
+}
+
+<h2>List of Hotspots</h2>
+<ul>
+    @foreach (var m in Model)
+    {
+        <li>Id: @m.Id Location name: @m.LocationName Latitude: @m.LatitudeX Longitude: @m.LongitudeY</li>
+    }
+</ul>
