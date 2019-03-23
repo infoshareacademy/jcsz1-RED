@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using CsvHelper;
+using Newtonsoft.Json;
 using seeWifi.Interfaces;
 using seeWifi.Models;
 
@@ -37,14 +38,17 @@ namespace seeWifi.Services
                     };
                     _hotSpotList.Add(record[0]);
                 }
-            }
+            }  
         }
-
         public List<HotSpotModel> GetAll()
         {
             return _hotSpotList;
         }
+        public string JsonResult()
+        {
+            return JsonConvert.SerializeObject(_hotSpotList);
+        }
 
-
+   
     }
 }
