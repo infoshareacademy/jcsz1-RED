@@ -16,7 +16,7 @@ namespace seeWifi.Controllers
         }
         public IActionResult Index()
         {
-            return View("~/Views/HotSpotDisplay/HotSpotDisplay.cshtml", _hotSpotService.GetAll());
+            return View("HotSpotDisplay", _hotSpotService.GetAll());
         }
     }
 }
