@@ -4,35 +4,45 @@
     ViewBag.Title = "List of Hotspots";
     Layout = "_Layout";
 }
-<h2>List of Hotspots</h2>
-
-<script type='text/javascript'
-        src='http://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=Aq1d61Jw4x4MYNoxuz2RwCqOWoBhSwj24oLJkqVBCdMrYVB7-21yCo9R9FtGWAmk'
-        async defer></script>
-<script type='text/javascript'>
-
-
-
-
+@{var serializedContent = Json.Serialize(Model);}
+<script>
+    var pinInfobox;
     function GetMap() {
-        try {
-            var map = new Microsoft.Maps.Map('#myMap', {
-                credentials: 'Aq1d61Jw4x4MYNoxuz2RwCqOWoBhSwj24oLJkqVBCdMrYVB7-21yCo9R9FtGWAmk',
-                center: new Microsoft.Maps.Location(54.353142, 18.65119),
-                mapTypeId: Microsoft.Maps.MapTypeId.aerial,
-                zoom: 10
-            });
-            loadPins();
-        } catch (e) {
-            alert(e.message);
-        }
+        var pushpinInfos = @serializedContent;
+        var infoboxLayer = new Microsoft.Maps.EntityCollection();
+        var pinLayer = new Microsoft.Maps.EntityCollection();
+        var apiKey = "Aq1d61Jw4x4MYNoxuz2RwCqOWoBhSwj24oLJkqVBCdMrYVB7-21yCo9R9FtGWAmk";
+        var map = new Microsoft.Maps.Map(document.getElementById("map"), { credentials: apiKey });
 
+        pinInfobox = new Microsoft.Maps.Infobox(new Microsoft.Maps.Location(0, 0), { visible: false });
+        infoboxLayer.push(pinInfobox);
+
+        var locs = [];
+        for (var i = 0 ; i < pushpinInfos.length; i++) {
+            locs[i] = new Microsoft.Maps.Location(pushpinInfos[i].latitudeX, pushpinInfos[i].longitudeY);
+            var pin = new Microsoft.Maps.Pushpin(locs[i]);
+            pin.Title = pushpinInfos[i].id;
+            pin.Description = pushpinInfos[i].locationName;
+            pinLayer.push(pin); 
+            Microsoft.Maps.Events.addHandler(pin, 'click', displayInfobox);
+        }
+        map.entities.push(pinLayer);
+        map.entities.push(infoboxLayer);
+        var bestview = Microsoft.Maps.LocationRect.fromLocations(locs);
+        map.setView({ center: bestview.center, zoom: 10 });
+    }
+    function displayInfobox(e) {
+        pinInfobox.setOptions({ title: e.target.Title, description: e.target.Description, visible: true, offset: new Microsoft.Maps.Point(0, 25) });
+        pinInfobox.setLocation(e.target.getLocation());
+    }
+
+    function hideInfobox(e) {
+        pinInfobox.setOptions({ visible: false });
     }
 </script>
-<div id="myMap" style='position:relative;width:600px;height:400px;'></div>
-
-
-
-
+<script src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0" type="text/javascript" charset="UTF-8"></script>
+<body onload="GetMap();">
+<div id="map" style="position: relative; width: 1000px; height: 800px;"></div>
+</body>
 
 

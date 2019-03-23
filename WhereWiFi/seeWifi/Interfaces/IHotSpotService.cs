@@ -9,6 +9,5 @@ namespace seeWifi.Interfaces
     public interface IHotSpotService
     {
         List<HotSpotModel> GetAll();
-        string JsonResult();
     }
 }

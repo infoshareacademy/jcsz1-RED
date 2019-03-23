@@ -9,7 +9,7 @@ namespace seeWifi.Models
     {
         public string Id { get; set; }
         public string LocationName { get; set; }
-        public double LatitudeX { get; set; }
-        public double LongitudeY { get; set; }
+        public string LatitudeX { get; set; }
+        public string LongitudeY { get; set; }
     }
 }
