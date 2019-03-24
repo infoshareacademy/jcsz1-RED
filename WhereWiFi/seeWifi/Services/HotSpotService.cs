@@ -57,6 +57,14 @@ namespace seeWifi.Services
             List<string> list = new List<string>();
             foreach (var instance in _hotSpotList)
             {
+                if (instance.Id.Contains(","))
+                { instance.Id = instance.Id.Replace(",", "."); }
+                if (instance.LocationName.Contains(","))
+                { instance.LocationName = instance.LocationName.Replace(",", "."); }
+                if (instance.LatitudeX.Contains(","))
+                { instance.LatitudeX = instance.LatitudeX.Replace(",", "."); }
+                if (instance.LongitudeY.Contains(","))
+                { instance.LongitudeY = instance.LongitudeY.Replace(",", "."); }
                 list.Add($"{instance.Id},{instance.LocationName},{instance.LatitudeX},{instance.LongitudeY}");
             }
 

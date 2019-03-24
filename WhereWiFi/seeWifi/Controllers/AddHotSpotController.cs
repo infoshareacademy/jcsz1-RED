@@ -25,7 +25,7 @@ namespace seeWifi.Controllers
         public IActionResult Create(HotSpotModel hotspot)
         {
             var newHotSpo = _hotSpotService.AddHotSpot(hotspot);
-            return View("Create");
+            return View("Index");
         }
     }
 }
