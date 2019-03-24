@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CsvHelper;
+using CsvHelper.Configuration;
 using Newtonsoft.Json;
 using seeWifi.Interfaces;
 using seeWifi.Models;
@@ -47,13 +48,39 @@ namespace seeWifi.Services
         {
             hotspot.Number = _hotSpotList.Max(x=>x.Number);
             _hotSpotList.Add(hotspot);
-
-            List<string> output = new List<string>();
-            output.Add($"{hotspot.Id},{hotspot.LocationName},{hotspot.LatitudeX},{hotspot.LongitudeY}");
-            File.AppendAllLines(path, output);
+            //Bellow code responsible for signing in to file with skipping of adding new line at the end of file
+            WriteAllLinesBetter(path, PreparingListToSaveInFile());   
             return hotspot;
         }
+        private string[] PreparingListToSaveInFile()
+        {
+            List<string> list = new List<string>();
+            foreach (var instance in _hotSpotList)
+            {
+                list.Add($"{instance.Id},{instance.LocationName},{instance.LatitudeX},{instance.LongitudeY}");
+            }
 
+            return list.ToArray();
+        }
+        private void WriteAllLinesBetter(string filePath, params string[] lines)
+        {
+            if (filePath==null)
+            {
+                throw new ArgumentException("The path to file is missing");
+            }
+            using (var stream = File.OpenWrite(path))
+            using (StreamWriter writer= new StreamWriter(stream))
+            {
+                if (lines.Length>0)
+                {
+                    for (int i = 0; i < lines.Length-1; i++)
+                    {
+                        writer.WriteLine(lines[i]);
+                    }
+                    writer.Write(lines[lines.Length-1]);
+                }
+            }
+        }
         public List<HotSpotModel> GetAll()
         {
             return _hotSpotList;
