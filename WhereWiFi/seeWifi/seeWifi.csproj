@@ -12,13 +12,26 @@
     <None Remove="data\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Remove="wwwroot\Files\RT02.2017.csv" />
+    <Content Remove="wwwroot\Files\RT03.2017.csv" />
+  </ItemGroup>
+
 
   <ItemGroup>
+    <PackageReference Include="BingMapsTypeScript" Version="1.0.5" />
     <PackageReference Include="CsvHelper" Version="12.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Content Update="wwwroot\Files\wifigdansk.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>
