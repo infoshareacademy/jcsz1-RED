@@ -1,12 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using seeWifi.Interfaces;
 
 namespace seeWifi.Controllers
 {
     public class ReportsController : Controller
     {
-        public IActionResult SuspiciousHotSpots()
+        private readonly IReportsService _reportsService;
+
+        public ReportsController(IReportsService reportsService)
         {
-            return View();
+            _reportsService = reportsService; 
+        }
+
+        public IActionResult Index()
+        {
+            return View(_reportsService.ListOfReports);
         }
     }
 }
