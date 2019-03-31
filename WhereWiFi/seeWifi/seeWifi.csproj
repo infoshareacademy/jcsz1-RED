@@ -13,8 +13,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Remove="wwwroot\Files\RT02.2017.csv" />
-    <Content Remove="wwwroot\Files\RT03.2017.csv" />
+    <None Include="data\RT02.2017.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="data\RT03.2017.csv" />
+    <None Include="data\wifigdansk.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 
