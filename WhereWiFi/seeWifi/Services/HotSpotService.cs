@@ -32,8 +32,8 @@ namespace seeWifi.Services
                     {
                         new HotSpotModel()
                         {
-                            Number = counter++,
-                            Id = csv.GetField<string>(0),
+                            Number = ++counter,
+                            fakeID = csv.GetField<string>(0),
                             LocationName = csv.GetField<string>(1),
                             LatitudeX = csv.GetField<string>(2),
                             LongitudeY=csv.GetField<string>(3),
@@ -57,15 +57,15 @@ namespace seeWifi.Services
             List<string> list = new List<string>();
             foreach (var instance in _hotSpotList)
             {
-                if (instance.Id.Contains(","))
-                { instance.Id = instance.Id.Replace(",", "."); }
+                if (instance.fakeID.Contains(","))
+                { instance.fakeID = instance.fakeID.Replace(",", "."); }
                 if (instance.LocationName.Contains(","))
                 { instance.LocationName = instance.LocationName.Replace(",", "."); }
                 if (instance.LatitudeX.Contains(","))
                 { instance.LatitudeX = instance.LatitudeX.Replace(",", "."); }
                 if (instance.LongitudeY.Contains(","))
                 { instance.LongitudeY = instance.LongitudeY.Replace(",", "."); }
-                list.Add($"{instance.Id},{instance.LocationName},{instance.LatitudeX},{instance.LongitudeY}");
+                list.Add($"{instance.fakeID},{instance.LocationName},{instance.LatitudeX},{instance.LongitudeY}");
             }
 
             return list.ToArray();

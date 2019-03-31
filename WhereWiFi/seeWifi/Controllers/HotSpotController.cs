@@ -8,10 +8,10 @@ using seeWifi.Models;
 
 namespace seeWifi.Controllers
 {
-    public class HotSpotDisplayController : Controller
+    public class HotSpotController : Controller
     {
         private IHotSpotService _hotSpotService;
-        public HotSpotDisplayController(IHotSpotService hotSpotService)
+        public HotSpotController(IHotSpotService hotSpotService)
         {
             _hotSpotService = hotSpotService;
         }
