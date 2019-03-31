@@ -54,7 +54,7 @@ namespace seeWifi.Services
 
         private List<HotSpotReportModel> LoadingFiles(string filePath)
         {
-            return File.ReadAllLines(filePath, Encoding.Default)
+            return File.ReadAllLines(filePath, Encoding.ASCII)
                 .Where(linia => linia.Length > 1)
                 .Select(ParseCSV).ToList();
         }

@@ -18,11 +18,6 @@ a.navbar-brand {
   text-align: left
 }
 
-
-
-
-
-
 .navbar {
   background: rgb(130, 188, 249)
 }
@@ -67,7 +62,7 @@ html {
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
-  background-image: url("../Images/StartPageLayout2010/palma.png");
+  background-image: url("../Images/StartPageLayout2010/beachLong.png");
 }
 
 .footer {
