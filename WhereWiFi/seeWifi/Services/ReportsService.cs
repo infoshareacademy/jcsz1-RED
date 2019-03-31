@@ -27,7 +27,7 @@ namespace seeWifi.Services
                 var dividedPartOfString = t.Split(',');
                 var transferDataFromReports = new HotSpotReportModel()
                 {
-                    Id = dividedPartOfString[0],
+                    fakeID = dividedPartOfString[0],
                     LocationName = dividedPartOfString[1],
                     CurrentHotSpotUsers = double.Parse(dividedPartOfString[2]),
                     IncomingTransfer = double.Parse(dividedPartOfString[3]),
@@ -44,7 +44,7 @@ namespace seeWifi.Services
 
             return new HotSpotReportModel
             {
-                Id = kolummny[0],
+                fakeID = kolummny[0],
                 LocationName = kolummny[1],
                 CurrentHotSpotUsers = double.Parse(kolummny[2]),
                 IncomingTransfer = double.Parse(kolummny[3]),

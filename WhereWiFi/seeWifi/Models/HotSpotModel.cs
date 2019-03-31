@@ -10,7 +10,7 @@ namespace seeWifi.Models
     {
         public int Number { get; set; }
         [Required(ErrorMessage = "Uzupełnij pole id, przykładowo LOK000")]
-        public string Id { get; set; }
+        public string fakeID { get; set; }
         [Required(ErrorMessage = "Podaj nazwę ulicy")]
         public string LocationName { get; set; }
         [Required(ErrorMessage = "Podaj szerokość geograficzną w formacie 54.XXXXX")]
