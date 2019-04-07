@@ -4,12 +4,57 @@
     ViewBag.Title = "title";
     Layout = "_Layout";
 }
+<title>Podejrzane duże transfery danych przychodzących</title>
 
-<h2>title</h2>
 
-@foreach (var x in Model)
-{
-    @x.LocationName;
-        <br>
-}
+<table class="table table-striped my-table">
+    <thead>
+        <tr>
+            <th>
+                Lokalizacja HotSpot
+            </th>
+            <th class="text-center">
+                Transfer przychodzący
+            </th>
+            <th class="text-center">
+                Transfer wychodzący
+            </th>
+
+            <th class="text-center">
+                Łączna wymiana danych
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var hotSpot in Model)
+        {
+            <tr>
+                <td>
+                    <strong>@hotSpot.LocationName</strong>
+                </td>
+                <td class="text-center
+
+                    @if(@hotSpot.SuspiciousByIncomingTransfer){
+                            @Html.Raw("text-danger")
+                    }
+                    ">
+                    @hotSpot.IncomingTransfer
+                </td>
+                <td class="text-center
+                    @if(@hotSpot.SuspiciousByOutgoingTransfer){
+                        @Html.Raw("text-danger")
+                    }">
+                    @hotSpot.OutgoingTransfer
+                </td>
+                <td class="text-center
+                    @if(@hotSpot.SuspiciousByTotal){
+                        @Html.Raw("text-danger")
+                    }">
+                    @(hotSpot.CurrentHotSpotUsers + hotSpot.IncomingTransfer)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
 

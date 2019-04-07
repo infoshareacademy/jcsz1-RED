@@ -59,5 +59,84 @@ namespace seeWifi.Services
                 .Select(ParseCSV).ToList();
         }
 
+
+        // Metoda do podawania podejrzanie dużych transferów ze względu na dane przychodzące
+
+        public  List<HotSpotReportModel> GetSuspiciousHotSpotByIncomingTransfer()
+        {
+            var listByIncomingTransfer = ListOfReports
+                .OrderByDescending(s => s.IncomingTransfer)
+                .Take(5)
+                .ToList();
+            return listByIncomingTransfer;
+        }
+
+        public List<HotSpotReportModel> GetSuspiciousHotSpotByOutGoingTransfer()
+        {
+            var listByOutGoingTransfer = ListOfReports
+                .OrderByDescending(s => s.OutgoingTransfer)
+                .Take(5).ToList();
+            return listByOutGoingTransfer;
+        }
+
+        public List<HotSpotReportModel> GetSuspiciousHotSpotByTotalTransfer()
+        {
+            var listByTotalTransfer = ListOfReports
+                .OrderByDescending(s => (s.IncomingTransfer + s.OutgoingTransfer))
+                .Take(5).ToList();
+
+            return listByTotalTransfer;
+        }
+
+
+        
+        public List<HotSpotReportModel> GetSuspiciousHotSpotsList()
+        {
+            var listByOutGoingTransfer = GetSuspiciousHotSpotByOutGoingTransfer();
+            var listByIncomingTransfer = GetSuspiciousHotSpotByIncomingTransfer();
+            var listByTotalTransfer = GetSuspiciousHotSpotByTotalTransfer();
+
+
+            var listOfSuspiciousHotSpots =
+                listByOutGoingTransfer.Union(listByIncomingTransfer).Union(listByTotalTransfer).ToList();
+
+            var idListByOutGoingTransfer = listByOutGoingTransfer.Select(x => x.fakeID).ToList();
+            var idListByIncomingTransfer = listByIncomingTransfer.Select(x => x.fakeID).ToList();
+            var idListByTotalTransfer = listByTotalTransfer.Select(x => x.fakeID).ToList();
+
+            foreach (var hotSpot in listOfSuspiciousHotSpots)
+            {
+                hotSpot.SuspiciousByIncomingTransfer = idListByIncomingTransfer.Contains(hotSpot.fakeID);
+                hotSpot.SuspiciousByOutgoingTransfer = idListByOutGoingTransfer.Contains(hotSpot.fakeID);
+                hotSpot.SuspiciousByTotal = idListByTotalTransfer.Contains(hotSpot.fakeID);
+            }
+            return listOfSuspiciousHotSpots;
+        }
+
+
+        //// Ostrzeżenie dla użytkownika
+        //public static void WornedForUser()
+        //{
+        //    Console.WriteLine();
+        //    Console.ForegroundColor = ConsoleColor.Green;
+        //    Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~:>PAMIĘTAJ<:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        //    Console.WriteLine("Traktuj każdą nieznaną sieć jako podejrzaną.");
+        //    Console.WriteLine("Używaj programów zabezpieczających przed wirusami i atakami.");
+        //    Console.WriteLine("Kiedy korzystamy z tych sieci nie wykonuj żadnych transakcji bankowych.");
+        //    Console.WriteLine("Na czas tych operacji skorzystaj z transferu danych na telefonie.");
+        //    Console.WriteLine();
+        //    Console.ForegroundColor = ConsoleColor.White;
+        //    Console.WriteLine("Wciśnij dowolny klawisz żeby wrócić do głównego menu");
+        //}
+
+        //// ========== KONIEC DUŻE TRANSFERY ==========
     }
+
+
+
+
+
+
+
 }
+

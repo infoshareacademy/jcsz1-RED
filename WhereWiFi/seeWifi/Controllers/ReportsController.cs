@@ -14,7 +14,9 @@ namespace seeWifi.Controllers
 
         public IActionResult Index()
         {
-            return View(_reportsService.ListOfReports);
+            var model = _reportsService.GetSuspiciousHotSpotsList();
+
+            return View(model);
         }
     }
 }
