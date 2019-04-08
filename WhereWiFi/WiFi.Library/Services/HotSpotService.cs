@@ -10,8 +10,8 @@ namespace WiFi.Library.Services
 {
     public class HotSpotService:IHotSpotService
     {
-        private List<HotSpotModel> _hotSpotList;
-        private PathToFile _path;
+        private readonly List<HotSpotModel> _hotSpotList;
+        private readonly PathToFile _path;
         public HotSpotService()
         {
             _path=new PathToFile();

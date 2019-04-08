@@ -1,23 +1,21 @@
 ﻿using System;
 using System.IO;
+using System.Reflection;
 
 namespace WiFi.Library.Filepath
 {
     public class PathToFile
     {
-        private readonly string _currentDirectory = Environment.CurrentDirectory;
+        private readonly string buildPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
         public string FullFilePath { get; }
         public string TransferReportFeb { get; }
         public string TransferReportMarch { get; }
 
         public PathToFile()
         {
-            FullFilePath = AppDomain.CurrentDomain.BaseDirectory;
-            TransferReportFeb = Path.Combine(_currentDirectory, "data", "RT02.2017.csv");
-            TransferReportMarch = Path.Combine(_currentDirectory, "data", "RT03.2017.csv");
-            
-
-                //Path.Combine(_currentDirectory, "data", "wifigdansk.csv");
+            FullFilePath = buildPath + @"\data\wifigdansk.csv";
+            TransferReportFeb = buildPath + @"\data\RT02.2017.csv";
+            TransferReportMarch = buildPath + @"\data\RT03.2017.csv";
         }
     }
 
