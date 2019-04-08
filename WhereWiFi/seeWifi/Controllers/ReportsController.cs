@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using seeWifi.Interfaces;
+using WiFi.Library.Services.IServices;
 
 namespace seeWifi.Controllers
 {

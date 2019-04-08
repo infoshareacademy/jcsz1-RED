@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using seeWifi.Interfaces;
-using seeWifi.Models;
+using WiFi.Library.Models;
+using WiFi.Library.Services.IServices;
 
-namespace seeWifi.Services
+namespace WiFi.Library.Services
 {
     public class ReportsService : IReportsService
     {

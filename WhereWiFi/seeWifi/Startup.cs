@@ -9,8 +9,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using seeWifi.Interfaces;
-using seeWifi.Services;
+using WiFi.Library.Services;
+using WiFi.Library.Services.IServices;
 
 
 namespace seeWifi
@@ -28,7 +28,7 @@ namespace seeWifi
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddTransient<IHotSpotService, HotSpotService>();
+            services.AddSingleton<IHotSpotService, HotSpotService>();
             services.AddSingleton<IReportsService, ReportsService>();
             services.Configure<CookiePolicyOptions>(options =>
             {

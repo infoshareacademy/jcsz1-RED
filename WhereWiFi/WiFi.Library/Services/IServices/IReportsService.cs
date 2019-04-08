@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using seeWifi.Models;
+using WiFi.Library.Models;
 
-namespace seeWifi.Interfaces
+namespace WiFi.Library.Services.IServices
 {
     public interface IReportsService
     {
