@@ -10,10 +10,40 @@
 <script src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0" type="text/javascript" charset="UTF-8"></script>
 <script type="text/javascript" src="~/js/DisplayScript.js"></script>
 
-
 <div class="row">
-<div class="col-md-8">
-    <div id="simpleMap" style="min-height: 350px"></div>
+    <div class="col-md-8">
+        <div id="simpleMap" style="min-height: 350px"></div>
+    </div>
 </div>
-</div>
-
+<br/>
+<table class="table table-striped my-table">
+    <thead>
+    <tr>
+        <th>
+            Lokalizacja HotSpot
+        </th>
+        <th class="text-center">
+            Szerokość Geograficzna
+        </th>
+        <th class="text-center">
+            Długość Geograficzna
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var hotSpot in Model)
+    {
+        <tr>
+            <td>
+                <strong>@hotSpot.LocationName</strong>
+            </td>
+            <td class="text-center">
+                @hotSpot.LatitudeX
+            </td>
+            <td class="text-center ">
+                @hotSpot.LongitudeY
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
