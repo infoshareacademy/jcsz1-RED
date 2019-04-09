@@ -1,25 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using seeWifi.Interfaces;
-using seeWifi.Models;
+using WiFi.Library.Filepath;
+using WiFi.Library.Models;
+using WiFi.Library.Services.IServices;
 
-namespace seeWifi.Services
+namespace WiFi.Library.Services
 {
     public class ReportsService : IReportsService
     {
 
         public List<HotSpotReportModel> ListOfReports { get; set; }
-        private readonly string path = "./data/RT02.2017.csv";
+        private readonly PathToFile _path;
 
         public ReportsService()
         {
-            ListOfReports = LoadingFiles(path);
+            _path = new PathToFile();
+            ListOfReports = LoadingFiles(_path.TransferReportFeb);
         }
-
         public void OrganizeReports(string[] table)
         {
             foreach (var t in table)
@@ -36,8 +35,6 @@ namespace seeWifi.Services
                 ListOfReports.Add(transferDataFromReports);
             }
         }
-
-
         internal HotSpotReportModel ParseCSV(string lines)
         {
             var kolummny = lines.Split(',');

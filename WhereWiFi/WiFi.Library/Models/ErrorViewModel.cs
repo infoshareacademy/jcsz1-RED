@@ -1,6 +1,6 @@
 using System;
 
-namespace seeWifi.Models
+namespace WiFi.Library.Models
 {
     public class ErrorViewModel
     {

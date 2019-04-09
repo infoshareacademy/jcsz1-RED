@@ -1,4 +1,4 @@
-﻿namespace seeWifi.Models
+﻿namespace WiFi.Library.Models
 {
     public class HotSpotReportModel : HotSpotModel
     {
