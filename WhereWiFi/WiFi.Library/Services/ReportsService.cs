@@ -20,7 +20,7 @@ namespace WiFi.Library.Services
             _path = new PathToFile();
             ListOfReports = LoadingFiles(_path.TransferReportFeb);
         }
-        
+
         internal HotSpotReportModel ParseCSV(string lines)
         {
             var kolummny = lines.Split(',');
@@ -92,31 +92,6 @@ namespace WiFi.Library.Services
             }
             return listOfSuspiciousHotSpots;
         }
-
-
-        //// Ostrzeżenie dla użytkownika
-        //public static void WornedForUser()
-        //{
-        //    Console.WriteLine();
-        //    Console.ForegroundColor = ConsoleColor.Green;
-        //    Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~:>PAMIĘTAJ<:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-        //    Console.WriteLine("Traktuj każdą nieznaną sieć jako podejrzaną.");
-        //    Console.WriteLine("Używaj programów zabezpieczających przed wirusami i atakami.");
-        //    Console.WriteLine("Kiedy korzystamy z tych sieci nie wykonuj żadnych transakcji bankowych.");
-        //    Console.WriteLine("Na czas tych operacji skorzystaj z transferu danych na telefonie.");
-        //    Console.WriteLine();
-        //    Console.ForegroundColor = ConsoleColor.White;
-        //    Console.WriteLine("Wciśnij dowolny klawisz żeby wrócić do głównego menu");
-        //}
-
-        //// ========== KONIEC DUŻE TRANSFERY ==========
     }
-
-
-
-
-
-
-
 }
 
