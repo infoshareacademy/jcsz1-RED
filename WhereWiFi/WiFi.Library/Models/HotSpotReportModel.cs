@@ -8,5 +8,6 @@
         public bool SuspiciousByIncomingTransfer { get; set; }
         public bool SuspiciousByOutgoingTransfer { get; set; }
         public bool SuspiciousByTotal { get; set; }
+
     }
 }
