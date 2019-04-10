@@ -13,28 +13,14 @@ namespace WiFi.Library.Services
 
         public List<HotSpotReportModel> ListOfReports { get; set; }
         private readonly PathToFile _path;
+        private const double KbInGb = 1048576;
 
         public ReportsService()
         {
             _path = new PathToFile();
             ListOfReports = LoadingFiles(_path.TransferReportFeb);
         }
-        public void OrganizeReports(string[] table)
-        {
-            foreach (var t in table)
-            {
-                var dividedPartOfString = t.Split(',');
-                var transferDataFromReports = new HotSpotReportModel()
-                {
-                    fakeID = dividedPartOfString[0],
-                    LocationName = dividedPartOfString[1],
-                    CurrentHotSpotUsers = double.Parse(dividedPartOfString[2]),
-                    IncomingTransfer = double.Parse(dividedPartOfString[3]),
-                    OutgoingTransfer = double.Parse(dividedPartOfString[4])
-                };
-                ListOfReports.Add(transferDataFromReports);
-            }
-        }
+
         internal HotSpotReportModel ParseCSV(string lines)
         {
             var kolummny = lines.Split(',');
@@ -44,8 +30,8 @@ namespace WiFi.Library.Services
                 fakeID = kolummny[0],
                 LocationName = kolummny[1],
                 CurrentHotSpotUsers = double.Parse(kolummny[2]),
-                IncomingTransfer = double.Parse(kolummny[3]),
-                OutgoingTransfer = double.Parse(kolummny[4])
+                IncomingTransfer = double.Parse(kolummny[3]) / KbInGb,
+                OutgoingTransfer = double.Parse(kolummny[4]) / KbInGb
             };
         }
 
@@ -56,13 +42,10 @@ namespace WiFi.Library.Services
                 .Select(ParseCSV).ToList();
         }
 
-
-        // Metoda do podawania podejrzanie dużych transferów ze względu na dane przychodzące
-
-        public  List<HotSpotReportModel> GetSuspiciousHotSpotByIncomingTransfer()
+        public List<HotSpotReportModel> GetSuspiciousHotSpotByIncomingTransfer()
         {
             var listByIncomingTransfer = ListOfReports
-                .OrderByDescending(s => s.IncomingTransfer)
+                .OrderByDescending(s => (s.IncomingTransfer / s.CurrentHotSpotUsers))
                 .Take(5)
                 .ToList();
             return listByIncomingTransfer;
@@ -71,7 +54,7 @@ namespace WiFi.Library.Services
         public List<HotSpotReportModel> GetSuspiciousHotSpotByOutGoingTransfer()
         {
             var listByOutGoingTransfer = ListOfReports
-                .OrderByDescending(s => s.OutgoingTransfer)
+                .OrderByDescending(s => s.OutgoingTransfer / s.CurrentHotSpotUsers)
                 .Take(5).ToList();
             return listByOutGoingTransfer;
         }
@@ -79,14 +62,14 @@ namespace WiFi.Library.Services
         public List<HotSpotReportModel> GetSuspiciousHotSpotByTotalTransfer()
         {
             var listByTotalTransfer = ListOfReports
-                .OrderByDescending(s => (s.IncomingTransfer + s.OutgoingTransfer))
+                .OrderByDescending(s => ((s.IncomingTransfer + s.OutgoingTransfer) / s.CurrentHotSpotUsers))
                 .Take(5).ToList();
 
             return listByTotalTransfer;
         }
 
 
-        
+
         public List<HotSpotReportModel> GetSuspiciousHotSpotsList()
         {
             var listByOutGoingTransfer = GetSuspiciousHotSpotByOutGoingTransfer();
@@ -109,31 +92,6 @@ namespace WiFi.Library.Services
             }
             return listOfSuspiciousHotSpots;
         }
-
-
-        //// Ostrzeżenie dla użytkownika
-        //public static void WornedForUser()
-        //{
-        //    Console.WriteLine();
-        //    Console.ForegroundColor = ConsoleColor.Green;
-        //    Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~:>PAMIĘTAJ<:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-        //    Console.WriteLine("Traktuj każdą nieznaną sieć jako podejrzaną.");
-        //    Console.WriteLine("Używaj programów zabezpieczających przed wirusami i atakami.");
-        //    Console.WriteLine("Kiedy korzystamy z tych sieci nie wykonuj żadnych transakcji bankowych.");
-        //    Console.WriteLine("Na czas tych operacji skorzystaj z transferu danych na telefonie.");
-        //    Console.WriteLine();
-        //    Console.ForegroundColor = ConsoleColor.White;
-        //    Console.WriteLine("Wciśnij dowolny klawisz żeby wrócić do głównego menu");
-        //}
-
-        //// ========== KONIEC DUŻE TRANSFERY ==========
     }
-
-
-
-
-
-
-
 }
 
