@@ -12,8 +12,43 @@
 
 
 <div class="row">
-<div class="col-md-8">
-    <div id="simpleMap" style="min-height: 350px"></div>
+    <div class="col-md-8">
+        <div id="simpleMap" style="min-height: 350px"></div>
+    </div>
 </div>
+<div class="my-container container">
+    <table class="my-table table text-center">
+        <thead>
+            <tr>
+                <th class="text-left">
+                    Lokalizacja HotSpot:
+                </th>
+                <th class="text-center">
+                    Szerokość Geograficzna:
+                </th>
+                <th class="text-right">
+                    Długość Geograficzna:
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var hotSpot in Model)
+            {
+                <tr>
+                    <td class="text-left">
+                        @hotSpot.LocationName
+                    </td>
+                    <td class="text-center">
+                        @hotSpot.LatitudeX
+                    </td>
+                    <td class="text-right">
+                        @hotSpot.LatitudeX
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
+
+
 
