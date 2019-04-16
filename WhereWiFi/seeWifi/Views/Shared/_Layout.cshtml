@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - seeWifi</title>
-
+    <link rel="icon" href="~/Images/StartPageLayout2010/logo.png">
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     </environment>
@@ -13,7 +13,7 @@
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
               crossorigin="anonymous"
-              integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE="/>
+              integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" />
     </environment>
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
@@ -21,8 +21,8 @@
     <header>
         <nav class="navbar  navbar-expand-sm navbar-toggleable-sm navbar-light  box-shadow mb-3">
             <div class="container">
-                
-              
+
+
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img id="logo" src="~/Images/StartPageLayout2010/logo.png" alt="Wszystkie"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -30,7 +30,7 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse text-center">
                     <ul class="navbar-nav flex-grow-1">
-                       
+
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="HotSpot" asp-action="Index"><img src="~/Images/StartPageLayout2010/allb.png" alt="Wszystkie">Wszystkie</a>
                         </li>
@@ -40,13 +40,24 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="HotSpot" asp-action="Create"><img src="~/Images/StartPageLayout2010/addb.png" alt="Dodaj Hotspot">Dodaj Hotspot</a>
                         </li>
-         
+
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy"><img src="~/Images/StartPageLayout2010/editb.png" alt="Edytuj Hotspot">Edytuj Hotspot</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Reports" asp-action="Index"><img src="~/Images/StartPageLayout2010/suspectsb.png" alt="Podejrzane Hotspoty">Podejrzane Hotspoty</a>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link text-dark dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" asp-area="" asp-controller="Reports" asp-action="Index"><img src="~/Images/StartPageLayout2010/raports.png" alt="Raporty">Raporty</a>
+                            <div class="my-dropdown dropdown-menu">
+                                <div class="my-dropdown dropdown-item text-dark">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Reports" asp-action="Index"><img src="~/Images/StartPageLayout2010/suspectsb.png" alt="Podejrzane Hotspoty">Podejrzane Hotspoty</a>
+                                </div>
+                                <div class="my-dropdown dropdown-item text-dark">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Reports" asp-action="LowestCurrentHotSpotUsers"><img src="~/Images/StartPageLayout2010/currentUsers.png" alt="Najmniejsza liczba użytkowników">Najmniejsza liczba użytkowników</a>
+                                </div>
+
+                            </div>
                         </li>
+
                     </ul>
                 </div>
             </div>
@@ -58,13 +69,11 @@
             @RenderBody()
         </main>
     </div>
-
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2019 - seeWifi - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
-
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
@@ -84,7 +93,6 @@
         </script>
     </environment>
     <script src="~/js/site.js" asp-append-version="true"></script>
-
     @RenderSection("Scripts", required: false)
 </body>
 </html>
