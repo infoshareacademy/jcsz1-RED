@@ -18,12 +18,5 @@ namespace seeWifi.Controllers
 
             return View(model);
         }
-
-        public IActionResult LowestCurrentHotSpotUsers()
-        {
-            var model = _reportsService.GetLowestCurrentHotSpotUsers();
-
-            return View(model);
-        }
     }
 }
