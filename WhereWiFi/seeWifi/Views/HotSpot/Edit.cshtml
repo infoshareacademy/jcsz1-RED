@@ -1,21 +1,10 @@
 ﻿@model System.Collections.Generic.List<WiFi.Library.Models.HotSpotModel>
 
 @{
-    ViewBag.Title = "List of Hotspots";
-    Layout = "_Layout";
+    ViewBag.Title = "Editing Hotspots";
+    Layout = "_Layout"; ;
 }
-@{var serializedContent = Json.Serialize(Model);}
-
-<script type="text/javascript">var testVar12 = @serializedContent;</script>
-<script src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0" type="text/javascript" charset="UTF-8"></script>
-<script type="text/javascript" src="~/js/DisplayScript.js"></script>
-
-
-<div class="row">
-    <div class="col-md-8">
-        <div id="simpleMap" style="min-height: 350px"></div>
-    </div>
-</div>
+<h2>Edytuj Hotspoty</h2>
 <div class="my-container container">
     <table class="my-table table text-center">
         <thead>
@@ -29,6 +18,7 @@
                 <th class="text-right">
                     Długość Geograficzna:
                 </th>
+                <th class="alert-info">Edytuj</th>
             </tr>
         </thead>
         <tbody>
@@ -40,15 +30,15 @@
                     </td>
                     <td class="text-center">
                         @hotSpot.LatitudeX
-                    </td>
                     <td class="text-right">
-                        @hotSpot.LatitudeX
+                        @hotSpot.LongitudeY
+                    </td>
+                    <td class="alert-info">
+                        <a asp-controller="HotSpot" asp-action="Details" 
+                           asp-route-id="@hotSpot.Number">@hotSpot.Number</a>
                     </td>
                 </tr>
             }
         </tbody>
     </table>
 </div>
-
-
-

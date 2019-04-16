@@ -1,0 +1,30 @@
+﻿@model HotSpotModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+<h2>Edytuj Hotspot</h2>
+<div class="container">
+<form asp-antiforgery="true" asp-controller="HotSpot" asp-action="UpdateResult" asp-route-id="@Model.Number"method="post">
+    <div class="form-group">
+        <div class="form-control">
+            <label asp-for="LocationName">Lokalizacja:</label>
+            <input asp-for="LocationName" />
+            <span asp-validation-for="LocationName" class="text-danger"></span>
+        </div>
+        <div class="form-control">
+            <label asp-for="LatitudeX">Szerokość Geograficzna:</label>
+            <input asp-for="LatitudeX" />
+            <span asp-validation-for="LatitudeX" class="text-danger"></span>
+        </div>
+        <div class="form-control">
+            <label asp-for="LongitudeY">Długość Geograficzna:</label>
+            <input asp-for="LongitudeY" />
+            <span asp-validation-for="LongitudeY" class="text-danger"></span>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success">OK</button>
+    <button type="reset" class="btn btn-danger">Reset</button>
+</form>
+</div>
