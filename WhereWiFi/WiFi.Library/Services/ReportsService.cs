@@ -12,13 +12,13 @@ namespace WiFi.Library.Services
     {
 
         public List<HotSpotReportModel> ListOfReports { get; set; }
-        private readonly PathToFile _path;
+        private readonly FilePath _filePath;
         private const double KbInGb = 1048576;
 
         public ReportsService()
         {
-            _path = new PathToFile();
-            ListOfReports = LoadingFiles(_path.TransferReportFeb);
+            _filePath = new FilePath();
+            ListOfReports = LoadingFiles(_filePath.TransferReportFeb);
         }
 
         internal HotSpotReportModel ParseCSV(string lines)

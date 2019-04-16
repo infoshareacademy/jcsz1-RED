@@ -7,5 +7,7 @@ namespace WiFi.Library.Services.IServices
     {
         List<HotSpotModel> GetAll();
         HotSpotModel AddHotSpot(HotSpotModel hotspot);
+        HotSpotModel GetById(int id);
+        bool Update(int id, HotSpotModel hotSpotById);
     }
 }

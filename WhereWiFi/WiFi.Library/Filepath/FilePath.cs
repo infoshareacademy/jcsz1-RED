@@ -4,14 +4,14 @@ using System.Reflection;
 
 namespace WiFi.Library.Filepath
 {
-    public class PathToFile
+    public class FilePath
     {
         private readonly string buildPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
         public string FullFilePath { get; }
         public string TransferReportFeb { get; }
         public string TransferReportMarch { get; }
 
-        public PathToFile()
+        public FilePath()
         {
             FullFilePath = buildPath + @"\data\wifigdansk.csv";
             TransferReportFeb = buildPath + @"\data\RT02.2017.csv";

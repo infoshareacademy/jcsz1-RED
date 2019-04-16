@@ -11,16 +11,16 @@ namespace WiFi.Library.Services
     public class HotSpotService:IHotSpotService
     {
         private readonly List<HotSpotModel> _hotSpotList;
-        private readonly PathToFile _path;
+        private readonly FilePath _filePath;
         public HotSpotService()
         {
-            _path=new PathToFile();
+            _filePath=new FilePath();
             _hotSpotList = new List<HotSpotModel>();
             ReadDataFromFile();
         }
         void ReadDataFromFile()
         {
-            using (var reader = new StreamReader(_path.FullFilePath))
+            using (var reader = new StreamReader(_filePath.FullFilePath))
             using (var csv = new CsvReader(reader))
             {
                 csv.Configuration.Delimiter = ",";
@@ -47,6 +47,18 @@ namespace WiFi.Library.Services
             hotspot.Number = _hotSpotList.Max(x=>x.Number)+1;
             _hotSpotList.Add(hotspot);
             return hotspot;
+        }
+        public HotSpotModel GetById(int id)
+        {
+            return _hotSpotList.First(x => x.Number == id);
+        }
+        public bool Update(int id, HotSpotModel hotSpotById)
+        {
+            var currentHotSpot = GetById(id);
+            currentHotSpot.LocationName = hotSpotById.LocationName;
+            currentHotSpot.LatitudeX = hotSpotById.LatitudeX;
+            currentHotSpot.LongitudeY = hotSpotById.LongitudeY;
+            return true;
         }
         public List<HotSpotModel> GetAll()
         {
