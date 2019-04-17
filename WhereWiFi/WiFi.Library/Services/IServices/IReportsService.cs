@@ -7,5 +7,6 @@ namespace WiFi.Library.Services.IServices
     {
         List<HotSpotReportModel> ListOfReports { get; }
         List<HotSpotReportModel> GetSuspiciousHotSpotsList();
+        List<HotSpotReportModel> GetLowestCurrentHotSpotUsers();
     }
 }
