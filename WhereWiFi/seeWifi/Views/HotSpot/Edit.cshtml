@@ -5,40 +5,42 @@
     Layout = "_Layout"; ;
 }
 <h2>Edytuj Hotspoty</h2>
-<div class="my-container container">
-    <table class="my-table table text-center">
-        <thead>
-            <tr>
-                <th class="text-left">
-                    Lokalizacja HotSpot:
-                </th>
-                <th class="text-center">
-                    Szerokość Geograficzna:
-                </th>
-                <th class="text-right">
-                    Długość Geograficzna:
-                </th>
-                <th class="alert-info">Edytuj</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var hotSpot in Model)
-            {
+    <div class="my-container container">
+        <table class="my-table table text-center">
+            <thead>
                 <tr>
-                    <td class="text-left">
-                        @hotSpot.LocationName
-                    </td>
-                    <td class="text-center">
-                        @hotSpot.LatitudeX
-                    <td class="text-right">
-                        @hotSpot.LongitudeY
-                    </td>
-                    <td class="alert-info">
-                        <a asp-controller="HotSpot" asp-action="Details" 
-                           asp-route-id="@hotSpot.Number">@hotSpot.Number</a>
-                    </td>
+                    <th class="text-left">
+                        Lokalizacja HotSpot:
+                    </th>
+                    <th class="text-center">
+                        Szerokość Geograficzna:
+                    </th>
+                    <th class="text-right">
+                        Długość Geograficzna:
+                    </th>
+                    <th class="alert-info">Edytuj</th>
                 </tr>
-            }
-        </tbody>
-    </table>
-</div>
+            </thead>
+            <tbody>
+                @foreach (var hotSpot in Model)
+                {
+                    <tr>
+                        <td class="text-left">
+                            @hotSpot.LocationName
+                        </td>
+                        <td class="text-center">
+                            @hotSpot.LatitudeX
+                        <td class="text-right">
+                            @hotSpot.LongitudeY
+                        </td>
+                        <td class="alert-info">
+                            <a asp-controller="HotSpot" asp-action="Details"
+                               asp-route-id="@hotSpot.Number">@hotSpot.Number</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+

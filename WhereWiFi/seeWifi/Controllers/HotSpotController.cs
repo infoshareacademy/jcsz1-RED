@@ -18,14 +18,14 @@ namespace seeWifi.Controllers
         }
         public IActionResult Create()
         {
-            return View("Index");
+            return View("Create");
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(HotSpotModel hotspot)
         {
             var newHotSpo = _hotSpotService.AddHotSpot(hotspot);
-            return View("Index");
+            return RedirectToAction("Index");
         }
         public IActionResult Edit()
         {
