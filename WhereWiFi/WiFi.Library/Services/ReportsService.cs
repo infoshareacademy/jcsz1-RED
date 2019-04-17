@@ -62,20 +62,12 @@ namespace WiFi.Library.Services
         public List<HotSpotReportModel> GetSuspiciousHotSpotByTotalTransfer()
         {
             var listByTotalTransfer = ListOfReports
-                .OrderBy(s => ((s.IncomingTransfer + s.OutgoingTransfer) / s.CurrentHotSpotUsers))
+                .OrderByDescending(s => ((s.IncomingTransfer + s.OutgoingTransfer) / s.CurrentHotSpotUsers))
                 .Take(5).ToList();
 
             return listByTotalTransfer;
         }
 
-        public List<HotSpotReportModel> GetLowestCurrentHotSpotUsers()
-        {
-            var listLowestCurrentHotSpotUsers = ListOfReports
-                .OrderBy(s => s.CurrentHotSpotUsers)
-                .Take(10).ToList();
-
-            return listLowestCurrentHotSpotUsers;
-        }
 
 
         public List<HotSpotReportModel> GetSuspiciousHotSpotsList()

@@ -3,8 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] seeWifi</title>
-    <link rel="icon" href="Images/StartPageLayout2010/logo.png">
+    <title>@ViewData["Title"] - seeWifi</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -38,37 +37,40 @@
 
         <conteiner class="text-center p-5">
             <nav>
+
                 <div>
                     <a class="nav-item" asp-area="" asp-controller="HotSpot" asp-action="Index">
                         <img src="Images/StartPageLayout2010/allb.png" alt="Lista Wszystkich HotSpotów">
-                        <p>Wszystkie </p>
+                        <p>Wszystkie</p>
                     </a>
                 </div>
                 <div>
                     <a class="nav-item " asp-area="" asp-controller="Home" asp-action="Privacy">
                         <img src="Images/StartPageLayout2010/nearestb.png" alt="Najbliższy HotSpot">
-                        <p>Najbliższy </p>
+                        <p>Najbliższy</p>
                     </a>
                 </div>
+
                 <div>
                     <a class="nav-link text-dark" asp-area="" asp-controller="HotSpot" asp-action="Create">
                         <img src="Images/StartPageLayout2010/addb.png" alt="Dodaj HotSpot">
-                        <p>Dodaj </p>
+                        <p>Dodaj</p>
                     </a>
                 </div>
+
                 <div>
                     <a class="nav-item" asp-area="" asp-controller="HotSpot" asp-action="Edit">
                         <img src="Images/StartPageLayout2010/editb.png" alt="Edytuj punkty HotSpot">
-                        <p>Edytuj </p>
+                        <p>Edytuj</p>
                     </a>
                 </div>
+
                 <div>
                     <a class="nav-item" asp-area="" asp-controller="Reports" asp-action="Index">
                         <img src="Images/StartPageLayout2010/suspectsb.png" alt="Podejrzane punkty HotSpot">
-                        <p>Podejrzane </p>
+                        <p>Podejrzane</p>
                     </a>
                 </div>
-                
             </nav>
         </conteiner>
 
