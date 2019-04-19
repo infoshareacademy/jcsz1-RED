@@ -1,4 +1,5 @@
-﻿@model System.Collections.Generic.List<WiFi.Library.Models.HotSpotModel>
+﻿@using Microsoft.CodeAnalysis.CSharp.Syntax
+@model System.Collections.Generic.List<WiFi.Library.Models.HotSpotModel>
 
 @{
     ViewBag.Title = "List of Hotspots";
@@ -22,40 +23,45 @@
 <div class="my-container container">
     <table class="my-table table text-center">
         <thead>
-        <tr>
-            <th class="text-left" id="annoyingBorder">
-                Lokalizacja HotSpot:
-            </th>
-            <th class="text-center">
-                Szerokość Geograficzna:
-            </th>
-            <th class="text-center">
-                Długość Geograficzna:
-            </th>
-            <th id="annoyingBorder"></th>
-        </tr>
+            <tr>
+                <th class="text-left" id="annoyingBorder">
+                    Lokalizacja HotSpot:
+                </th>
+                <th class="text-center">
+                    Szerokość Geograficzna:
+                </th>
+                <th class="text-center">
+                    Długość Geograficzna:
+                </th>
+                <th id="annoyingBorder"></th>
+            </tr>
         </thead>
         <tbody>
-        @foreach (var hotSpot in Model)
-        {
-            <tr>
-                <td class="text-left">
-                    @hotSpot.LocationName
-                </td>
-                <td class="text-center">
-                @hotSpot.LatitudeX
-                <td class="text-center">
-                    @hotSpot.LongitudeY
-                </td>
-                <td>
-                    <a asp-controller="HotSpot" asp-action="MarkingHotSpotAsFavorite"
-                       asp-route-id="@hotSpot.Number"><span class="btn btn-danger">Star</span></a>
-                </td>
-            </tr>
-        }
+            @foreach (var hotSpot in Model)
+            {
+                <tr>
+                    <td class="text-left">
+                        @hotSpot.LocationName
+                    </td>
+                    <td class="text-center">
+                        @hotSpot.LatitudeX
+                    <td class="text-center">
+                        @hotSpot.LongitudeY
+                    </td>
+                    <td>
+                        <a asp-controller="HotSpot" asp-action="MarkingHotSpotAsFavorite"
+                           asp-route-id="@hotSpot.Number">
+                            <span class="btn btn-warning">
+                                @{if (hotSpot.FavoriteHotSpot)
+                                    {<span>★</span>}
+                                    else if (hotSpot.FavoriteHotSpot == false)
+                                    {<span>☆</span>} 
+                                }
+                            </span>
+                        </a>
+                    </td>
+                </tr>
+            }
         </tbody>
     </table>
 </div>
-
-
-

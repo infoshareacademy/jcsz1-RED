@@ -50,6 +50,8 @@ namespace seeWifi.Controllers
         {
             _hotSpotService.MarkAsFavorite(id);
             return RedirectToAction("Index");
+
         }
+        
     }
 }
