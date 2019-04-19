@@ -14,5 +14,6 @@ namespace WiFi.Library.Models
         public string LatitudeX { get; set; }
         [Required(ErrorMessage = "Podaj długość geograficzną w formacie 18.XXXXX")]
         public string LongitudeY { get; set; }
+        public bool FavoriteHotSpot { get; set; }
     }
 }

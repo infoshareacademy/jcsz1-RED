@@ -11,10 +11,12 @@ namespace WiFi.Library.Services
     public class HotSpotService:IHotSpotService
     {
         private readonly List<HotSpotModel> _hotSpotList;
+        private readonly List<HotSpotModel> _favoritesHotSpots;
         private readonly FilePath _filePath;
         public HotSpotService()
         {
-            _filePath=new FilePath();
+            _filePath =new FilePath();
+            _favoritesHotSpots = new List<HotSpotModel>();
             _hotSpotList = new List<HotSpotModel>();
             ReadDataFromFile();
         }
@@ -36,6 +38,7 @@ namespace WiFi.Library.Services
                             LocationName = csv.GetField<string>(1),
                             LatitudeX = csv.GetField<string>(2),
                             LongitudeY=csv.GetField<string>(3),
+                            FavoriteHotSpot = false
                         }
                     };
                     _hotSpotList.Add(record[0]);
@@ -60,6 +63,27 @@ namespace WiFi.Library.Services
             currentHotSpot.LongitudeY = hotSpotById.LongitudeY;
             return true;
         }
+
+        public List<HotSpotModel> GetAllFavorites()
+        {
+            return _favoritesHotSpots;
+        }
+
+        public void MarkAsFavorite(int id)
+        {
+            var currentHotSpot = GetById(id);
+            if (currentHotSpot.FavoriteHotSpot)
+            {
+                currentHotSpot.FavoriteHotSpot = false;
+                _favoritesHotSpots.Remove(GetById(id));
+            }
+            else if (currentHotSpot.FavoriteHotSpot==false)
+            {
+                currentHotSpot.FavoriteHotSpot = true;
+                _favoritesHotSpots.Add(GetById(id));
+            }
+        }
+
         public List<HotSpotModel> GetAll()
         {
             return _hotSpotList;
