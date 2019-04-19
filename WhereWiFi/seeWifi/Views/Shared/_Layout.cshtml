@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - seeWifi</title>
+    <title>@ViewData["seeWifi"] seeWifi</title>
+    <link rel="icon" href="~/Images/StartPageLayout2010/logo.png">
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -30,9 +31,12 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse text-center">
                     <ul class="navbar-nav flex-grow-1">
-                       
+
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="HotSpot" asp-action="Index"><img src="~/Images/StartPageLayout2010/allb.png" alt="Wszystkie">Wszystkie</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="HotSpot" asp-action="Index"><img src="~/Images/StartPageLayout2010/favourite.png" alt="Ulubione">Ulubione</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy"><img src="~/Images/StartPageLayout2010/nearestb.png" alt="Najbliższy Hotspot">Najbliższy Hotspot</a>
@@ -40,12 +44,21 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="HotSpot" asp-action="Create"><img src="~/Images/StartPageLayout2010/addb.png" alt="Dodaj Hotspot">Dodaj Hotspot</a>
                         </li>
-         
+
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="HotSpot" asp-action="Edit"><img src="~/Images/StartPageLayout2010/editb.png" alt="Edytuj Hotspot">Edytuj Hotspot</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Reports" asp-action="Index"><img src="~/Images/StartPageLayout2010/suspectsb.png" alt="Podejrzane Hotspoty">Podejrzane Hotspoty</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link text-dark dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" asp-area="" asp-controller="Reports" asp-action="Index"><img src="~/Images/StartPageLayout2010/raports.png" alt="Raporty">Raporty</a>
+                            <div class="my-dropdown dropdown-menu">
+                                <div class="my-dropdown dropdown-item text-dark">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Reports" asp-action="Index"><img src="~/Images/StartPageLayout2010/suspectsb.png" alt="Podejrzane Hotspoty">Podejrzane Hotspoty</a>
+                                </div>
+                                <div class="my-dropdown dropdown-item text-dark">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Reports" asp-action="LowestCurrentHotSpotUsers"><img src="~/Images/StartPageLayout2010/currentUsers.png" alt="Najmniejsza liczba użytkowników">Najmniejsza liczba użytkowników</a>
+                                </div>
+
+                            </div>
                         </li>
                     </ul>
                 </div>

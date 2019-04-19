@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - seeWifi</title>
+    <title>@ViewData["seeWifi"] seeWifi</title>
+    <link rel="icon" href="Images/StartPageLayout2010/logo.png">
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -44,6 +45,14 @@
                         <p>Wszystkie</p>
                     </a>
                 </div>
+
+                <div>
+                    <a class="nav-item" asp-area="" asp-controller="HotSpot" asp-action="Edit">
+                        <img src="Images/StartPageLayout2010/favourite.png" alt="Ulubione">
+                        <p>Ulubione</p>
+                    </a>
+                </div>
+
                 <div>
                     <a class="nav-item " asp-area="" asp-controller="Home" asp-action="Privacy">
                         <img src="Images/StartPageLayout2010/nearestb.png" alt="Najbliższy HotSpot">

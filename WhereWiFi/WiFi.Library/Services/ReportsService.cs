@@ -68,7 +68,14 @@ namespace WiFi.Library.Services
             return listByTotalTransfer;
         }
 
+        public List<HotSpotReportModel> GetLowestCurrentHotSpotUsers()
+        {
+            var listLowestCurrentHotSpotUsers = ListOfReports
+                .OrderBy(s => s.CurrentHotSpotUsers)
+                .Take(10).ToList();
 
+            return listLowestCurrentHotSpotUsers;
+        }
 
         public List<HotSpotReportModel> GetSuspiciousHotSpotsList()
         {
