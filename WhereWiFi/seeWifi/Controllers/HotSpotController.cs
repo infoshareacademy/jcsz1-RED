@@ -1,5 +1,7 @@
 ﻿using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using WiFi.Library.Models;
 using WiFi.Library.Services.IServices;
 
@@ -50,8 +52,11 @@ namespace seeWifi.Controllers
         {
             _hotSpotService.MarkAsFavorite(id);
             return RedirectToAction("Index");
-
         }
-        
+        public IActionResult DeleteFavorite(int id)
+        {
+            _hotSpotService.MarkAsFavorite(id);
+            return RedirectToAction("Favorites");
+        }
     }
 }
