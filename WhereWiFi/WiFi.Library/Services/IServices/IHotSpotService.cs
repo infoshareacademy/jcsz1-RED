@@ -9,5 +9,7 @@ namespace WiFi.Library.Services.IServices
         HotSpotModel AddHotSpot(HotSpotModel hotspot);
         HotSpotModel GetById(int id);
         bool Update(int id, HotSpotModel hotSpotById);
+        List<HotSpotModel> GetAllFavorites();
+        void MarkAsFavorite(int id);
     }
 }

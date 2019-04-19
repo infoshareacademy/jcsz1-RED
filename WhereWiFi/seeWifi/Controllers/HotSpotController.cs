@@ -7,7 +7,7 @@ namespace seeWifi.Controllers
 {
     public class HotSpotController : Controller
     {
-        private IHotSpotService _hotSpotService;
+        private readonly IHotSpotService _hotSpotService;
         public HotSpotController(IHotSpotService hotSpotService)
         {
             _hotSpotService = hotSpotService;
@@ -32,15 +32,26 @@ namespace seeWifi.Controllers
             return View("Edit", _hotSpotService.GetAll());
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult UpdateResult(int id, HotSpotModel hotSpot)
         {
             var update = _hotSpotService.Update(id,hotSpot);
             return RedirectToAction("Edit");
         }
-
         public IActionResult Details(int id)
         {
             return View(_hotSpotService.GetById(id));
         }
+        public IActionResult Favorites()
+        {
+            return View(_hotSpotService.GetAllFavorites());
+        }
+        public IActionResult MarkingHotSpotAsFavorite(int id)
+        {
+            _hotSpotService.MarkAsFavorite(id);
+            return RedirectToAction("Index");
+
+        }
+        
     }
 }
