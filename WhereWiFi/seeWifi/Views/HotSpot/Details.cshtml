@@ -12,25 +12,28 @@
     <div id="simpleMap" style="min-height: 350px"></div>
 </div>
 <div class="container">
-<form asp-antiforgery="true" asp-controller="HotSpot" asp-action="UpdateResult" asp-route-id="@Model.Number"method="post">
-    <div class="form-group">
-        <div class="form-control">
-            <label asp-for="LocationName">Lokalizacja:</label>
-            <input asp-for="LocationName" id="xlocation"/>
-            <span asp-validation-for="LocationName"  class="text-danger"></span>
+    <form asp-antiforgery="true" asp-action="UpdateResult" asp-route-id="@Model.Number" method="post">
+        <div class="form-group">
+            <div class="form-control">
+                <label asp-for="LocationName">Lokalizacja:</label>
+                <input asp-for="LocationName" id="xlocation" />
+                <span asp-validation-for="LocationName" class="text-danger"></span>
+            </div>
+            <div class="form-control">
+                <label asp-for="LatitudeX">Szerokość Geograficzna:</label>
+                <input asp-for="LatitudeX" id="xlatitude" />
+                <span asp-validation-for="LatitudeX" class="text-danger"></span>
+            </div>
+            <div class="form-control">
+                <label asp-for="LongitudeY">Długość Geograficzna:</label>
+                <input asp-for="LongitudeY" id="ylongitude" />
+                <span asp-validation-for="LongitudeY" class="text-danger"></span>
+            </div>
         </div>
-        <div class="form-control">
-            <label asp-for="LatitudeX">Szerokość Geograficzna:</label>
-            <input asp-for="LatitudeX" id="xlatitude"/>
-            <span asp-validation-for="LatitudeX" class="text-danger"></span>
-        </div>
-        <div class="form-control">
-            <label asp-for="LongitudeY">Długość Geograficzna:</label>
-            <input asp-for="LongitudeY" id="ylongitude" />
-            <span asp-validation-for="LongitudeY" class="text-danger"></span>
-        </div>
-    </div>
-    <button type="submit" class="btn btn-success">OK</button>
-    <button type="reset" class="btn btn-danger">Reset</button>
-</form>
+        <button type="submit" class="btn btn-success">OK</button>
+        <button type="reset" class="btn btn-danger">Reset</button>
+    </form>
 </div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
