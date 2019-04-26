@@ -4,10 +4,15 @@ for details on configuring this project to bundle and minify static web assets. 
   background-color: rgba(255, 255, 255, 0.7);
   border-radius: 25px;
 }
-#annoyingBorder {
-  border-top:none
+
+.my-containerMini {
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 5px;
 }
 
+#annoyingBorder {
+  border-top: none
+}
 
 #jumbo {
   padding: 10px;
@@ -20,7 +25,15 @@ for details on configuring this project to bundle and minify static web assets. 
 .my-dropdown {
   background: rgb(130, 188, 249);
   border: none
+}
 
+.my-red:hover {
+  transform: scale(0.9);
+  color:blanchedalmond;
+}
+
+.my-red {
+  color: gold
 }
 
 a.navbar-brand {
@@ -29,10 +42,20 @@ a.navbar-brand {
   word-break: break-all;
 }
 
-a.navbar-brand:hover {
-  transform: scale(1.1, 1.1);
+  a.navbar-brand:hover {
+    transform: scale(1.1, 1.1);
+  }
+
+.my-listStar {
+  color: gold;
+  transition: all 0.3s ease-in-out 0s;
 }
 
+.my-listStar:hover {
+  cursor: default;
+  transform: rotate(360deg);
+  transition: all 0.3s ease-in-out 0s;
+  }
 
 .nav-item:hover {
   transform: scale(1.1, 1.1);
