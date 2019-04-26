@@ -4,6 +4,8 @@
     ViewBag.Title = "Ulubione Hotspoty";
     Layout = "_Layout";
 }
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
 <div id="jumbo" class=" my-container jumbotron">
     <h3 class="text-center">Ulubione Hotspoty</h3>
 </div>
@@ -20,7 +22,9 @@
                 <th class="text-center">
                     Długość Geograficzna:
                 </th>
-                <th id="annoyingBorder"></th>
+                <th id="annoyingBorder">
+                    Usuń
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -37,7 +41,7 @@
                     </td>
                     <td>
                         <a asp-controller="HotSpot" asp-action="DeleteFavorite"
-                           asp-route-id="@hotSpot.Number"><span class="btn btn-warning">★</span></a>
+                           asp-route-id="@hotSpot.Number"><i class="my-red fas fa-star"></i></a>
                     </td>
                 </tr>
             }
