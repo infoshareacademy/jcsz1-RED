@@ -17,31 +17,39 @@
 <div class="my-container container">
     <table class="my-table table text-center">
         <thead>
-       <tr>
-            <th id="annoyingBorder">
-                Lokalizacja HotSpot
-            </th>
-            <th>
-                Miesięczna liczba użytkowników
-            </th>
-            <th>
-                Transfer przychodzący [GB/miesiąc]
-            </th>
-            <th>
-                Transfer wychodzący [GB/miesiąc]
-            </th>
+            <tr>
+                <th id="annoyingBorder">
+                    Nr
+                </th>
+                <th>
+                    Lokalizacja HotSpot
+                </th>
+                <th>
+                    Miesięczna liczba użytkowników
+                </th>
+                <th>
+                    Transfer przychodzący [GB/miesiąc]
+                </th>
+                <th>
+                    Transfer wychodzący [GB/miesiąc]
+                </th>
 
-            <th id="annoyingBorder">
-                Łączna wymiana danych [GB/miesiąc]
-            </th>
-        </tr>
+                <th id="annoyingBorder">
+                    Łączna wymiana danych [GB/miesiąc]
+                </th>
+            </tr>
         </thead>
         <tbody>
-
-
-            @foreach (var hotSpot in Model)
+        
+            @{
+                int counter = 1;
+            }
+        @foreach (var hotSpot in Model)
             {
                 <tr>
+                    <td class="text-center">
+                        @counter
+                    </td>
                     <td class="text-left">
                         @hotSpot.LocationName
                     </td>
@@ -71,12 +79,11 @@
                         @((hotSpot.OutgoingTransfer + hotSpot.IncomingTransfer).ToString("0.00"))
                     </td>
                 </tr>
+                counter++;
             }
         <tr>
-            <td id="annoyingBorder" class="text-danger text-justify">(*)Podejrzane parametry</td>
+            <td colspan="3" id="annoyingBorder" class="text-danger text-justify">(*)Podejrzane parametry</td>
         </tr>
-
-
         </tbody>
     </table>
 </div>

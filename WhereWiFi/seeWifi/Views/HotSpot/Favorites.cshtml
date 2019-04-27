@@ -35,9 +35,9 @@
                         @hotSpot.LocationName
                     </td>
                     <td class="text-center">
-                        @hotSpot.LatitudeX
+                        @hotSpot.LatitudeX.Substring(0, 8)
                     <td class="text-center">
-                        @hotSpot.LongitudeY
+                        @hotSpot.LongitudeY.Substring(0, 8)
                     </td>
                     <td>
                         <a asp-controller="HotSpot" asp-action="DeleteFavorite"

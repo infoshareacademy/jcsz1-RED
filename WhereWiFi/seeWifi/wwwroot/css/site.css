@@ -130,3 +130,8 @@ a > img {
 #logo {
   max-width: 100px;
 }
+
+#img-cat {
+  width: 100%;
+  background-size: cover;
+}

@@ -6,7 +6,7 @@
     function GetMap() {
         var apiKey = "Aq1d61Jw4x4MYNoxuz2RwCqOWoBhSwj24oLJkqVBCdMrYVB7-21yCo9R9FtGWAmk";
         var map = new Microsoft.Maps.Map(document.getElementById("simpleMap"), {credentials: apiKey });
-        map.setView({center: new Microsoft.Maps.Location(54.365406, 18.615999), zoom: 10 });
+        map.setView({center: new Microsoft.Maps.Location(54.365406, 18.615999), zoom: 12 });
         var pinInfobox = new Microsoft.Maps.Infobox(new Microsoft.Maps.Location(0, 0), {visible: false });
     var infoboxLayer = new Microsoft.Maps.EntityCollection();
     infoboxLayer.push(pinInfobox);
