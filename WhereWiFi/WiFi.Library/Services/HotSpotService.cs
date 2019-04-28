@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -51,7 +52,7 @@ namespace WiFi.Library.Services
                             LocationName = csv.GetField<string>(1),
                             LatitudeX = csv.GetField<string>(2),
                             LongitudeY=csv.GetField<string>(3),
-                            FavoriteHotSpot = false
+                            FavoriteHotSpot = false,
                         }
                     };
                     _hotSpotList.Add(record[0]);
@@ -130,15 +131,23 @@ namespace WiFi.Library.Services
                 }
             }
         }
-
         public HotSpotModel NearestHotSpot(HotSpotModel hotspot)
         {
-            //double la = double.Parse(hotspot.LatitudeX, CultureInfo.InvariantCulture),
-            //lo = double.Parse(hotspot.LongitudeY, CultureInfo.InvariantCulture);
-            var nearestTwo = _hotSpotList.Single(x => x.Number == 1);
+            double currentHotSpotLatitude = double.Parse(hotspot.LatitudeX, CultureInfo.InvariantCulture);
+            double currentHotSpotLongitude = double.Parse(hotspot.LongitudeY, CultureInfo.InvariantCulture);
 
 
-            return nearestTwo;
+            var nearest = _hotSpotList.Single();
+
+
+            return nearest;
+            //double GeographicalDegreeToKm = 73;
+            //var nerest = _hotSpotList.Min
+            //(x => 
+            //    (Math.Sqrt
+            //    (Math.Pow((Double.Parse(x.LatitudeX, CultureInfo.InvariantCulture) - la), 2) 
+            //    + Math.Pow((Double.Parse(x.LongitudeY, CultureInfo.InvariantCulture) - lo), 2)
+            //    * GeographicalDegreeToKm)));
         }
 
         public List<HotSpotModel> GetAll()
