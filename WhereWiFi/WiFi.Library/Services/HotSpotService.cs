@@ -131,6 +131,16 @@ namespace WiFi.Library.Services
             }
         }
 
+        public HotSpotModel NearestHotSpot(HotSpotModel hotspot)
+        {
+            //double la = double.Parse(hotspot.LatitudeX, CultureInfo.InvariantCulture),
+            //lo = double.Parse(hotspot.LongitudeY, CultureInfo.InvariantCulture);
+            var nearestTwo = _hotSpotList.Single(x => x.Number == 1);
+
+
+            return nearestTwo;
+        }
+
         public List<HotSpotModel> GetAll()
         {
             return _hotSpotList;

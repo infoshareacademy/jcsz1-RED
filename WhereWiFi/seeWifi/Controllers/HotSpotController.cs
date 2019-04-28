@@ -64,5 +64,20 @@ namespace seeWifi.Controllers
             _hotSpotService.MarkAsFavorite(id);
             return RedirectToAction("Favorites");
         }
+        public IActionResult Nearest(HotSpotModel hotspot)
+        {
+            return View("Nearest", hotspot);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult CompareNearest(HotSpotModel hotspot)
+        {
+            var nearestHotSpot = _hotSpotService.NearestHotSpot(hotspot);
+            return View("ComparedHotSpots", nearestHotSpot);
+        }
+
+
+
+
     }
 }

@@ -11,5 +11,6 @@ namespace WiFi.Library.Services.IServices
         bool Update(int id, HotSpotModel hotSpotById);
         List<HotSpotModel> GetAllFavorites();
         void MarkAsFavorite(int id);
+        HotSpotModel NearestHotSpot(HotSpotModel hotspot);
     }
 }

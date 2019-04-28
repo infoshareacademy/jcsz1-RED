@@ -1,0 +1,58 @@
+﻿@model WiFi.Library.Models.HotSpotModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<div id="jumbo" class=" my-container jumbotron">
+    <h3 class="text-center">Twój najbliższy Hotspot</h3>
+</div>
+<div class="my-container container">
+    <table class="my-table table text-center">
+        <thead>
+            <tr>
+                <th class="text-left" id="annoyingBorder">
+                    Lokalizacja HotSpot:
+                </th>
+                <th class="text-center">
+                    Szerokość Geograficzna:
+                </th>
+                <th class="text-center">
+                    Długość Geograficzna:
+                </th>
+                <th id="annoyingBorder"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                <tr>
+                    <td class="text-left">
+                        @Model.LocationName
+                    </td>
+                    <td class="text-center">
+                        @Model.LatitudeX.Substring(0, 8)
+                    <td class="text-center">
+                        @Model.LongitudeY.Substring(0, 8)
+                    </td>
+                    <td class="star">
+                        <a asp-controller="HotSpot" asp-action="MarkingHotSpotAsFavorite"
+                           asp-route-id="@Model.Number">
+                            <div>
+                                @{if (Model.FavoriteHotSpot)
+                                    {
+                                        <i class="fas fa-star my-listStar"></i>
+                                    }
+                                    else if (Model.FavoriteHotSpot == false)
+                                    {
+                                        <i class="far fa-star my-listStar"></i>
+                                    }
+                                }
+                            </div>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
