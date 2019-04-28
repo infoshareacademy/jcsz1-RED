@@ -19,13 +19,10 @@ namespace WiFi.Library.Tests.Services
         {
             //Arrange
             var reports = new ReportsService();
-            var reportsListOfReports = reports.ListOfReports;
             var expectedResult = 5;
 
             //Act
-            var sut = reportsListOfReports.OrderByDescending(s => (s.IncomingTransfer / s.CurrentHotSpotUsers))
-            .Take(5)
-            .ToList();
+            var sut = reports.GetSuspiciousHotSpotByIncomingTransfer();
 
             //Assert
             Assert.Equal(expectedResult, sut.Count);
@@ -37,12 +34,10 @@ namespace WiFi.Library.Tests.Services
         {
             //Arrange
             var reports = new ReportsService();
-            var reportsListOfReports = reports.ListOfReports;
             var expectedResult = 5;
 
             //Act
-            var sut = reportsListOfReports.OrderByDescending(s => s.OutgoingTransfer / s.CurrentHotSpotUsers)
-           .Take(5).ToList();
+            var sut = reports.GetSuspiciousHotSpotByOutGoingTransfer();
 
             //Assert
             Assert.Equal(expectedResult, sut.Count);
@@ -50,17 +45,14 @@ namespace WiFi.Library.Tests.Services
         }
 
         [Fact]
-        public void ShouldGetFiveSuspiciousHotSpotByTotalTranfer()
+        public void ShouldGetFiveSuspiciousHotSpotByTotalTransfer()
         {
             //Arrange
             var reports = new ReportsService();
-            var reportsListOfReports = reports.ListOfReports;
             var expectedResult = 5;
 
             //Act
-            var sut = reportsListOfReports
-            .OrderByDescending(s => ((s.IncomingTransfer + s.OutgoingTransfer) / s.CurrentHotSpotUsers))
-            .Take(5).ToList();
+            var sut = reports.GetSuspiciousHotSpotByTotalTransfer();
 
             //Assert
             Assert.Equal(expectedResult, sut.Count);
@@ -72,13 +64,10 @@ namespace WiFi.Library.Tests.Services
         {
             //Arrange
             var reports = new ReportsService();
-            var reportsListOfReports = reports.ListOfReports;
             var expectedResult = 10;
 
             //Act
-            var sut = reportsListOfReports
-                .OrderBy(s => s.CurrentHotSpotUsers)
-                .Take(10).ToList();
+            var sut = reports.GetLowestCurrentHotSpotUsers();
 
             //Assert
             Assert.Equal(expectedResult, sut.Count);
@@ -88,24 +77,13 @@ namespace WiFi.Library.Tests.Services
         public void ShouldGetSuspiciousHotSpotsListWithNoNulls()
         {
             //Arrange
-            var listByOutGoingTransfer = new ReportsService().GetSuspiciousHotSpotByOutGoingTransfer();
-            var listByIncomingTransfer = new ReportsService().GetSuspiciousHotSpotByIncomingTransfer();
-            var listByTotalTransfer = new ReportsService().GetSuspiciousHotSpotByTotalTransfer();
+            var reports = new ReportsService();
 
             //Act
-           var idListByOutGoingTransfer = listByOutGoingTransfer.Select(x => x.fakeID).ToList();
-           var idListByIncomingTransfer = listByIncomingTransfer.Select(x => x.fakeID).ToList();
-           var idListByTotalTransfer = listByTotalTransfer.Select(x => x.fakeID).ToList();
-           var sut =
-           listByOutGoingTransfer.Union(listByIncomingTransfer).Union(listByTotalTransfer).ToList();
-           foreach (var hotSpot in sut)
-           {
-               hotSpot.SuspiciousByIncomingTransfer = idListByIncomingTransfer.Contains(hotSpot.fakeID);
-               hotSpot.SuspiciousByOutgoingTransfer = idListByOutGoingTransfer.Contains(hotSpot.fakeID);
-               hotSpot.SuspiciousByTotal = idListByTotalTransfer.Contains(hotSpot.fakeID);
-           }
-           //Assert
-          sut.Should().NotContainNulls();
+            var sut = reports.GetSuspiciousHotSpotsList();
+
+            //Assert
+            sut.Should().NotContainNulls();
         }
     }
 }
