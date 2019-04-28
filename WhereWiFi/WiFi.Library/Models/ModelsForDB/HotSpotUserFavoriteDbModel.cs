@@ -2,7 +2,8 @@
 {
     public class HotSpotUserFavoriteDbModel
     {
-        public int HotSpotId { get; set; }
-        public int UserId { get; set; }
+        public int Id { get; set; }
+        public int HotSpotNumber { get; set; }
+        //public int UserId { get; set; }
     }
 }

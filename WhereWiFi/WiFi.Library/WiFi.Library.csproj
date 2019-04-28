@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="DataBaseAccess\HotSpotLocationsConfiguration.cs" />
+    <Compile Remove="DataBaseAccess\HotSpotReportsConfiguration.cs" />
+    <Compile Remove="Models\ModelsForDB\HotSpotLocationDbModel.cs" />
+    <Compile Remove="Models\ModelsForDB\HotSpotReportDBModel.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="CsvHelper" Version="12.1.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.2.4">

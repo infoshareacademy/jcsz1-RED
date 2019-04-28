@@ -10,16 +10,20 @@ namespace WiFi.Library.DataBaseAccess
         {
             builder
                 .ToTable("HotSpotUsersFavorites");
+
+
             builder
-                .HasKey(x => x.HotSpotId);
-            builder
-                .Property(x => x.HotSpotId)
-                .HasColumnName("HotSpotId")
+                .Property(x => x.HotSpotNumber)
+                .HasColumnName("HotSpotNumber")
                 .IsRequired();
+
             builder
-                .Property(x => x.UserId)
-                .HasColumnName("UserId")
-                .IsRequired();
+                .HasKey(x => x.Id);
+
+            //builder
+            //    .Property(x => x.UserId)
+            //    .HasColumnName("UserId")
+            //    .IsRequired();
         }
     }
 }
