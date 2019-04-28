@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using CsvHelper;
+using Geolocation;
 using WiFi.Library.DataBaseAccess;
 using WiFi.Library.DataBaseAccess.IDataBaseAccess;
 using WiFi.Library.Filepath;
@@ -28,7 +27,6 @@ namespace WiFi.Library.Services
         {
             _contextFactory = contextFactory;
             _filePath = new FilePath();
-            //_favoritesHotSpots = new List<HotSpotModel>();
             _hotSpotList = new List<HotSpotModel>();
             ReadDataFromFile();
             SetFavorites();
@@ -82,10 +80,12 @@ namespace WiFi.Library.Services
             _hotSpotList.Add(hotspot);
             return hotspot;
         }
+
         public HotSpotModel GetById(int id)
         {
             return _hotSpotList.First(x => x.Number == id);
         }
+
         public bool Update(int id, HotSpotModel hotSpotById)
         {
             var currentHotSpot = GetById(id);
@@ -131,23 +131,26 @@ namespace WiFi.Library.Services
                 }
             }
         }
+
         public HotSpotModel NearestHotSpot(HotSpotModel hotspot)
         {
-            double currentHotSpotLatitude = double.Parse(hotspot.LatitudeX, CultureInfo.InvariantCulture);
-            double currentHotSpotLongitude = double.Parse(hotspot.LongitudeY, CultureInfo.InvariantCulture);
-
-
-            var nearest = _hotSpotList.Single();
-
+            var nearest = _hotSpotList.OrderBy(x => DistanceBetweenHotSpots(hotspot, x))
+                .First(x => x.Number != hotspot.Number);
 
             return nearest;
-            //double GeographicalDegreeToKm = 73;
-            //var nerest = _hotSpotList.Min
-            //(x => 
-            //    (Math.Sqrt
-            //    (Math.Pow((Double.Parse(x.LatitudeX, CultureInfo.InvariantCulture) - la), 2) 
-            //    + Math.Pow((Double.Parse(x.LongitudeY, CultureInfo.InvariantCulture) - lo), 2)
-            //    * GeographicalDegreeToKm)));
+        }
+
+        private double DistanceBetweenHotSpots(HotSpotModel x, HotSpotModel y)
+        {
+            var xLatitude = double.Parse(x.LatitudeX, CultureInfo.InvariantCulture);
+            var xLongitude = double.Parse(x.LongitudeY, CultureInfo.InvariantCulture);
+
+            var yLatitude = double.Parse(y.LatitudeX, CultureInfo.InvariantCulture);
+            var yLongitude = double.Parse(y.LongitudeY, CultureInfo.InvariantCulture);
+
+            var distance = GeoCalculator.GetDistance(xLatitude, xLongitude, yLatitude, yLongitude);
+
+            return distance;
         }
 
         public List<HotSpotModel> GetAll()
