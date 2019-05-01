@@ -8,8 +8,8 @@ namespace WiFi.Library.Models
         public int Number { get; set; }
         public string fakeID { get; set; }
         [Required(ErrorMessage = "Podaj nazwę ulicy")]
-        [MinLength(5, ErrorMessage = "Nazwa ulicy powinna być dłuższa niż 5 znaków")]
-        [MaxLength(70, ErrorMessage = "Nazwa ulicy powinna być krótsza niż 70 znaków")]
+        [MinLength(1, ErrorMessage = "Nazwa ulicy nie może być krótsza niż 1 znak")]
+        [MaxLength(70, ErrorMessage = "Nazwa ulicy powinna być dłuższa niż 70 znaków")]
         public string LocationName { get; set; }
         [Required(ErrorMessage = "Podaj szerokość geograficzną")]
         [Range(54,55, ErrorMessage = "Obszar nieobsługiwany, podaj szerokość geograficzną w przedziale 54-55.")]
