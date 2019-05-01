@@ -1,20 +1,61 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using FluentAssertions;
+using Microsoft.AspNetCore.Mvc;
+using Moq;
+using seeWifi.Controllers;
 using WiFi.Library.Models;
 using WiFi.Library.Services;
+using WiFi.Library.Services.IServices;
 using Xunit;
 
-
-namespace WiFi.Library.Tests.Services
+namespace WiFi.Library.Tests.Tests
 {
-    public class HotSpotServiceShould
+    public class HotSpotServiceTest
     {
-
         [Fact]
-        public void ShouldAddHotSpot()
+        public void Index_Should_Call_HotSpotService()
+        {
+            //Arrange
+            var hotSpotService = Mock.Of<IHotSpotService>();
+            var serviceMock = Mock.Get(hotSpotService);
+            var hotSpotController = new HotSpotController(hotSpotService);
+
+            //Act
+            hotSpotController.Index();
+
+            //Assert
+            serviceMock.Verify(s => s.GetAll(), Times.Once);
+        }
+        [Fact]
+        public void Index_Should_Return_Hotspots()
+        {
+            //Arrange
+            var hotSpotService = Mock.Of<IHotSpotService>();
+            var serviceMock = Mock.Get(hotSpotService);
+            var hotSpotController = new HotSpotController(hotSpotService);
+            var hotspots = new List<HotSpotModel>()
+            {
+                new HotSpotModel()
+                {
+                    Number = 1,
+                    fakeID = "Fikcyjny",
+                    LocationName = "Grunwaldzka",
+                    LatitudeX = "54.4",
+                    LongitudeY = "18.5"
+                }
+
+            };
+            serviceMock.Setup(s => s.GetAll()).Returns(hotspots);
+
+            //Act
+            var responseResult = (ViewResult)hotSpotController.Index();
+
+            //Assert
+            Assert.Equal(hotspots, responseResult.ViewData.Model);
+        }
+        [Fact]
+        public void Should_Add_Hotspot()
         {
             //Arrange
             HotSpotService hs = new HotSpotService();
@@ -33,7 +74,7 @@ namespace WiFi.Library.Tests.Services
             Assert.Collection(lastHotSpot, item => Assert.Contains("18", item.LongitudeY));
         }
         [Fact]
-        public void ShouldGetHotspotById()
+        public void Should_Get_Hotspot_By_Id()
         {
             //Arrange
             var hotspot = new HotSpotService();
@@ -43,7 +84,7 @@ namespace WiFi.Library.Tests.Services
             sut.Number.Should().Be(100);
         }
         [Fact]
-        public void ShouldUpdateOldDataInHotspot()
+        public void Should_Update_Old_Data_In_Hotspot()
         {
             //Arrange
             var hotspotService = new HotSpotService();
@@ -64,7 +105,7 @@ namespace WiFi.Library.Tests.Services
             currentHotSpot.Should().BeEquivalentTo(updatedHotSpot);
         }
         [Fact]
-        public void ShouldGetAllFavorites()
+        public void Should_Get_All_Favorites()
         {
             //Arrange
             var hotspot = new HotSpotService();
@@ -80,7 +121,7 @@ namespace WiFi.Library.Tests.Services
             Assert.Collection(sut, item => Assert.True(item.FavoriteHotSpot));
         }
         [Fact]
-        public void ShouldGetAllHotspots()
+        public void Should_Get_All_Hotspots()
         {
             //Arrange
             var hotspot = new HotSpotService();

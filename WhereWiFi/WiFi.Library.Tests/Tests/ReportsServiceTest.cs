@@ -1,21 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using FluentAssertions;
-using Microsoft.EntityFrameworkCore.Query.ExpressionTranslators.Internal;
-using WiFi.Library.Models;
+﻿using FluentAssertions;
+using Moq;
+using seeWifi.Controllers;
 using WiFi.Library.Services;
+using WiFi.Library.Services.IServices;
 using Xunit;
 
-
-namespace WiFi.Library.Tests.Services
+namespace WiFi.Library.Tests.Tests
 {
     public class ReportsServiceShould
     {
         [Fact]
-        public void ShouldGetFiveSuspcicousHotSpotByIncomingTransfer()
+        public void Index_Should__Call_ReportsService()
+        {
+            //Arrange
+            var reportsService = Mock.Of<IReportsService>();
+            var reportsMock = Mock.Get(reportsService);
+            var reportsController = new ReportsController(reportsService);
+
+            //Act
+            var responseResult = reportsController.Index();
+
+            //Assert
+            reportsMock.Verify(r => r.GetSuspiciousHotSpotsList(), Times.Once);
+        }
+        [Fact]
+        public void Should_Get_Five_Suspicious_Hotspots_By_Incoming_Transfer()
         {
             //Arrange
             var reports = new ReportsService();
@@ -30,7 +39,7 @@ namespace WiFi.Library.Tests.Services
         }
 
         [Fact]
-        public void ShouldGetFiveSuspiciousHotSpotByOutGoingTransfer()
+        public void Should_Get_Five_Suspicious_Hotspots_By_Outgoing_Transfer()
         {
             //Arrange
             var reports = new ReportsService();
@@ -45,7 +54,7 @@ namespace WiFi.Library.Tests.Services
         }
 
         [Fact]
-        public void ShouldGetFiveSuspiciousHotSpotByTotalTransfer()
+        public void Should_Get_Five_Suspicious_Hotspots_By_Total_Transfer()
         {
             //Arrange
             var reports = new ReportsService();
@@ -74,7 +83,7 @@ namespace WiFi.Library.Tests.Services
             sut.Should().NotContainNulls();
         }
         [Fact]
-        public void ShouldGetSuspiciousHotSpotsListWithNoNulls()
+        public void Should_Get_Suspicious_Hotspots_List_With_No_Nulls()
         {
             //Arrange
             var reports = new ReportsService();
