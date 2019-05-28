@@ -24,7 +24,7 @@ namespace WiFi.Library.DataBaseAccess
         {
             optionsBuilder
                 .UseLoggerFactory(GetFactory())
-                .UseSqlServer(@"Server=(localdb)\bazaS;Database=Baza6;Trusted_Connection=True;");
+                .UseSqlServer(@"Server=(localdb)\bazaS;Database=BazaRed;Trusted_Connection=True;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
