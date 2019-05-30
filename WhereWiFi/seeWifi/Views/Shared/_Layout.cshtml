@@ -33,26 +33,26 @@
                     <ul class="navbar-nav flex-grow-1">
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="HotSpot" asp-action="Index"><img src="~/Images/StartPageLayout2010/allb.png" alt="Wszystkie">Wszystkie</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="HotSpot" asp-action="Index"><img src="~/Images/StartPageLayout2010/allb.png" alt="Wszystkie">@Localizer["All"]</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="HotSpot" asp-action="Favorites"><img src="~/Images/StartPageLayout2010/favourite.png" alt="Ulubione">Ulubione</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="HotSpot" asp-action="Favorites"><img src="~/Images/StartPageLayout2010/favourite.png" alt="Ulubione">@Localizer["Favorite"]</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="HotSpot" asp-action="Nearest"><img src="~/Images/StartPageLayout2010/nearestb.png" alt="Najbliższy Hotspot">Najbliższy Hotspot</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="HotSpot" asp-action="Nearest"><img src="~/Images/StartPageLayout2010/nearestb.png" alt="Najbliższy Hotspot">@Localizer["Nearest"]</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="HotSpot" asp-action="Create"><img src="~/Images/StartPageLayout2010/addb.png" alt="Dodaj Hotspot">Dodaj Hotspot</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="HotSpot" asp-action="Create"><img src="~/Images/StartPageLayout2010/addb.png" alt="Dodaj Hotspot">@Localizer["Add"]</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="HotSpot" asp-action="Edit"><img src="~/Images/StartPageLayout2010/editb.png" alt="Edytuj Hotspot">Edytuj Hotspot</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="HotSpot" asp-action="Edit"><img src="~/Images/StartPageLayout2010/editb.png" alt="Edytuj Hotspot">@Localizer["Edit"]</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link text-dark dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" asp-area="" asp-controller="Reports" asp-action="Index"><img src="~/Images/StartPageLayout2010/raports.png" alt="Raporty">Raporty</a>
                             <div class="my-dropdown dropdown-menu">
                                 <div class="my-dropdown dropdown-item text-dark">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Reports" asp-action="Index"><img src="~/Images/StartPageLayout2010/suspectsb.png" alt="Podejrzane Hotspoty">Podejrzane Hotspoty</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Reports" asp-action="Index"><img src="~/Images/StartPageLayout2010/suspectsb.png" alt="Podejrzane Hotspoty">@Localizer["Suspicious"]</a>
                                 </div>
                                 <div class="my-dropdown dropdown-item text-dark">
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Reports" asp-action="LowestCurrentHotSpotUsers"><img src="~/Images/StartPageLayout2010/currentUsers.png" alt="Najmniejsza liczba użytkowników">Najmniejsza liczba użytkowników</a>

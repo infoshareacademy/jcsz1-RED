@@ -60,7 +60,7 @@ namespace seeWifi
             IList<CultureInfo> supportedCultures = new List<CultureInfo>
             {
                 new CultureInfo("en-US"),
-                new CultureInfo("pl-PL"),
+                //new CultureInfo("pl-PL"),
             };
             app.UseRequestLocalization(new RequestLocalizationOptions
             {
