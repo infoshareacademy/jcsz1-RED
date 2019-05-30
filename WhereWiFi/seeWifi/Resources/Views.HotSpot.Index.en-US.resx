@@ -117,28 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AllHotSpots" xml:space="preserve">
-    <value>Wszystkie</value>
+  <data name="HotSpotLocation" xml:space="preserve">
+    <value>Hot Spot Location:</value>
   </data>
-  <data name="Edit" xml:space="preserve">
-    <value>Edytuj</value>
+  <data name="HotSpotsList" xml:space="preserve">
+    <value>Hot Spots List</value>
   </data>
-  <data name="Favourite" xml:space="preserve">
-    <value>Ulubione</value>
+  <data name="Latitude" xml:space="preserve">
+    <value>Latitude:</value>
   </data>
-  <data name="NearestHotSpot" xml:space="preserve">
-    <value>Najbliższy</value>
-  </data>
-  <data name="Suspicious" xml:space="preserve">
-    <value>Podejrzane</value>
-  </data>
-  <data name="WelcomeText" xml:space="preserve">
-    <value>Co Chcesz zrobić ze swoimi punktami HOTSPOT?</value>
-  </data>
-  <data name="WelcomeTextHeader" xml:space="preserve">
-    <value>Witaj strudzony wędrowcze!</value>
-  </data>
-  <data name="WelcomeTextLG" xml:space="preserve">
-    <value>Tu jest super tekst zachęzający do korzystania z apki, który nie wyświtla się jeśli urządnie na którym pracujemy jest telefonem, pomniejsz ekran jeśli chcesz to zobaczyć.</value>
+  <data name="Longitude" xml:space="preserve">
+    <value>Longitude:</value>
   </data>
 </root>

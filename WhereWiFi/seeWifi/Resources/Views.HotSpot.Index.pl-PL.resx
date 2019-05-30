@@ -117,29 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AllHotSpots" xml:space="preserve">
-    <value>Show All </value>
+  <data name="HotSpotLocation" xml:space="preserve">
+    <value>Lokalizacja Hot Spotu:</value>
   </data>
-  <data name="Edit" xml:space="preserve">
-    <value>Edit</value>
+  <data name="HotSpotsList" xml:space="preserve">
+    <value>Lista Hotspotów</value>
   </data>
-  <data name="Favourite" xml:space="preserve">
-    <value>Favourite</value>
+  <data name="Latitude" xml:space="preserve">
+    <value>Szerokość Geograficzna:</value>
   </data>
-  <data name="NearestHotSpot" xml:space="preserve">
-    <value>Nearest </value>
-  </data>
-  <data name="Suspicious" xml:space="preserve">
-    <value>Suspicious</value>
-  </data>
-  <data name="WelcomeText" xml:space="preserve">
-    <value>What do you want to do with your Hot Spots?</value>
-  </data>
-  <data name="WelcomeTextHeader" xml:space="preserve">
-    <value>26/5000
-Hello, weary travelers!</value>
-  </data>
-  <data name="WelcomeTextLG" xml:space="preserve">
-    <value>It's shows only on large displays :D</value>
+  <data name="Longitude" xml:space="preserve">
+    <value>Długość Geograficzna:</value>
   </data>
 </root>
