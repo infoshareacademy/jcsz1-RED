@@ -117,11 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BtnEdit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="EditHotSpot" xml:space="preserve">
+    <value>Edit Hot Spots</value>
+  </data>
   <data name="HotSpotLocation" xml:space="preserve">
     <value>Hot Spot Location:</value>
-  </data>
-  <data name="HotSpotsList" xml:space="preserve">
-    <value>Hot Spots List</value>
   </data>
   <data name="Latitude" xml:space="preserve">
     <value>Latitude:</value>

@@ -129,8 +129,14 @@
   <data name="Favorite" xml:space="preserve">
     <value>Favorite</value>
   </data>
+  <data name="LowestCurrentHotSpotUsers" xml:space="preserve">
+    <value>Lowest current users</value>
+  </data>
   <data name="Nearest" xml:space="preserve">
     <value>Nearest</value>
+  </data>
+  <data name="Raports" xml:space="preserve">
+    <value>Raports</value>
   </data>
   <data name="Suspicious" xml:space="preserve">
     <value>Suspicious</value>

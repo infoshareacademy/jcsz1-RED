@@ -117,16 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="HeaderTop10" xml:space="preserve">
+    <value>TOP 10 - Najmniej wykorzystywanych punktów HOTSPOT</value>
+  </data>
   <data name="HotSpotLocation" xml:space="preserve">
-    <value>Lokalizacja Hot Spotu:</value>
+    <value>Lokalizacja Hot Spotu</value>
   </data>
-  <data name="HotSpotsList" xml:space="preserve">
-    <value>Lista Hotspotów</value>
-  </data>
-  <data name="Latitude" xml:space="preserve">
-    <value>Szerokość Geograficzna:</value>
-  </data>
-  <data name="Longitude" xml:space="preserve">
-    <value>Długość Geograficzna:</value>
+  <data name="MonthlyUsers" xml:space="preserve">
+    <value>Miesięczna liczba użytkowników</value>
   </data>
 </root>

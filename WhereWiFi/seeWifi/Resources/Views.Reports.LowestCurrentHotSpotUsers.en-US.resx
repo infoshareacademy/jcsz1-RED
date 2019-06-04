@@ -117,16 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="HeaderTop10" xml:space="preserve">
+    <value>TOP 10 - The least used Hot Spots</value>
+  </data>
   <data name="HotSpotLocation" xml:space="preserve">
-    <value>Hot Spot Location:</value>
+    <value>Hot Spot Location</value>
   </data>
-  <data name="HotSpotsList" xml:space="preserve">
-    <value>Hot Spots List</value>
-  </data>
-  <data name="Latitude" xml:space="preserve">
-    <value>Latitude:</value>
-  </data>
-  <data name="Longitude" xml:space="preserve">
-    <value>Longitude:</value>
+  <data name="MonthlyUsers" xml:space="preserve">
+    <value>Monthly number of users</value>
   </data>
 </root>

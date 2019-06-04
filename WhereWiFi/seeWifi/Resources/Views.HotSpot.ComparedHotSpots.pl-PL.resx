@@ -120,13 +120,13 @@
   <data name="HotSpotLocation" xml:space="preserve">
     <value>Lokalizacja Hot Spotu:</value>
   </data>
-  <data name="HotSpotsList" xml:space="preserve">
-    <value>Lista Hotspotów</value>
-  </data>
   <data name="Latitude" xml:space="preserve">
     <value>Szerokość Geograficzna:</value>
   </data>
   <data name="Longitude" xml:space="preserve">
     <value>Długość Geograficzna:</value>
+  </data>
+  <data name="YourNearestHotSpot" xml:space="preserve">
+    <value>Twój najbliższy Hot Spot</value>
   </data>
 </root>

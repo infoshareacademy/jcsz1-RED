@@ -4,14 +4,14 @@
     ViewBag.Title = "title";
     Layout = "_Layout";
 }
-<title>Podejrzane duże transfery danych przychodzących</title>
+    <title>@Localizer["SuspiciousHotSpot"]</title>
 
 
 <div id="jumbo" class=" my-container jumbotron">
-    <h3 class="text-center">Podejrzane punkty HOTSPOT</h3>
-    <p>  &#8621 Kiedy korzystamy z tych sieci nie wykonuj żadnych transakcji bankowych.</p>
-    <p> &#8621 Traktuj każdą nieznaną sieć jako podejrzaną.</p>
-    <p>  &#8621 Używaj programów zabezpieczających przed wirusami i atakami.</p>
+    <h3 class="text-center">@Localizer["SuspiciousHotSpot"]</h3>
+    <p>  &#8621 @Localizer["WarningBankTransfer"]</p>
+    <p> &#8621 @Localizer["WarningAllSuspicious"]</p>
+    <p>  &#8621 @Localizer["WarningBankTransferVirus"]</p>
 </div>
 
 <div class="my-container container">
@@ -22,20 +22,19 @@
                     Nr
                 </th>
                 <th>
-                    Lokalizacja HotSpotNumber
+                    @Localizer["HotSpotLocation"]
+                </th>
+                <th> @Localizer["MonthlyUsers"]
                 </th>
                 <th>
-                    Miesięczna liczba użytkowników
+                    @Localizer["IncomingIndex"]
                 </th>
                 <th>
-                    Transfer przychodzący [GB/miesiąc]
-                </th>
-                <th>
-                    Transfer wychodzący [GB/miesiąc]
+                    @Localizer["OutgoingIndex"]
                 </th>
 
                 <th id="annoyingBorder">
-                    Łączna wymiana danych [GB/miesiąc]
+                    @Localizer["TotalTransferIndex"]
                 </th>
             </tr>
         </thead>
@@ -82,7 +81,7 @@
                 counter++;
             }
         <tr>
-            <td colspan="3" id="annoyingBorder" class="text-danger text-justify">(*)Podejrzane parametry</td>
+            <td colspan="3" id="annoyingBorder" class="text-danger text-justify">@Localizer["SuspiciousParameters"]</td>
         </tr>
         </tbody>
     </table>

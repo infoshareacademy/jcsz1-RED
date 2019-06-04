@@ -117,16 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BtnShowNerest" xml:space="preserve">
+    <value>Pokaż najblższy Hot Spot</value>
+  </data>
   <data name="HotSpotLocation" xml:space="preserve">
     <value>Lokalizacja Hot Spotu:</value>
-  </data>
-  <data name="HotSpotsList" xml:space="preserve">
-    <value>Lista Hotspotów</value>
   </data>
   <data name="Latitude" xml:space="preserve">
     <value>Szerokość Geograficzna:</value>
   </data>
   <data name="Longitude" xml:space="preserve">
     <value>Długość Geograficzna:</value>
+  </data>
+  <data name="NearestHotSpot" xml:space="preserve">
+    <value>Najbliższy punkt Hot Spot</value>
+  </data>
+  <data name="OrderToPointOnTheMap" xml:space="preserve">
+    <value>Wskaż na mapie w którym miejscu się znajdujesz lub wprowadź dane ręcznie.</value>
   </data>
 </root>

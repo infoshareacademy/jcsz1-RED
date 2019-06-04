@@ -118,15 +118,33 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="HotSpotLocation" xml:space="preserve">
-    <value>Lokalizacja Hot Spotu:</value>
+    <value>Lokalizacja Hot Spotu</value>
   </data>
-  <data name="HotSpotsList" xml:space="preserve">
-    <value>Lista Hotspotów</value>
+  <data name="IncomingIndex" xml:space="preserve">
+    <value>Transfer przychodzący [GB/miesiąc]</value>
   </data>
-  <data name="Latitude" xml:space="preserve">
-    <value>Szerokość Geograficzna:</value>
+  <data name="MonthlyUsers" xml:space="preserve">
+    <value>Miesięczna liczba użytkowników</value>
   </data>
-  <data name="Longitude" xml:space="preserve">
-    <value>Długość Geograficzna:</value>
+  <data name="OutgoingIndex" xml:space="preserve">
+    <value>Transfer wychodzący [GB/miesiąc]</value>
+  </data>
+  <data name="SuspiciousHotSpot" xml:space="preserve">
+    <value>Podejrzane punkty Hot Spot</value>
+  </data>
+  <data name="SuspiciousParameters" xml:space="preserve">
+    <value>(*)Podejrzane parametry</value>
+  </data>
+  <data name="TotalTransferIndex" xml:space="preserve">
+    <value>Łączna wymiana danych [GB/miesiąc]</value>
+  </data>
+  <data name="WarningAllSuspicious" xml:space="preserve">
+    <value>Traktuj każdą nieznaną sieć jako podejrzaną.</value>
+  </data>
+  <data name="WarningBankTransfer" xml:space="preserve">
+    <value>Kiedy korzystamy z tych sieci nie wykonuj żadnych transakcji bankowych.</value>
+  </data>
+  <data name="WarningBankTransferVirus" xml:space="preserve">
+    <value>Używaj programów zabezpieczających przed wirusami i atakami.</value>
   </data>
 </root>
