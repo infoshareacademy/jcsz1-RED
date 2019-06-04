@@ -40,6 +40,22 @@ namespace seeWifi
                     LanguageViewLocationExpanderFormat.Suffix,
                     opts => { opts.ResourcesPath = "Resources"; })
                 .AddDataAnnotationsLocalization();
+
+            services.Configure<RequestLocalizationOptions>(
+                opts =>
+                {
+                    var supportedCultures = new List<CultureInfo>
+                    {
+                        new CultureInfo("en-US"),
+                        new CultureInfo("pl-PL"),
+                    };
+
+                    opts.DefaultRequestCulture = new RequestCulture("en-US");
+                    opts.SupportedCultures = supportedCultures;
+                    opts.SupportedUICultures = supportedCultures;
+                });
+
+
             services.AddSingleton<IWiFiDbContextFactory, WiFiDbContextFactory>();
             services.AddSingleton<IHotSpotService, HotSpotService>();
             services.AddSingleton<IReportsService, ReportsService>();
@@ -64,7 +80,7 @@ namespace seeWifi
             };
             app.UseRequestLocalization(new RequestLocalizationOptions
             {
-                DefaultRequestCulture = new RequestCulture("pl-PL"),
+                DefaultRequestCulture = new RequestCulture("en-US"),
                 SupportedCultures = supportedCultures,
                 SupportedUICultures = supportedCultures
             });
