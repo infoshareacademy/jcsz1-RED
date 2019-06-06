@@ -1,0 +1,12 @@
+﻿.languageBtn {
+    background-color: transparent;
+    border: none
+}
+
+.languageImage {
+    max-width: 40px;
+}
+
+    .languageImage:hover {
+        transform: scale(1.1, 1.1);
+    }

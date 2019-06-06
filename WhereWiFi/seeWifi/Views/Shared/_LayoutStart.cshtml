@@ -24,9 +24,14 @@
 
             <img src="Images/StartPageLayout2010/logo.png" alt="Logo Projektu" style="max-width:300px">
 
+            <div class="col-sm-6 float-right">
+                @await Html.PartialAsync("_SelectLanguagePartial")
+            </div>
+
         </div>
 
         <div class="container  rounded pb-2 mt-5" style="max-width: 1200px;" id="webDescription">
+
             <h3 class="text-center mb-2">@Localizer["Hello"]</h3>
             <p class="text-justify mb-2 d-none d-md-block">
                 @Localizer["LoremIpsum"]
@@ -93,13 +98,6 @@
         </main>
     </div>
 
-    <footer class="footer text-muted">
-        <div class="row">
-            <div class="col-sm-6 text-right">
-                @await Html.PartialAsync("_SelectLanguagePartial")
-            </div>
-        </div>
-    </footer>
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
