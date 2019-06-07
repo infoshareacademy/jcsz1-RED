@@ -1,4 +1,5 @@
-﻿@model WiFi.Library.Models.HotSpotModel
+﻿@*@model WiFi.Library.Models.HotSpotModel*@
+@model seeWifi.ViewModels.HotSpotViewModel
 
 @{
     ViewBag.Title = "title";
@@ -22,7 +23,7 @@
         <div id="jumbo" class="my-containerMini">
             <h6 class="text-center">@Localizer["OrderToPointOnTheMap"]</h6>
         </div>
-        <form asp-action="CompareNearest">
+        <form asp-action="CompareNearest" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <input asp-for="fakeID" type="hidden" value="Added" class="form-control" />

@@ -1,4 +1,4 @@
-﻿@model WiFi.Library.Models.HotSpotModel
+﻿@model seeWifi.ViewModels.HotSpotViewModel
 
 @{
     ViewBag.Title = "Nowy Hotspot";
@@ -11,7 +11,7 @@
 
 <div id="jumbo" class=" my-container jumbotron">
     <h3 class="text-center">@Localizer["AddHotSpot"]</h3>
-    
+
 </div>
 
 <div class="row">
@@ -20,7 +20,7 @@
         <div id="simpleMap" style="min-height: 350px"></div>
     </div>
     <div class="col-md-4">
-        
+
         <div id="jumbo" class="my-containerMini">
             <h6 class="text-center">@Localizer["OrderToPointOnTheMap"]</h6>
         </div>
@@ -28,25 +28,25 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <input asp-for="fakeID" type="hidden" value="Added" class="form-control"/>
+                <input asp-for="fakeID" type="hidden" value="Added" class="form-control" />
             </div>
             <div class="form-group">
                 <label asp-for="LocationName" class="control-label">@Localizer["HotSpotLocation"]</label>
-                <input asp-for="LocationName" id="xlocation" class="form-control"/>
+                <input asp-for="LocationName" id="xlocation" class="form-control" />
                 <span asp-validation-for="LocationName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="LatitudeX" class="control-label">@Localizer["Latitude"]</label>
-                <input asp-for="LatitudeX" type="number" id="xlatitude" value="" class="form-control"/>
+                <input asp-for="LatitudeX" type="number" id="xlatitude" value="" class="form-control" />
                 <span asp-validation-for="LatitudeX" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="LongitudeY" class="control-label">@Localizer["Longitude"]</label>
-                <input asp-for="LongitudeY" type="number" id="ylongitude" value="" class="form-control"/>
+                <input asp-for="LongitudeY" type="number" id="ylongitude" value="" class="form-control" />
                 <span asp-validation-for="LongitudeY" class="text-danger"></span>
             </div>
             <div class="form-group text-right">
-                <input type="submit" value="@Localizer["BtnAdd"]" class="btn btn-primary"/>
+                <input type="submit" value="@Localizer["BtnAdd"]" class="btn btn-primary" />
             </div>
         </form>
     </div>

@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Linq;
+using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
+using seeWifi.ViewModels;
 using WiFi.Library.Models;
 using WiFi.Library.Services.IServices;
 
@@ -6,9 +9,12 @@ namespace seeWifi.Controllers
 {
     public class HotSpotController : Controller
     {
+        private readonly IMapper _mapper;
         private readonly IHotSpotService _hotSpotService;
-        public HotSpotController(IHotSpotService hotSpotService)
+
+        public HotSpotController(IMapper mapper, IHotSpotService hotSpotService)
         {
+            _mapper = mapper;
             _hotSpotService = hotSpotService;
         }
 
@@ -24,28 +30,30 @@ namespace seeWifi.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(HotSpotModel hotspot)
+        public IActionResult Create(HotSpotViewModel hotspot)
         {
-            var newHotSpo = _hotSpotService.AddHotSpot(hotspot);
+            var newHotSpo = _hotSpotService.AddHotSpot(_mapper.Map< HotSpotViewModel, HotSpotModel>(hotspot));
             return RedirectToAction("Index");
         }
 
         public IActionResult Edit()
         {
-            return View("Edit", _hotSpotService.GetAll());
+            var modelHotSpotList = _hotSpotService.GetAll().Select(x=> _mapper.Map<HotSpotModel, HotSpotViewModel>(x)).ToList();
+            return View("Edit", modelHotSpotList);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult UpdateResult(int id, HotSpotModel hotSpot)
+        public IActionResult UpdateResult(int id, HotSpotViewModel hotSpotView)
         {
-            var update = _hotSpotService.Update(id, hotSpot);
+            var update = _hotSpotService.Update(id, _mapper.Map<HotSpotViewModel, HotSpotModel>(hotSpotView));
             return RedirectToAction("Edit");
         }
 
         public IActionResult Details(int id)
         {
-            return View(_hotSpotService.GetById(id));
+            var editedHotSpot =_mapper.Map<HotSpotModel, HotSpotViewModel>(_hotSpotService.GetById(id));
+            return View(editedHotSpot);
         }
 
         public IActionResult Favorites()
@@ -64,20 +72,19 @@ namespace seeWifi.Controllers
             _hotSpotService.MarkAsFavorite(id);
             return RedirectToAction("Favorites");
         }
+
         public IActionResult Nearest(HotSpotModel hotspot)
         {
-            return View("Nearest", hotspot);
+            return View("Nearest", _mapper.Map<HotSpotModel, HotSpotViewModel>(hotspot));
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult CompareNearest(HotSpotModel hotspot)
+        public IActionResult CompareNearest(HotSpotViewModel hotspot)
         {
-            var nearestHotSpot = _hotSpotService.NearestHotSpot(hotspot);
+            var nearestHotSpot = _hotSpotService.NearestHotSpot(_mapper.Map<HotSpotViewModel, HotSpotModel>(hotspot));
             return View("ComparedHotSpots", nearestHotSpot);
         }
-
-
-
-
+    
     }
 }

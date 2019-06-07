@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
+using System.Reflection;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -68,6 +70,7 @@ namespace seeWifi
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddAutoMapper(Assembly.GetAssembly(typeof(Startup)));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
