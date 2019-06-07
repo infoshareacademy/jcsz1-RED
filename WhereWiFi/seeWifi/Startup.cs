@@ -1,9 +1,16 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System.Collections.Generic;
+using System.Globalization;
+using System.Reflection;
+using AutoMapper;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using WiFi.Library.DataBaseAccess;
 using WiFi.Library.DataBaseAccess.IDataBaseAccess;
 using WiFi.Library.Services;
@@ -24,6 +31,33 @@ namespace seeWifi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddLocalization(o =>
+            {
+                // We will put our translations in a folder called Resources
+                o.ResourcesPath = "Resources";
+            });
+            services.AddMvc();
+            services.AddMvc()
+                .AddViewLocalization(
+                    LanguageViewLocationExpanderFormat.Suffix,
+                    opts => { opts.ResourcesPath = "Resources"; })
+                .AddDataAnnotationsLocalization();
+
+            services.Configure<RequestLocalizationOptions>(
+                opts =>
+                {
+                    var supportedCultures = new List<CultureInfo>
+                    {
+                        new CultureInfo("en-US"),
+                        new CultureInfo("pl-PL"),
+                    };
+
+                    opts.DefaultRequestCulture = new RequestCulture("en-US");
+                    opts.SupportedCultures = supportedCultures;
+                    opts.SupportedUICultures = supportedCultures;
+                });
+
+
             services.AddSingleton<IWiFiDbContextFactory, WiFiDbContextFactory>();
             services.AddSingleton<IHotSpotService, HotSpotService>();
             services.AddSingleton<IReportsService, ReportsService>();
@@ -36,11 +70,24 @@ namespace seeWifi
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddAutoMapper(Assembly.GetAssembly(typeof(Startup)));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            IList<CultureInfo> supportedCultures = new List<CultureInfo>
+            {
+                new CultureInfo("en-US"),
+                new CultureInfo("pl-PL"),
+            };
+            app.UseRequestLocalization(new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture("en-US"),
+                SupportedCultures = supportedCultures,
+                SupportedUICultures = supportedCultures
+            });
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -56,6 +103,7 @@ namespace seeWifi
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
+         
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

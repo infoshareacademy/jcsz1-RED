@@ -1,4 +1,5 @@
-﻿@model WiFi.Library.Models.HotSpotModel
+﻿@*@model WiFi.Library.Models.HotSpotModel*@
+@model seeWifi.ViewModels.HotSpotViewModel
 
 @{
     ViewBag.Title = "title";
@@ -6,7 +7,7 @@
 }
 
 <div id="jumbo" class=" my-container jumbotron">
-    <h3 class="text-center">Najbliższy hotspot</h3>
+    <h3 class="text-center">@Localizer["NearestHotSpot"]</h3>
 </div>
 
 <script src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0" type="text/javascript" charset="UTF-8"></script>
@@ -20,30 +21,30 @@
     <div class="col-md-4">
 
         <div id="jumbo" class="my-containerMini">
-            <h6 class="text-center">Wskaż na mapie w którym miejscu się znajdujesz lub wprowadź dane ręcznie.</h6>
+            <h6 class="text-center">@Localizer["OrderToPointOnTheMap"]</h6>
         </div>
-        <form asp-action="CompareNearest">
+        <form asp-action="CompareNearest" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <input asp-for="fakeID" type="hidden" value="Added" class="form-control" />
             </div>
             <div class="form-group">
-                <label asp-for="LocationName" class="control-label">Lokalizacja:</label>
+                <label asp-for="LocationName" class="control-label">@Localizer["HotSpotLocation"]</label>
                 <input asp-for="LocationName" id="xlocation" class="form-control" />
                 <span asp-validation-for="LocationName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="LatitudeX" class="control-label">Szerokość Geograficzna:</label>
+                <label asp-for="LatitudeX" class="control-label"> @Localizer["Latitude"]</label>
                 <input asp-for="LatitudeX" type="number" id="xlatitude" value="" class="form-control" />
                 <span asp-validation-for="LatitudeX" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="LongitudeY" class="control-label">Długość Geograficzna:</label>
+                <label asp-for="LongitudeY" class="control-label"> @Localizer["Longitude"]</label>
                 <input asp-for="LongitudeY" type="number" id="ylongitude" value="" class="form-control" />
                 <span asp-validation-for="LongitudeY" class="text-danger"></span>
             </div>
             <div class="form-group text-right">
-                <input type="submit" value="Pokaż najblższy hotspot" class="btn btn-primary" />
+                <input type="submit" value="@Localizer["BtnShowNerest"]" class="btn btn-primary" />
             </div>
         </form>
     </div>

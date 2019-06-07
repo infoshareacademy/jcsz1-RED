@@ -11,7 +11,7 @@
     var infoboxLayer = new Microsoft.Maps.EntityCollection();
     infoboxLayer.push(pinInfobox);
         Microsoft.Maps.Events.addHandler(map, 'click', function (e) {
-            if (e.targetType == "map") {
+            if (e.targetType === "map") {
         map.entities.clear();
     var point = new Microsoft.Maps.Point(e.getX(), e.getY());
     latlng = e.target.tryPixelToLocation(point);

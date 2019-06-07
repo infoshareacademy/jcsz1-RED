@@ -13,47 +13,47 @@ namespace WiFi.Library.Tests.Tests
 {
     public class HotSpotServiceTest
     {
-        [Fact]
-        public void Index_Should_Call_HotSpotService()
-        {
-            //Arrange
-            var hotSpotService = Mock.Of<IHotSpotService>();
-            var serviceMock = Mock.Get(hotSpotService);
-            var hotSpotController = new HotSpotController(hotSpotService);
+    //    [Fact]
+    //    public void Index_Should_Call_HotSpotService()
+    //    {
+    //        //Arrange
+    //        var hotSpotService = Mock.Of<IHotSpotService>();
+    //        var serviceMock = Mock.Get(hotSpotService);
+    //        var hotSpotController = new HotSpotController(hotSpotService);
 
-            //Act
-            hotSpotController.Index();
+    //        //Act
+    //        hotSpotController.Index();
 
-            //Assert
-            serviceMock.Verify(s => s.GetAll(), Times.Once);
-        }
-        [Fact]
-        public void Index_Should_Return_Hotspots()
-        {
-            //Arrange
-            var hotSpotService = Mock.Of<IHotSpotService>();
-            var serviceMock = Mock.Get(hotSpotService);
-            var hotSpotController = new HotSpotController(hotSpotService);
-            var hotspots = new List<HotSpotModel>()
-            {
-                new HotSpotModel()
-                {
-                    Number = 1,
-                    fakeID = "Fikcyjny",
-                    LocationName = "Grunwaldzka",
-                    LatitudeX = "54.4",
-                    LongitudeY = "18.5"
-                }
+    //        //Assert
+    //        serviceMock.Verify(s => s.GetAll(), Times.Once);
+    //    }
+    //    [Fact]
+    //    public void Index_Should_Return_Hotspots()
+    //    {
+    //        //Arrange
+    //        var hotSpotService = Mock.Of<IHotSpotService>();
+    //        var serviceMock = Mock.Get(hotSpotService);
+    //        var hotSpotController = new HotSpotController(hotSpotService);
+    //        var hotspots = new List<HotSpotModel>()
+    //        {
+    //            new HotSpotModel()
+    //            {
+    //                Number = 1,
+    //                fakeID = "Fikcyjny",
+    //                LocationName = "Grunwaldzka",
+    //                LatitudeX = "54.4",
+    //                LongitudeY = "18.5"
+    //            }
 
-            };
-            serviceMock.Setup(s => s.GetAll()).Returns(hotspots);
+    //        };
+    //        serviceMock.Setup(s => s.GetAll()).Returns(hotspots);
 
-            //Act
-            var responseResult = (ViewResult)hotSpotController.Index();
+    //        //Act
+    //        var responseResult = (ViewResult)hotSpotController.Index();
 
-            //Assert
-            Assert.Equal(hotspots, responseResult.ViewData.Model);
-        }
+    //        //Assert
+    //        Assert.Equal(hotspots, responseResult.ViewData.Model);
+    //    }
         [Fact]
         public void Should_Add_Hotspot()
         {

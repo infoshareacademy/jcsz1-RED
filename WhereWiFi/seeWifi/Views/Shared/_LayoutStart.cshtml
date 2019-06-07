@@ -24,15 +24,22 @@
 
             <img src="Images/StartPageLayout2010/logo.png" alt="Logo Projektu" style="max-width:300px">
 
+            <div class="col-sm-6 float-right">
+                @await Html.PartialAsync("_SelectLanguagePartial")
+            </div>
+
         </div>
 
         <div class="container  rounded pb-2 mt-5" style="max-width: 1200px;" id="webDescription">
-            <h3 class="text-center mb-2">Witaj strudzony wędrowcze!</h3>
+
+            <h3 class="text-center mb-2">@Localizer["Hello"]</h3>
             <p class="text-justify mb-2 d-none d-md-block">
-                Tu jest super tekst zachęzający do korzystania z apki, który nie wyświtla się jeśli urządnie na którym pracujemy jest telefonem, pomniejsz ekran jeśli chcesz to zobaczyć. 
+                @Localizer["LoremIpsum"]
             </p>
             <p class="text-center">
-                Co Chcesz zrobić ze swoimi punktami HOTSPOT?
+                <strong>
+                    @Localizer["WhatToDo"]
+                </strong>
             </p>
         </div>
 
@@ -42,42 +49,42 @@
                 <div>
                     <a class="nav-item" asp-area="" asp-controller="HotSpot" asp-action="Index">
                         <img src="Images/StartPageLayout2010/allb.png" alt="Lista Wszystkich HotSpotNumberów">
-                        <p>Wszystkie</p>
+                        <p>@Localizer["All"]</p>
                     </a>
                 </div>
 
                 <div>
                     <a class="nav-item" asp-area="" asp-controller="HotSpot" asp-action="Favorites">
                         <img src="Images/StartPageLayout2010/favourite.png" alt="Ulubione">
-                        <p>Ulubione</p>
+                        <p>@Localizer["Favorite"]</p>
                     </a>
                 </div>
 
                 <div>
                     <a class="nav-item " asp-area="" asp-controller="HotSpot" asp-action="Nearest">
                         <img src="Images/StartPageLayout2010/nearestb.png" alt="Najbliższy HotSpotNumber">
-                        <p>Najbliższy</p>
+                        <p>@Localizer["Nearest"]</p>
                     </a>
                 </div>
 
                 <div>
                     <a class="nav-link text-dark" asp-area="" asp-controller="HotSpot" asp-action="Create">
                         <img src="Images/StartPageLayout2010/addb.png" alt="Dodaj HotSpotNumber">
-                        <p>Dodaj</p>
+                        <p>@Localizer["Add"]</p>
                     </a>
                 </div>
 
                 <div>
                     <a class="nav-item" asp-area="" asp-controller="HotSpot" asp-action="Edit">
                         <img src="Images/StartPageLayout2010/editb.png" alt="Edytuj punkty HotSpotNumber">
-                        <p>Edytuj</p>
+                        <p>@Localizer["Edit"]</p>
                     </a>
                 </div>
 
                 <div>
                     <a class="nav-item" asp-area="" asp-controller="Reports" asp-action="Index">
                         <img src="Images/StartPageLayout2010/suspectsb.png" alt="Podejrzane punkty HotSpotNumber">
-                        <p>Podejrzane</p>
+                        <p>@Localizer["Suspicious"]</p>
                     </a>
                 </div>
             </nav>
@@ -91,11 +98,6 @@
         </main>
     </div>
 
-    <footer class="footer text-muted">
-        <div class="container">
-            &copy; 2019 - seeWifi - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
