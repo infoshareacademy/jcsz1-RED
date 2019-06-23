@@ -32,33 +32,39 @@ namespace WiFi.Library.Services
         }
         public async Task<ApplicationUserDbModel> ChangeUserRole(int id, int role)
         {
-            var user = await _contextFactory.GetDbContext().ApplicationUser.FindAsync(id);
-            switch (role)
+            using (var context = _contextFactory.GetDbContext())
             {
-                case 0:
-                    user.UserRole = Role.Admin;
-                    break;
-                case 1:
-                    user.UserRole = Role.Developer;
-                    break;
-                case 2:
-                    user.UserRole = Role.PremiumUser;
-                    break;
-                case 3:
-                    user.UserRole = Role.BasicUser;
-                    break;
-                default:
-                    user.UserRole = Role.Unknown;
-                    break;
+                var user = await context.ApplicationUser.FindAsync(id);
+                switch (role)
+                {
+                    case 0:
+                        user.UserRole = Role.Admin;
+                        break;
+                    case 1:
+                        user.UserRole = Role.Developer;
+                        break;
+                    case 2:
+                        user.UserRole = Role.PremiumUser;
+                        break;
+                    case 3:
+                        user.UserRole = Role.BasicUser;
+                        break;
+                    default:
+                        user.UserRole = Role.Unknown;
+                        break;
+                }
+                await context.SaveChangesAsync();
+                return user;
             }
-            await _contextFactory.GetDbContext().SaveChangesAsync();
-            return user;
         }
         public async void DeleteUser(int id)
         {
-            var user = await _contextFactory.GetDbContext().ApplicationUser.FindAsync(id);
-            _contextFactory.GetDbContext().ApplicationUser.Remove(user);
-            await _contextFactory.GetDbContext().SaveChangesAsync();
+            using (var context = _contextFactory.GetDbContext())
+            {
+                var user = await context.ApplicationUser.FindAsync(id);
+                context.ApplicationUser.Remove(user);
+                await context.SaveChangesAsync();
+            } 
         }
     }
 
