@@ -1,0 +1,12 @@
+﻿@model object
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+<h2>Welcome Admin</h2>
+
+<a asp-controller="Admin" asp-action="CreateUser" class="btn btn-success" type="button">Create User</a>
+<a asp-controller="Admin" asp-action="EditUser" class="btn btn-light" type="button">Edit User</a>
+<a asp-controller="Admin" asp-action="DeleteUser" class="btn btn-danger" type="button">Delete User</a>
+

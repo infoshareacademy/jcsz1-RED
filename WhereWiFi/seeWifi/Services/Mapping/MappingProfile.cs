@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using seeWifi.ViewModels;
 using WiFi.Library.Models;
+using WiFi.Library.Models.ModelsForDB;
 
 namespace seeWifi.Services.Mapping
 {
