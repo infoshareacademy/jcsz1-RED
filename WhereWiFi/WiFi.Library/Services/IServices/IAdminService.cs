@@ -10,8 +10,9 @@ namespace WiFi.Library.Services.IServices
     public interface IAdminService
     {
         Task<ApplicationUserDbModel> CreateUser(ApplicationUserDbModel applicationUserModel);
-        Task<ApplicationUserDbModel> ChangeUserRole(int id, int role);
+        Task<ApplicationUserDbModel> ChangeUserRole(ApplicationUserDbModel applicationUserModel);
         void DeleteUser(int id);
         Task<List<ApplicationUserDbModel>> GetAllUsers();
+        Task<ApplicationUserDbModel> GetUserById(int id);
     }
 }

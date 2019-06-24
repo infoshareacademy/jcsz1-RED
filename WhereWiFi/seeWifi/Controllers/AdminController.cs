@@ -22,7 +22,8 @@ namespace seeWifi.Controllers
         }
         public IActionResult EditUser()
         {
-            return View();
+            var users = _adminService.GetAllUsers();
+            return View(users);
         }
         [HttpPost]
         public IActionResult CreateUser(ApplicationUserDbModel applicationUser)
@@ -36,9 +37,9 @@ namespace seeWifi.Controllers
         }
 
         [HttpPost]
-        public IActionResult ChangeUserRole(int id,int userRole)
+        public IActionResult ChangeUserRole(ApplicationUserDbModel applicationUser)
         {
-            _adminService.ChangeUserRole(id, userRole);
+            _adminService.ChangeUserRole(applicationUser);
             return RedirectToAction("Index");
         }
         public IActionResult DeleteUserExecute(int id)
@@ -55,7 +56,11 @@ namespace seeWifi.Controllers
             return View(users);
         }
 
-
-     
+        public IActionResult UserDetails(int id)
+        {
+            var user = _adminService.GetUserById(id);
+            var userResult = user.Result;
+            return View(userResult);
+        }
     }
 }

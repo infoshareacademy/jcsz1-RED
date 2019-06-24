@@ -30,29 +30,16 @@ namespace WiFi.Library.Services
             }
             return applicationUserModel;
         }
-        public async Task<ApplicationUserDbModel> ChangeUserRole(int id, int role)
+        public async Task<ApplicationUserDbModel> ChangeUserRole(ApplicationUserDbModel applicationUserModel)
         {
             using (var context = _contextFactory.GetDbContext())
             {
-                var user = await context.ApplicationUser.FindAsync(id);
-                switch (role)
-                {
-                    case 0:
-                        user.UserRole = Role.Admin;
-                        break;
-                    case 1:
-                        user.UserRole = Role.Developer;
-                        break;
-                    case 2:
-                        user.UserRole = Role.PremiumUser;
-                        break;
-                    case 3:
-                        user.UserRole = Role.BasicUser;
-                        break;
-                    default:
-                        user.UserRole = Role.Unknown;
-                        break;
-                }
+                var checkId = applicationUserModel.Id;
+                var user = await context.ApplicationUser.FindAsync(checkId);
+                user.Login = applicationUserModel.Login;
+                user.Password = applicationUserModel.Password;
+                user.Email = applicationUserModel.Email;
+                user.UserRole = applicationUserModel.UserRole;
                 await context.SaveChangesAsync();
                 return user;
             }
@@ -71,6 +58,14 @@ namespace WiFi.Library.Services
             using (var context = _contextFactory.GetDbContext())
             {
                 var user = await context.ApplicationUser.ToListAsync();
+                return user;
+            }
+        }
+        public async Task<ApplicationUserDbModel> GetUserById(int id)
+        {
+            using (var context = _contextFactory.GetDbContext())
+            {
+                var user = await context.ApplicationUser.FindAsync(id);
                 return user;
             }
         }
