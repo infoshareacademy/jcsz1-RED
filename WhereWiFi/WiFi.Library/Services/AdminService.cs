@@ -66,6 +66,14 @@ namespace WiFi.Library.Services
                 await context.SaveChangesAsync();
             } 
         }
+        public async Task<List<ApplicationUserDbModel>> GetAllUsers()
+        {
+            using (var context = _contextFactory.GetDbContext())
+            {
+                var user = await context.ApplicationUser.ToListAsync();
+                return user;
+            }
+        }
     }
 
 

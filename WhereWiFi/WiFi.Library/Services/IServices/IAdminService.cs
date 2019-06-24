@@ -12,5 +12,6 @@ namespace WiFi.Library.Services.IServices
         Task<ApplicationUserDbModel> CreateUser(ApplicationUserDbModel applicationUserModel);
         Task<ApplicationUserDbModel> ChangeUserRole(int id, int role);
         void DeleteUser(int id);
+        Task<List<ApplicationUserDbModel>> GetAllUsers();
     }
 }

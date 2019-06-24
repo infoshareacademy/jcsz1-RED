@@ -41,8 +41,7 @@ namespace seeWifi.Controllers
             _adminService.ChangeUserRole(id, userRole);
             return RedirectToAction("Index");
         }
-        [HttpPost]
-        public IActionResult DeleteUser(int id)
+        public IActionResult DeleteUserExecute(int id)
         {
             if (id!=0 || id>0)
             {
@@ -50,5 +49,13 @@ namespace seeWifi.Controllers
             }
             return RedirectToAction("Index");
         }
+        public IActionResult DeleteUser()
+        {
+            var users = _adminService.GetAllUsers();
+            return View(users);
+        }
+
+
+     
     }
 }

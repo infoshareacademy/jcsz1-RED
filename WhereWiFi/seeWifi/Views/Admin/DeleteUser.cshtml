@@ -1,0 +1,28 @@
+﻿@model Task<List<WiFi.Library.Models.ModelsForDB.ApplicationUserDbModel>>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+<div class="container">
+    <h1 class="text-lg-center">Delete User</h1>
+    <form asp-action="DeleteUserExecute">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <select asp-for="@Model.Id" type="number" class="form-control">
+            @{
+                foreach (var VARIABLE in @Model.Result)
+                {
+                    <option value="@VARIABLE.Id">
+                        Id: @VARIABLE.Id |
+                        Login: @VARIABLE.Login |
+                        Email: @VARIABLE.Email
+                    </option>
+                }
+            }
+        </select>
+        <div class="form-group text-right">
+            <input type="submit" value="OK" class="btn btn-primary" />
+        </div>
+    </form>
+</div>
