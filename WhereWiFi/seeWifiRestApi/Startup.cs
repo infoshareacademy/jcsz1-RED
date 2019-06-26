@@ -12,6 +12,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using WiFi.Library.DataBaseAccess;
+using WiFi.Library.DataBaseAccess.IDataBaseAccess;
 
 namespace seeWifiRestApi
 {
@@ -28,6 +30,7 @@ namespace seeWifiRestApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAutoMapper(Assembly.GetAssembly(typeof(Startup)));
+            services.AddSingleton<IWiFiDbContextFactory, WiFiDbContextFactory>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
@@ -45,7 +48,12 @@ namespace seeWifiRestApi
             }
 
             app.UseHttpsRedirection();
-            app.UseMvc();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
+            });
         }
     }
 }
