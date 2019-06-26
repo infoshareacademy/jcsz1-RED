@@ -11,5 +11,7 @@ namespace seeWifiRestApi.Controllers
     [ApiController]
     public class ReportsController : ControllerBase
     {
+        
+
     }
 }

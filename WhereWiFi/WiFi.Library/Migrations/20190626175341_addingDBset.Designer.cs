@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WiFi.Library.DataBaseAccess;
 
 namespace WiFi.Library.Migrations
 {
     [DbContext(typeof(WiFiDbContext))]
-    partial class WiFiDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190626175341_addingDBset")]
+    partial class addingDBset
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
