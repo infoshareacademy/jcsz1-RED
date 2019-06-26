@@ -56,9 +56,8 @@ namespace seeWifi
                     opts.SupportedCultures = supportedCultures;
                     opts.SupportedUICultures = supportedCultures;
                 });
-
-
             services.AddSingleton<IWiFiDbContextFactory, WiFiDbContextFactory>();
+            services.AddSingleton<IAdminService, AdminService>();
             services.AddSingleton<IHotSpotService, HotSpotService>();
             services.AddSingleton<IReportsService, ReportsService>();
             services.Configure<CookiePolicyOptions>(options =>

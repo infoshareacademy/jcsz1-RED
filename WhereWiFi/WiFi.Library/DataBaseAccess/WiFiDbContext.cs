@@ -11,6 +11,7 @@ namespace WiFi.Library.DataBaseAccess
         //public DbSet<HotSpotLocationDbModel> HotSpotLocations { get; set; }
         //public DbSet<HotSpotReportDbModel> HotSpotReports{ get; set; }
         public DbSet<HotSpotUserFavoriteDbModel> HotSpotUsersFavorites { get; set; }
+        public DbSet<ApplicationUserDbModel> ApplicationUser { get; set; }
 
         private static ILoggerFactory GetFactory()
         {
@@ -36,4 +37,6 @@ namespace WiFi.Library.DataBaseAccess
             base.OnModelCreating(modelBuilder);
         }
     }
+
+   
 }

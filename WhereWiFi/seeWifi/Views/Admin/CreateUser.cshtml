@@ -1,0 +1,35 @@
+﻿@model WiFi.Library.Models.ModelsForDB.ApplicationUserDbModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+<div class="container">
+        <h1 class="text-lg-center">Create User</h1>
+    <form asp-action="CreateUser">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Login" class="control-label">Login: </label>
+            <input asp-for="Login" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Password" class="control-label">Password: </label>
+            <input asp-for="Password" class="form-control" />
+        </div> 
+            <label>Type of Account: </label>
+            <select asp-for="UserRole">
+                <option value="@Role.Admin">Admin</option>
+                <option value="@Role.Developer">Developer</option>
+                <option value="@Role.PremiumUser">Premium User</option>
+                <option value="@Role.BasicUser">Basic User</option>
+                <option value="@Role.Unknown">Unknown User</option>
+            </select>
+        <div class="form-group">
+            <label asp-for="Email" class="control-label">Email: </label>
+            <input asp-for="Email" class="form-control" />
+        </div>
+        <div class="form-group text-right">
+            <input type="submit" value="OK" class="btn btn-primary" />
+        </div>
+    </form>
+</div>

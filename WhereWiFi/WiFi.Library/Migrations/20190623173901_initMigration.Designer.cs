@@ -9,8 +9,8 @@ using WiFi.Library.DataBaseAccess;
 namespace WiFi.Library.Migrations
 {
     [DbContext(typeof(WiFiDbContext))]
-    [Migration("20190528090115_init")]
-    partial class init
+    [Migration("20190623173901_initMigration")]
+    partial class initMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -19,6 +19,25 @@ namespace WiFi.Library.Migrations
                 .HasAnnotation("ProductVersion", "2.2.4-servicing-10062")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("WiFi.Library.Models.ModelsForDB.ApplicationUserDbModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Email");
+
+                    b.Property<string>("Login");
+
+                    b.Property<string>("Password");
+
+                    b.Property<int>("UserRole");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ApplicationUser");
+                });
 
             modelBuilder.Entity("WiFi.Library.Models.ModelsForDB.HotSpotUserFavoriteDbModel", b =>
                 {

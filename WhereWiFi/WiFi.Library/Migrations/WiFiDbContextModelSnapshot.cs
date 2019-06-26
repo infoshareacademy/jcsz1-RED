@@ -18,6 +18,25 @@ namespace WiFi.Library.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("WiFi.Library.Models.ModelsForDB.ApplicationUserDbModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Email");
+
+                    b.Property<string>("Login");
+
+                    b.Property<string>("Password");
+
+                    b.Property<int>("UserRole");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ApplicationUser");
+                });
+
             modelBuilder.Entity("WiFi.Library.Models.ModelsForDB.HotSpotUserFavoriteDbModel", b =>
                 {
                     b.Property<int>("Id")
