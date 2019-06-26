@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WiFi.Library", "WiFi.Librar
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "seeWifi", "seeWifi\seeWifi.csproj", "{BB29981F-19AA-4930-9F7C-5BC26E9ADD5B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WiFi.Library.Tests", "WiFi.Library.Tests\WiFi.Library.Tests.csproj", "{5BC068BD-3722-4CFE-B29E-973CFAF55EF7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WiFi.Library.Tests", "WiFi.Library.Tests\WiFi.Library.Tests.csproj", "{5BC068BD-3722-4CFE-B29E-973CFAF55EF7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "seeWifiRestApi", "seeWifiRestApi\seeWifiRestApi.csproj", "{3B094D26-2551-4FDA-81F1-C7BDD104B15D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{5BC068BD-3722-4CFE-B29E-973CFAF55EF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5BC068BD-3722-4CFE-B29E-973CFAF55EF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5BC068BD-3722-4CFE-B29E-973CFAF55EF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B094D26-2551-4FDA-81F1-C7BDD104B15D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B094D26-2551-4FDA-81F1-C7BDD104B15D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B094D26-2551-4FDA-81F1-C7BDD104B15D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B094D26-2551-4FDA-81F1-C7BDD104B15D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

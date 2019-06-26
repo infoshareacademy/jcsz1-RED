@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Console;
-using WiFi.Library.DataBaseAccess.IDataBaseAccess;
 using WiFi.Library.Models.ModelsForDB;
+using WiFi.Library.Models.RestModels;
 
 namespace WiFi.Library.DataBaseAccess
 {
@@ -12,6 +12,7 @@ namespace WiFi.Library.DataBaseAccess
         //public DbSet<HotSpotReportDbModel> HotSpotReports{ get; set; }
         public DbSet<HotSpotUserFavoriteDbModel> HotSpotUsersFavorites { get; set; }
         public DbSet<ApplicationUserDbModel> ApplicationUser { get; set; }
+        public DbSet<RestReportsModel> RestReports { get; set; }
 
         private static ILoggerFactory GetFactory()
         {
