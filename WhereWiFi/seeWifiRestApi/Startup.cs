@@ -32,6 +32,7 @@ namespace seeWifiRestApi
             services.AddAutoMapper(Assembly.GetAssembly(typeof(Startup)));
             services.AddSingleton<IWiFiDbContextFactory, WiFiDbContextFactory>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddSwaggerDocument();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,20 +42,10 @@ namespace seeWifiRestApi
             {
                 app.UseDeveloperExceptionPage();
             }
-            else
-            {
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
-            }
 
             app.UseHttpsRedirection();
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
-            });
-           app.UseSwaggerUi3();
+            app.UseSwagger();
+            app.UseSwaggerUi3();
         }
     }
 }
