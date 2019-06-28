@@ -120,6 +120,9 @@
   <data name="BtnEdit" xml:space="preserve">
     <value>Zmień</value>
   </data>
+  <data name="Display" xml:space="preserve">
+    <value>Pokaż</value>
+  </data>
   <data name="EditHotSpot" xml:space="preserve">
     <value>Edytuj punkty Hot Spot</value>
   </data>
@@ -131,5 +134,26 @@
   </data>
   <data name="Longitude" xml:space="preserve">
     <value>Długość Geograficzna:</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Następna</value>
+  </data>
+  <data name="NothingFound" xml:space="preserve">
+    <value>Nie ma takiego punktu HotSpot</value>
+  </data>
+  <data name="Of" xml:space="preserve">
+    <value>z</value>
+  </data>
+  <data name="Page" xml:space="preserve">
+    <value>Strona</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Poprzednia</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Szukaj</value>
+  </data>
+  <data name="TotalEntries" xml:space="preserve">
+    <value>Całkowita ilość HotSpotów w bazie</value>
   </data>
 </root>
