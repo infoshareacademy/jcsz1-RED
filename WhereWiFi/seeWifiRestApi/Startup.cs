@@ -54,6 +54,7 @@ namespace seeWifiRestApi
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+           app.UseSwaggerUi3();
         }
     }
 }
