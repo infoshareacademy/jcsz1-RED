@@ -1,33 +1,33 @@
 ﻿@using Microsoft.CodeAnalysis.CSharp.Syntax
 @model System.Collections.Generic.List<WiFi.Library.Models.HotSpotModel>
 
-@{
+    @{
     ViewBag.Title = "List of Hotspots";
     Layout = "_Layout";
-}
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-<div id="jumbo" class=" my-container jumbotron">
-    <h3 class="text-center"> @Localizer["HotSpotsList"]</h3>
-</div>
-<div class="my-container container">
-    <table id="dataTable" class="my-table table text-center">
-        <thead>
-            <tr>
-                <th class="text-left" id="annoyingBorder">
-                    @Localizer["HotSpotLocation"]
-                </th>
-                <th class="text-center">
-                    @Localizer["Latitude"]
-                </th>
-                <th class="text-center">
-                    @Localizer["Longitude"]
-                </th>
-                <th id="annoyingBorder"></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var hotSpot in Model)
-            {
+    }
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <div id="jumbo" class=" my-container jumbotron">
+        <h3 class="text-center"> @Localizer["HotSpotsList"]</h3>
+    </div>
+    <div class="my-container container">
+        <table id="dataTable" class="my-table table text-center">
+            <thead>
+                <tr>
+                    <th class="text-left" id="annoyingBorder">
+                        @Localizer["HotSpotLocation"]
+                    </th>
+                    <th class="text-center">
+                        @Localizer["Latitude"]
+                    </th>
+                    <th class="text-center">
+                        @Localizer["Longitude"]
+                    </th>
+                    <th id="annoyingBorder"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var hotSpot in Model)
+                {
                 <tr>
                     <td class="text-left">
                         @hotSpot.LocationName
@@ -42,42 +42,42 @@
                            asp-route-id="@hotSpot.Number">
                             <div>
                                 @{if (hotSpot.FavoriteHotSpot)
-                                    {
-                                        <i class="fas fa-star my-listStar"></i>
-                                    }
-                                    else if (!hotSpot.FavoriteHotSpot)
-                                    {
-                                        <i class="far fa-star my-listStar"></i>
-                                    }
+                                {
+                                <i class="fas fa-star my-listStar"></i>
+                                }
+                                else if (!hotSpot.FavoriteHotSpot)
+                                {
+                                <i class="far fa-star my-listStar"></i>
+                                }
                                 }
                             </div>
                         </a>
                     </td>
                 </tr>
-            }
-        </tbody>
-    </table>
-</div>
+                }
+            </tbody>
+        </table>
+    </div>
 
 
-
-@section Scripts {
+    @section Scripts {
     <!-- For the DataTables grid -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
     <!-- Page-specific script -->
-    @*<script src="~/js/dataTable.js" asp-append-version="true"></script>*@
+    @*
+    <script src="~/js/dataTable.js" asp-append-version="true"></script>*@
 
     <script>
-    var display = "@Localizer["Display"]";
-    var nothingFound = "@Localizer["NothingFound"]";
-    var page = "@Localizer["Page"]";
-    var ofz = "@Localizer["Of"]";
-    var next = "@Localizer["Next"]";
-    var previous = "@Localizer["Previous"]";
-    var search = "@Localizer["Search"]";
-    var totalEntries = "@Localizer["TotalEntries"]";
+        var display = "@Localizer["Display"]";
+        var nothingFound = "@Localizer["NothingFound"]";
+        var page = "@Localizer["Page"]";
+        var ofz = "@Localizer["Of"]";
+        var next = "@Localizer["Next"]";
+        var previous = "@Localizer["Previous"]";
+        var search = "@Localizer["Search"]";
+        var totalEntries = "@Localizer["TotalEntries"]";
 
 
 
@@ -91,15 +91,20 @@
                         "first":"First",
                         "next": next,
                         "previous":previous
-                       },
+                    },
 
                     "search": search,
                     "infoFiltered":"",
-                    "infoEmpty": ""
-                }
+                    "infoEmpty": "",
+                },
+
+                "columns": [
+                    null,
+                    null,
+                    null,
+                    {"orderable":false}]
             });
         });
 
     </script>
-}
-
+    }
