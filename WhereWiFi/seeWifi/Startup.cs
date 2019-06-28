@@ -70,6 +70,7 @@ namespace seeWifi
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddAutoMapper(Assembly.GetAssembly(typeof(Startup)));
+            services.AddSwaggerDocument();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -98,7 +99,7 @@ namespace seeWifi
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+           app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
@@ -109,6 +110,9 @@ namespace seeWifi
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            app.UseSwagger();
+            app.UseSwaggerUi3();
         }
     }
 }
