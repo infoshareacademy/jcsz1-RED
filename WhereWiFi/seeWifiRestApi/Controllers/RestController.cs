@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using WiFi.Library.DataBaseAccess.IDataBaseAccess;
 using WiFi.Library.Models.RestModels;
 
@@ -47,7 +48,6 @@ namespace seeWifiRestApi.Controllers
                 return Ok(listOfReports);
             }
         }
-
         [HttpGet("id")]
         [Route("GetReports/{id}")]
         public async Task<IActionResult> GetReport(int id)
@@ -57,10 +57,17 @@ namespace seeWifiRestApi.Controllers
                 var report = await context.RestReports.FindAsync(id);
                 return Ok(report);
             }
+        }
+        [HttpGet]
+        [Route("UsersActivityReport")]
+        public async Task<IActionResult> UsersActivityReport()
+        {
+            using (var context = _wiFiDbContext.GetDbContext())
+            {
+                var usersList =await context.ApplicationUser.ToListAsync();
+                return Ok(JsonConvert.SerializeObject(usersList));
+            }
 
         }
-
-
-
     }
 }
