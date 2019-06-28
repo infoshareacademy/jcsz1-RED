@@ -10,8 +10,8 @@ using WiFi.Library.DataBaseAccess;
 namespace WiFi.Library.Migrations
 {
     [DbContext(typeof(WiFiDbContext))]
-    [Migration("20190626175341_addingDBset")]
-    partial class addingDBset
+    [Migration("20190628082045_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
