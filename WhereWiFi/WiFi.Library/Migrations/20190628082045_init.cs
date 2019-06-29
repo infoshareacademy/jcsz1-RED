@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WiFi.Library.Migrations
 {
-    public partial class initMigration : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -35,6 +36,21 @@ namespace WiFi.Library.Migrations
                 {
                     table.PrimaryKey("PK_HotSpotUsersFavorites", x => x.Id);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "RestReports",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Text = table.Column<string>(nullable: true),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    Description = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RestReports", x => x.Id);
+                });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -44,6 +60,9 @@ namespace WiFi.Library.Migrations
 
             migrationBuilder.DropTable(
                 name: "HotSpotUsersFavorites");
+
+            migrationBuilder.DropTable(
+                name: "RestReports");
         }
     }
 }

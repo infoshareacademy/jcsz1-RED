@@ -120,6 +120,9 @@
   <data name="BtnEdit" xml:space="preserve">
     <value>Edit</value>
   </data>
+  <data name="Display" xml:space="preserve">
+    <value>Display</value>
+  </data>
   <data name="EditHotSpot" xml:space="preserve">
     <value>Edit Hot Spots</value>
   </data>
@@ -131,5 +134,26 @@
   </data>
   <data name="Longitude" xml:space="preserve">
     <value>Longitude:</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="NothingFound" xml:space="preserve">
+    <value>HotSpot not found</value>
+  </data>
+  <data name="Of" xml:space="preserve">
+    <value>of</value>
+  </data>
+  <data name="Page" xml:space="preserve">
+    <value>Page</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Previous</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="TotalEntries" xml:space="preserve">
+    <value>Total Entries</value>
   </data>
 </root>

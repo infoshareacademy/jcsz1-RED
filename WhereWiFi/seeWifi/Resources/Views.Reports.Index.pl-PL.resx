@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Display" xml:space="preserve">
+    <value>Pokaż</value>
+  </data>
   <data name="HotSpotLocation" xml:space="preserve">
     <value>Lokalizacja Hot Spotu</value>
   </data>
@@ -126,8 +129,17 @@
   <data name="MonthlyUsers" xml:space="preserve">
     <value>Miesięczna liczba użytkowników</value>
   </data>
+  <data name="NothingFound" xml:space="preserve">
+    <value>Nie ma takiego punktu HotSpot</value>
+  </data>
+  <data name="Of" xml:space="preserve">
+    <value>z</value>
+  </data>
   <data name="OutgoingIndex" xml:space="preserve">
     <value>Transfer wychodzący [GB/miesiąc]</value>
+  </data>
+  <data name="Page" xml:space="preserve">
+    <value>Strona</value>
   </data>
   <data name="SuspiciousHotSpot" xml:space="preserve">
     <value>Podejrzane punkty Hot Spot</value>

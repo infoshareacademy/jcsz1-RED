@@ -7,45 +7,45 @@
 
 <div id="jumbo" class=" my-container jumbotron">
     <h3 class="text-center"> @Localizer["HeaderTop10"]</h3>
-    
+
 </div>
 
 <div class="my-container container">
     <table class="my-table table text-center">
         <thead>
-        <tr>
-            <th id="annoyingBorder">
-                Nr
-            </th>
-            <th id="annoyingBorder">
-                @Localizer["HotSpotLocation"]
-            </th>
-            <th id="annoyingBorder">
-                @Localizer["MonthlyUsers"]
-            </th>
-        </tr>
+            <tr>
+                <th>
+                    Nr
+                </th>
+                <th>
+                    @Localizer["HotSpotLocation"]
+                </th>
+                <th>
+                    @Localizer["MonthlyUsers"]
+                </th>
+            </tr>
         </thead>
         <tbody>
 
-        @{
-            int counter = 1;
-        }
+            @{
+                int counter = 1;
+            }
 
-        @foreach (var hotSpot in Model)
-        {
-            <tr>
-                <td class="text-center">
-                    @counter
-                </td>
-                <td class="text-left">
-                    @hotSpot.LocationName
-                </td>
-                <td class="text-center">
-                    @hotSpot.CurrentHotSpotUsers
-                </td>
-            </tr>
-            counter++;
-        }
+            @foreach (var hotSpot in Model)
+            {
+                <tr>
+                    <td class="text-center">
+                        @counter
+                    </td>
+                    <td class="text-left">
+                        @hotSpot.LocationName
+                    </td>
+                    <td class="text-center">
+                        @hotSpot.CurrentHotSpotUsers
+                    </td>
+                </tr>
+                counter++;
+            }
         </tbody>
     </table>
 </div>
