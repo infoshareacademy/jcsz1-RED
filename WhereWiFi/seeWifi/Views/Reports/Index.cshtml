@@ -4,7 +4,12 @@
     ViewBag.Title = "title";
     Layout = "_Layout";
 }
-    <title>@Localizer["SuspiciousHotSpot"]</title>
+<div>
+    @await Html.PartialAsync("_SelectLanguagePartial")
+</div>
+<br />
+<br />
+<title>@Localizer["SuspiciousHotSpot"]</title>
 
 
 <div id="jumbo" class=" my-container jumbotron">
@@ -18,13 +23,14 @@
     <table class="my-table table text-center">
         <thead>
             <tr>
-                <th  >
+                <th>
                     Nr
                 </th>
                 <th>
                     @Localizer["HotSpotLocation"]
                 </th>
-                <th> @Localizer["MonthlyUsers"]
+                <th>
+                    @Localizer["MonthlyUsers"]
                 </th>
                 <th>
                     @Localizer["IncomingIndex"]
@@ -33,17 +39,17 @@
                     @Localizer["OutgoingIndex"]
                 </th>
 
-                <th  >
+                <th>
                     @Localizer["TotalTransferIndex"]
                 </th>
             </tr>
         </thead>
         <tbody>
-        
+
             @{
                 int counter = 1;
             }
-        @foreach (var hotSpot in Model)
+            @foreach (var hotSpot in Model)
             {
                 <tr>
                     <td class="text-center">
@@ -80,9 +86,9 @@
                 </tr>
                 counter++;
             }
-        <tr>
-            <td colspan="3"   class="text-danger text-justify">@Localizer["SuspiciousParameters"]</td>
-        </tr>
+            <tr>
+                <td colspan="3" class="text-danger text-justify">@Localizer["SuspiciousParameters"]</td>
+            </tr>
         </tbody>
     </table>
 </div>
