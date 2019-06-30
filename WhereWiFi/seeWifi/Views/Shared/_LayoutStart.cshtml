@@ -45,48 +45,63 @@
 
         <conteiner class="text-center p-5">
             <nav>
-
+           
                 <div>
                     <a class="nav-item" asp-area="" asp-controller="HotSpot" asp-action="Index">
                         <img src="Images/StartPageLayout2010/allb.png" alt="Lista Wszystkich HotSpotNumberów">
                         <p>@Localizer["All"]</p>
                     </a>
                 </div>
-
+            @if (User.Identity.IsAuthenticated)
+            {
                 <div>
                     <a class="nav-item" asp-area="" asp-controller="HotSpot" asp-action="Favorites">
                         <img src="Images/StartPageLayout2010/favourite.png" alt="Ulubione">
                         <p>@Localizer["Favorite"]</p>
                     </a>
                 </div>
-
+            }
                 <div>
                     <a class="nav-item " asp-area="" asp-controller="HotSpot" asp-action="Nearest">
                         <img src="Images/StartPageLayout2010/nearestb.png" alt="Najbliższy HotSpotNumber">
                         <p>@Localizer["Nearest"]</p>
                     </a>
                 </div>
-
+            @if (User.Identity.IsAuthenticated)
+            {
                 <div>
                     <a class="nav-link text-dark" asp-area="" asp-controller="HotSpot" asp-action="Create">
                         <img src="Images/StartPageLayout2010/addb.png" alt="Dodaj HotSpotNumber">
                         <p>@Localizer["Add"]</p>
                     </a>
                 </div>
-
+            }
+            @if (User.Identity.IsAuthenticated && User.IsInRole(IdentityRoleName.Admin))
+            {
                 <div>
                     <a class="nav-item" asp-area="" asp-controller="HotSpot" asp-action="Edit">
                         <img src="Images/StartPageLayout2010/editb.png" alt="Edytuj punkty HotSpotNumber">
                         <p>@Localizer["Edit"]</p>
                     </a>
                 </div>
-
+            }
+            @if (!User.Identity.IsAuthenticated)
+            {
                 <div>
-                    <a class="nav-item" asp-area="" asp-controller="Reports" asp-action="Index">
+                    <a class="nav-item" asp-area="Identity" asp-page="/Account/Login">
                         <img src="Images/StartPageLayout2010/suspectsb.png" alt="Podejrzane punkty HotSpotNumber">
-                        <p>@Localizer["Suspicious"]</p>
+                        <p>@Localizer["LogIn"]</p>
                     </a>
                 </div>
+            }
+
+            @*<div>
+                <a class="nav-item" asp-area="" asp-controller="Reports" asp-action="Index">
+                    <img src="Images/StartPageLayout2010/suspectsb.png" alt="Podejrzane punkty HotSpotNumber">
+                    <p>@Localizer["Suspicious"]</p>
+                </a>
+            </div>*@
+            
                 </nav>
         </conteiner>
 
