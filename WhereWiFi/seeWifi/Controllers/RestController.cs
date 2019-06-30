@@ -26,7 +26,7 @@ namespace seeWifi.Controllers
         [Route("Post")]
         public async Task<IActionResult> Post([FromBody]RestReportsModel restReports)
         {
-            if (restReports ==null)
+            if (restReports == null)
             {
                 return NotFound();
             }
@@ -39,10 +39,10 @@ namespace seeWifi.Controllers
             }
         }
         [HttpGet]
-        [Route("GetAll")] 
+        [Route("GetAll")]
         public async Task<IActionResult> GetAll()
         {
-            using (var context =_wiFiDbContext.GetDbContext())
+            using (var context = _wiFiDbContext.GetDbContext())
             {
                 var listOfReports = await context.RestReports.ToListAsync();
                 return Ok(listOfReports);
@@ -58,13 +58,27 @@ namespace seeWifi.Controllers
                 return Ok(report);
             }
         }
+
+        [HttpDelete]
+        [Route("Delete/{id}")]
+        public async Task<IActionResult> DeleteById(int id)
+        {
+            using (var context = _wiFiDbContext.GetDbContext())
+            {
+                var singleReport = await context.RestReports.FindAsync(id);
+                context.RestReports.Remove(singleReport);
+                await context.SaveChangesAsync();
+                return Ok();
+            }
+        }
+
         [HttpGet]
         [Route("UsersActivityReport")]
         public async Task<IActionResult> UsersActivityReport()
         {
             using (var context = _wiFiDbContext.GetDbContext())
             {
-                var usersList =await context.ApplicationUser.ToListAsync();
+                var usersList = await context.ApplicationUser.ToListAsync();
                 return Ok(JsonConvert.SerializeObject(usersList));
             }
 

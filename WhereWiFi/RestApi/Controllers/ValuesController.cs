@@ -13,18 +13,18 @@ namespace RestApi.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        private readonly string connectionString = "http://localhost:63901/";
+        private readonly string connectionString = "http://localhost:56133/";
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
             return new string[] { "value1", "value2" };
         }
         [HttpGet]
-        [Route("GetReports")]
+        [Route("Reports")]
         public async Task<IActionResult> GetReports()
         {
             var client = HttpClientFactory.Create();
-            var result = await client.GetAsync(connectionString+"api/Rest/GetAll");
+            var result = await client.GetAsync(connectionString + "api/Rest/GetAll");
             if (result.IsSuccessStatusCode == false)
             {
                 return BadRequest();
@@ -37,11 +37,11 @@ namespace RestApi.Controllers
             return Ok(getAllContent);
         }
         [HttpGet("{id}")]
-        [Route("GetReports/{id}")]
+        [Route("Reports/{id}")]
         public async Task<IActionResult> GetReport(int id)
         {
             var client = HttpClientFactory.Create();
-            var result = await client.GetAsync(connectionString+$"api/Rest/GetAll/{id}");
+            var result = await client.GetAsync(connectionString + $"api/Rest/GetAll/{id}");
             if (result.IsSuccessStatusCode == false)
             {
                 return BadRequest();
@@ -60,7 +60,7 @@ namespace RestApi.Controllers
             var client = HttpClientFactory.Create();
 
             var result = await client.PostAsJsonAsync(
-                new Uri(connectionString+"api/Rest/Post"),
+                new Uri(connectionString + "api/Rest/Post"),
                 restReportsModel);
 
             if (result.IsSuccessStatusCode == false)
@@ -72,6 +72,19 @@ namespace RestApi.Controllers
                 .DeserializeObject<RestReportsModel>(loadContent);
 
             return Ok(getAllContent);
+        }
+        [HttpDelete]
+        [Route("Delete/{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var client = HttpClientFactory.Create();
+            var result = await client.DeleteAsync(connectionString + $"api/Rest/Delete/{id}");
+
+            if (result.IsSuccessStatusCode == false)
+            {
+                return BadRequest();
+            }
+            return Ok();
         }
     }
 }
