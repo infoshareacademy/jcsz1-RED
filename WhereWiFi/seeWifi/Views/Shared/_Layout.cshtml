@@ -35,23 +35,35 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse text-center">
                     <ul class="navbar-nav flex-grow-1">
-
+                        
+                        
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="HotSpot" asp-action="Index"><img src="~/Images/StartPageLayout2010/allb.png" alt="Wszystkie">@Localizer["All"]</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="HotSpot" asp-action="Favorites"><img src="~/Images/StartPageLayout2010/favourite.png" alt="Ulubione">@Localizer["Favorite"]</a>
-                        </li>
+                        
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="HotSpot" asp-action="Favorites"><img src="~/Images/StartPageLayout2010/favourite.png" alt="Ulubione">@Localizer["Favorite"]</a>
+                            </li>
+                        }
+                        
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="HotSpot" asp-action="Nearest"><img src="~/Images/StartPageLayout2010/nearestb.png" alt="Najbliższy Hotspot">@Localizer["Nearest"]</a>
                         </li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="HotSpot" asp-action="Create"><img src="~/Images/StartPageLayout2010/addb.png" alt="Dodaj Hotspot">@Localizer["Add"]</a>
                         </li>
-
+                    }
+                    @if (User.Identity.IsAuthenticated && User.IsInRole(IdentityRoleName.Admin))
+                    {
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="HotSpot" asp-action="Edit"><img src="~/Images/StartPageLayout2010/editb.png" alt="Edytuj Hotspot">@Localizer["Edit"]</a>
                         </li>
+                    }
+
                         <li class="nav-item dropdown">
                             <a class="nav-link text-dark dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" asp-area="" asp-controller="Reports" asp-action="Index"><img src="~/Images/StartPageLayout2010/raports.png" alt="Raporty">@Localizer["Raports"]</a>
                             <div class="my-dropdown dropdown-menu">
