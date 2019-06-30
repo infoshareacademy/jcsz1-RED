@@ -5,7 +5,11 @@
     ViewBag.Title = "title";
     Layout = "_Layout";
 }
-
+<div>
+    @await Html.PartialAsync("_SelectLanguagePartial")
+</div>
+<br />
+<br />
 <div id="jumbo" class=" my-container jumbotron">
     <h3 class="text-center">@Localizer["NearestHotSpot"]</h3>
 </div>

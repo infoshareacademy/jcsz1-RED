@@ -1,31 +1,36 @@
 ﻿@model System.Collections.Generic.List<seeWifi.ViewModels.HotSpotViewModel>
 
-    @{
+@{
     ViewBag.Title = "Edycja Hotspotów";
     Layout = "_Layout"; ;
-    }
-    <div id="jumbo" class=" my-container jumbotron">
-        <h3 class="text-center">@Localizer["EditHotSpot"]</h3>
-    </div>
-    <div class="my-container container">
-        <table id="dataTableEdit" class="my-table table text-center">
-            <thead>
-                <tr>
-                    <th class="text-left"  >
-                        @Localizer["HotSpotLocation"]
-                    </th>
-                    <th class="text-center">
-                        @Localizer["Latitude"]
-                    </th>
-                    <th class="text-center">
-                        @Localizer["Longitude"]
-                    </th>
-                    <th  ></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var hotSpot in Model)
-                {
+}
+<div>
+    @await Html.PartialAsync("_SelectLanguagePartial")
+</div>
+<br />
+<br />
+<div id="jumbo" class=" my-container jumbotron">
+    <h3 class="text-center">@Localizer["EditHotSpot"]</h3>
+</div>
+<div class="my-container container">
+    <table id="dataTableEdit" class="my-table table text-center">
+        <thead>
+            <tr>
+                <th class="text-left">
+                    @Localizer["HotSpotLocation"]
+                </th>
+                <th class="text-center">
+                    @Localizer["Latitude"]
+                </th>
+                <th class="text-center">
+                    @Localizer["Longitude"]
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var hotSpot in Model)
+            {
                 <tr>
                     <td class="text-left">
                         @hotSpot.LocationName
@@ -40,20 +45,20 @@
                            asp-route-id="@hotSpot.Number"><span class="btn btn-danger">@Localizer["BtnEdit"]</span></a>
                     </td>
                 </tr>
-                }
-            </tbody>
-        </table>
-    </div>
+            }
+        </tbody>
+    </table>
+</div>
 
 
-    @section Scripts {
+@section Scripts {
     <!-- For the DataTables grid -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
     <!-- Page-specific script -->
     @*
-    <script src="~/js/dataTable.js" asp-append-version="true"></script>*@
+        <script src="~/js/dataTable.js" asp-append-version="true"></script>*@
 
     <script>
         var display = "@Localizer["Display"]";
@@ -93,5 +98,5 @@
         });
 
     </script>
-    }
+}
 

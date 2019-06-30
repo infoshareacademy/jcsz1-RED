@@ -10,7 +10,9 @@ for details on configuring this project to bundle and minify static web assets. 
   border-radius: 5px;
 }
 
-
+#noHo:hover {
+    transform:none;
+}
 
 #jumbo {
   padding: 10px;
