@@ -21,6 +21,7 @@ namespace seeWifi.Areas.Identity
                         context.Configuration.GetConnectionString("seeWifiContextConnection")));
 
                 services.AddDefaultIdentity<User>()
+                    .AddRoles<IdentityRole>()
                     .AddEntityFrameworkStores<seeWifiContext>();
             });
         }
