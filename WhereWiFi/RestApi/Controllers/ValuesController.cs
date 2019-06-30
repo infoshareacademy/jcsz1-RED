@@ -13,7 +13,7 @@ namespace RestApi.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        private readonly string connectionString = "http://localhost:56133/";
+        private readonly string connectionString = "http://localhost:58882/";
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
@@ -85,6 +85,19 @@ namespace RestApi.Controllers
                 return BadRequest();
             }
             return Ok();
+        }
+        [HttpGet]
+        [Route("Activity")]
+        public async Task<IActionResult> Activity()
+        {
+            var client = HttpClientFactory.Create();
+            var result = await client.GetAsync(connectionString + "api/Rest/UsersActivityReport");
+            if (result.IsSuccessStatusCode == false)
+            {
+                return BadRequest();
+            }
+            var loadContent = await result.Content.ReadAsStringAsync();
+            return Ok(JsonConvert.DeserializeObject(loadContent));
         }
     }
 }

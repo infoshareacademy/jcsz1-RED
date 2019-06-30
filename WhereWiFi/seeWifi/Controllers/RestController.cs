@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using seeWifi.Models;
 using WiFi.Library.DataBaseAccess.IDataBaseAccess;
 using WiFi.Library.Models.RestModels;
 
@@ -17,10 +18,12 @@ namespace seeWifi.Controllers
     public class RestController : ControllerBase
     {
         private readonly IWiFiDbContextFactory _wiFiDbContext;
+        private readonly seeWifiContext _seeWifiContext;
 
-        public RestController(IWiFiDbContextFactory wiFiDbContext)
+        public RestController(IWiFiDbContextFactory wiFiDbContext, seeWifiContext seeWifiContext)
         {
             _wiFiDbContext = wiFiDbContext;
+            _seeWifiContext = seeWifiContext;
         }
         [HttpPost]
         [Route("Post")]
@@ -76,12 +79,13 @@ namespace seeWifi.Controllers
         [Route("UsersActivityReport")]
         public async Task<IActionResult> UsersActivityReport()
         {
-            using (var context = _wiFiDbContext.GetDbContext())
-            {
-                var usersList = await context.ApplicationUser.ToListAsync();
-                return Ok(JsonConvert.SerializeObject(usersList));
-            }
+            //logout 
+            //ile adminów
+            //ile jest innych userów
+            //var list = _seeWifiContext.UserRoles.Select(user => user.UserId).ToList();
 
+            var list = _seeWifiContext.Users.Select(x => x).ToList();
+            return Ok(JsonConvert.SerializeObject(list));
         }
     }
 }
