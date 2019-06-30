@@ -12,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using seeWifi.Services.Email;
 using seeWifi.Services.GlobalExceptionHandler;
 using WiFi.Library.DataBaseAccess;
 using WiFi.Library.DataBaseAccess.IDataBaseAccess;
@@ -62,6 +63,8 @@ namespace seeWifi
             services.AddSingleton<IAdminService, AdminService>();
             services.AddSingleton<IHotSpotService, HotSpotService>();
             services.AddSingleton<IReportsService, ReportsService>();
+            services.Configure<EmailConfigurationClass.IEmailConfiguration>(Configuration.GetSection("EmailSettings"));
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -73,6 +76,7 @@ namespace seeWifi
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddAutoMapper(Assembly.GetAssembly(typeof(Startup)));
             services.AddSwaggerDocument();
+            services.AddSingleton<IEmailSender, EmailSender>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

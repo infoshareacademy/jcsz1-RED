@@ -26,7 +26,7 @@ namespace WiFi.Library.DataBaseAccess
         {
             optionsBuilder
                 .UseLoggerFactory(GetFactory())
-                .UseSqlServer(@"Server=(localdb)\bazaS;Database=BazaRed2;Trusted_Connection=True;");
+                .UseSqlServer(@"Server=ISASZKOLENIE27\SQLEXPRESS01;Database=BazaRed;Trusted_Connection=True;");
             //.UseSqlServer(@"Server=SUBTL3\SQLEXPRESS;Database=BazaRed;Trusted_Connection=True;");     Mateusz Buczek connectionstring
         }
 
