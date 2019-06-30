@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace seeWifiRestApi
+namespace RestApi
 {
     public class Program
     {
@@ -19,7 +19,6 @@ namespace seeWifiRestApi
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseUrls("https://*80")
                 .UseStartup<Startup>();
     }
 }

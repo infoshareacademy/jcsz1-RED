@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 using WiFi.Library.DataBaseAccess.IDataBaseAccess;
 using WiFi.Library.Models.RestModels;
 
-namespace seeWifiRestApi.Controllers
+namespace seeWifi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -23,8 +23,8 @@ namespace seeWifiRestApi.Controllers
             _wiFiDbContext = wiFiDbContext;
         }
         [HttpPost]
-        [Route("Register")]
-        public async Task<IActionResult> Register([FromBody]RestReportsModel restReports)
+        [Route("Post")]
+        public async Task<IActionResult> Post([FromBody]RestReportsModel restReports)
         {
             if (restReports ==null)
             {
@@ -39,8 +39,8 @@ namespace seeWifiRestApi.Controllers
             }
         }
         [HttpGet]
-        [Route("GetReports")]
-        public async Task<IActionResult> GetReports()
+        [Route("GetAll")] 
+        public async Task<IActionResult> GetAll()
         {
             using (var context =_wiFiDbContext.GetDbContext())
             {
@@ -49,8 +49,8 @@ namespace seeWifiRestApi.Controllers
             }
         }
         [HttpGet("id")]
-        [Route("GetReports/{id}")]
-        public async Task<IActionResult> GetReport(int id)
+        [Route("GetAll/{id}")]
+        public async Task<IActionResult> GetAllById(int id)
         {
             using (var context = _wiFiDbContext.GetDbContext())
             {
